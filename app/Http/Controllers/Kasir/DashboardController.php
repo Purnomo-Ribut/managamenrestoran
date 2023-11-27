@@ -13,4 +13,9 @@ class DashboardController extends Controller
         return view('kasir.dashboard');
     }
 
+    public function test()
+    {
+        return 1;
+    }
+
 }
