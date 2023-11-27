@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('kasir.test');
 });
+Route::get('/manager', function () {
+    return view('manager.manager');
+});
