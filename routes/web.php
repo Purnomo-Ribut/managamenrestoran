@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('kasir/', 'Kasir\DashboardController@index')->name('kasir.dashboard');
+Route::get('/manager', function () {
+    return view('manager.manager');
+});
