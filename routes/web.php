@@ -11,8 +11,13 @@
 |
 */
 
+// rute awal
 Route::get('/', function () {
-    return view('kasir.test');
+    return view('login.index');
+});
+
+Route::get('/dashboard', function () {
+    return view('kasir.dashboard');
 });
 
 Route::get('kasir/', 'Kasir\DashboardController@index')->name('kasir.dashboard');
