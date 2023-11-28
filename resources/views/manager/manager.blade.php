@@ -80,7 +80,6 @@
                 <div class="card-body">
                     <h5 class="card-title">Monitoring Data Chef</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Tambah Chef</a>
                     <a href="#" class="btn btn-primary">Data Chef</a>
                 </div>
             </div>
@@ -160,6 +159,8 @@
           </button>
         </div>
         <div class="modal-body">
+          <form action="{{ route('storeJurusan') }}" method="post">
+            @csrf
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Kategori</label>
                 <input type="text" class="form-control" id="nama" name="nama" placeholder="contoh : Makanan">

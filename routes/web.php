@@ -24,6 +24,9 @@ Route::get('/dashboard', function () {
 
 Route::get('kasir/', 'Kasir\DashboardController@index')->name('kasir.dashboard');
 Route::get('kasir/test', 'Kasir\DashboardController@test')->name('kasir.tes');
-Route::get('/manager', function () {
-    return view('manager.manager');
-});
+
+//Route::get('link/', 'folderCotroller\KategoriController@index')->name('folder view.nama file blade');
+Route::get('manager/', 'manager\KategoriController@index')->name('manager.manager');
+Route::get('manager/test', 'manager\KategoriController@test')->name('manager.test');
+
+
