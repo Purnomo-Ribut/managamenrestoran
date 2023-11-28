@@ -42,7 +42,26 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi input jika diperlukan
+        $request->validate([
+            'nama' => 'required',
+            'deskripsi' => 'required',
+            // Sesuaikan dengan field yang dibutuhkan
+        ]);
+
+        // Buat objek baru berdasarkan model Kategori
+        $kategori = new Kategori();
+
+        // Isi field dengan data dari form
+        $kategori->nama = $request->input('nama');
+        $kategori->deskripsi = $request->input('deskripsi');
+
+        $kategori->save();
+
+        // Redirect atau kembali ke halaman tertentu setelah data disimpan
+        // return redirect()->route('manager.manager')
+        //     ->with('success', 'Kategori berhasil ditambahkan');
+        return redirect(route('manager')) -> with('success','Data Berhasil Di Tambahkan');
     }
 
     /**
