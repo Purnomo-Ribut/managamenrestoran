@@ -6,3 +6,26 @@
     padding: 10px;
     border-radius: 5px;
 }
+
+.input-box {
+    position: relative;
+}
+
+.input-box i {
+    position: absolute;
+    right: 13px;
+    top: 10px;
+    color: #ced4da;
+}
+
+.table-box {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.list {
+    gap: 10px;
+}
