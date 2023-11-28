@@ -141,7 +141,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -159,7 +159,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="{{ route('storeJurusan') }}" method="post">
+          <form method="POST" action="{{ route('kategori.store') }}">
             @csrf
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Kategori</label>
@@ -172,10 +172,11 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
+  </form>
   </div>
   {{-- Modal add kategori end--}}
 @endsection
