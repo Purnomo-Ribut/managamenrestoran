@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\manager;
 
-use App\Http\Controllers\Controller;
-use App\Kategori;
+use App\Menu;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class KategoriController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +15,10 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $kategori = Kategori::all();
-        return view('manager.manager', [
-            'kategori' => $kategori
+        $menus = Menu::all();
+        return view('menu.index', [
+            'menus' => $menus
         ]);
-    }
-
-    public function test()
-    {
-        return view('manager.test');
-        
     }
 
     /**
@@ -48,32 +42,38 @@ class KategoriController extends Controller
         // Validasi input jika diperlukan
         $request->validate([
             'nama' => 'required',
+            'id_kategori' => 'required',
+            'harga' => 'required',
+            'stock' => 'required',
             'deskripsi' => 'required',
             // Sesuaikan dengan field yang dibutuhkan
         ]);
 
-        // Buat objek baru berdasarkan model Kategori
-        $kategori = new Kategori();
 
-        // Isi field dengan data dari form
-        $kategori->nama = $request->input('nama');
-        $kategori->deskripsi = $request->input('deskripsi');
+        // Buat objek baru berdasarkan model menu
+        $menu = new Menu();
+        $menu->id_kategori = $request->input('id_kategori');
+        $menu->nama = $request->input('nama');
+        $menu->harga = $request->input('harga');
+        $menu->stock = $request->input('stock');
+        $menu->deskripsi = $request->input('deskripsi');
+        $menu->save();
 
-        $kategori->save();
+        $menu->save();
 
         // Redirect atau kembali ke halaman tertentu setelah data disimpan
         // return redirect()->route('manager.manager')
         //     ->with('success', 'Kategori berhasil ditambahkan');
-        return redirect(route('manager_index'))->with('success', 'Data Kategori berhasil ditambahkan');
+        return redirect(route('manager_index'))->with('success', 'Data menu berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Kategori  $kategori
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function show(Kategori $kategori)
+    public function show(Menu $menu)
     {
         //
     }
@@ -81,10 +81,10 @@ class KategoriController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Kategori  $kategori
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kategori $kategori)
+    public function edit(Menu $menu)
     {
         //
     }
@@ -93,10 +93,10 @@ class KategoriController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Kategori  $kategori
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kategori $kategori)
+    public function update(Request $request, Menu $menu)
     {
         //
     }
@@ -104,10 +104,10 @@ class KategoriController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Kategori  $kategori
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kategori $kategori)
+    public function destroy(Menu $menu)
     {
         //
     }
