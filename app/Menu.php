@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class tbl_menus extends Model
+class Menu extends Model
 {
     protected $table = 'tbl_menuses';
 
@@ -17,6 +17,6 @@ class tbl_menus extends Model
     ];
 
     public function tbl_kategoris() {
-        return $this->belongsTo('App/tbl_kategoris', 'id_kategori');
+        return $this->belongsTo('App\Kategori', 'id_kategori');
     }
 }

@@ -6,7 +6,9 @@
 {{-- <link rel="stylesheet" href=""> --}}
 @endsection
 
+
 @section('content')
+<body>
 <div class="container mt-4">
     <h1>Welcome to Dashboard Manager</h1>
     <div class="row">
@@ -109,6 +111,8 @@
           </button>
         </div>
         <div class="modal-body">
+          <form method="POST" action="{{ route('menu.store') }}">
+            @csrf
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Menu</label>
                 <input type="text" class="form-control" id="nama" name="nama" placeholder="contoh : Rendang">
@@ -120,15 +124,10 @@
               <div class="mb-3">
                 <label for="id_kategori">Kategori</label>
                 <select class="form-control" name="id_kategori" id="id_kategori" required="required">
-
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                    {{-- @foreach ($jurusans as $jurusan) --}}
-                    {{-- <option value="{{ $jurusan->id }}">{{ $jurusan->nama }}</option> --}}
-                    {{-- @endforeach --}}
+                    @foreach ($kategori as $kt)
+                    <option value="{{ $kt->id }}">{{ $kt->nama }}</option>
+                    @endforeach
+                  </select>
             </div>
             <div class="mb-3">
                 <label for="stock" class="form-label">Stock</label>
@@ -145,6 +144,7 @@
         </div>
       </div>
     </div>
+  </form>
   </div>
   <!-- Modal add menu end-->
 
@@ -172,12 +172,23 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Save</button>
         </div>
       </div>
     </div>
   </form>
   </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        let successMessage = '{{ session('success') }}';
+        if (successMessage) {
+            alert(successMessage);
+        }
+    });
+</script>
+
+</body>
   {{-- Modal add kategori end--}}
 @endsection
 
