@@ -15,14 +15,16 @@
     <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+    {{-- bostrap --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {{-- css --}}
     <link rel="stylesheet" href="{{ asset('css/login/login.css') }}">    
 </head>
 
 <body>
     <div class="container">
         <div class="login">
-            <form action="" method="post">
+            <form action="/login" method="post"> 
                 @csrf
                 <h1>Login</h1>
                 <hr>
@@ -30,14 +32,20 @@
                 {{-- input email --}}
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" id="email" name="email" placeholder="example@gmail.com" autocomplete="off">
+                    <input type="text" id="email"  name="email" placeholder="example@gmail.com" autocomplete="off" value="{{ old('email')}}" autofocus required>
                 </div>
                 
                 {{-- input password --}}
                 <div>
-                    <label for="pass">Password</label>
-                    <input type="password" id="pass" name="pass" placeholder="Password" autocomplete="off">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" required>
                 </div>
+                
+                @if(session('error'))
+                <div class="alert alert-danger my-2">
+                    {{ session('error') }}
+                </div>
+                @endif
                 <button type="submit">Login</button>
                 <p>
                     <a href="{{ route('kasir.dashboard') }}">Sementara Pake Ini Dulu Yaa</a>
@@ -57,3 +65,15 @@
 </body>
 
 </html>
+
+{{-- list user 
+<h1>List of Users</h1>
+
+<ul>
+    @foreach ($users as $user)
+        <li>{{ $user->name }} - {{ $user->email }} - {{$user->password}}</li>
+    @endforeach
+</ul>
+
+
+ --}}

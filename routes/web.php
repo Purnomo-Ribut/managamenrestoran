@@ -14,9 +14,14 @@ use App\Http\Controllers\manager\KategoriController;
 use App\Http\Controllers\manager\MenuController;
 
 // rute awal
-Route::get('/', function () {
-    return view('login.index');
-});
+// Route::get('/', function () {
+//     return view('login/index');
+// });
+
+// prepare login
+route::get('/', 'LoginController@index');
+route::post('/login', 'LoginController@login');
+// and login
 
 
 Route::get('/dashboard', function () {

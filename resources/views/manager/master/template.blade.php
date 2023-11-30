@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/kasir/css/adminlte.min.css')}}">
+
+  {{-- link datatable --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
   
   @yield('css')
 </head>
@@ -130,6 +133,15 @@
 <script src="{{asset('assets/kasir/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('assets/kasir/js/pages/dashboard3.js')}}"></script>
+
+{{-- script dattables --}}
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+	<script>
+		new DataTable('#dataTable');
+	</script>
 
 @stack('scripts')
 </body>
