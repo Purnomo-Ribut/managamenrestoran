@@ -23,9 +23,14 @@ Route::get('/dashboard', function () {
     return view('kasir.dashboard');
 });
 
+Route::prefix('kasir')->group(function() {
+    Route::get('/', 'Kasir\DashboardController@index')->name('kasir.dashboard');
+    Route::get('test', 'Kasir\DashboardController@test')->name('kasir.tes');
 
-Route::get('kasir/', 'Kasir\DashboardController@index')->name('kasir.dashboard');
-Route::get('kasir/test', 'Kasir\DashboardController@test')->name('kasir.tes');
+    Route::get('checkout/{idCustomer}', 'Kasir\CheckoutController@index')->name('kasir.checkout');
+    // Route::resource('checkout', 'Kasir\DashboardController');
+});
+
 
 //Route::get('link/', 'folderCotroller\KategoriController@index')->name('folder view.nama file blade');
 Route::get('/manager', 'manager\KategoriController@index')->name('manager_index');
