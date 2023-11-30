@@ -9,34 +9,27 @@ use App\User;
 
 class LoginController extends Controller
 {
-    function index(){
-        $users = User::all(); // Ambil semua data pengguna
-        return view('login/index', ['users' => $users]);
+    public function index(){
+        // $users = User::all(); // Ambil semua data pengguna
+        return view('login/index');
     }
 
-    public function login(Request $request)
-    {   
-
-        
-        
-        // Session::flash('email', $request->email);
-        $request->validate([
-            "email" => 'required',
-            "password"  => 'required'
-        ]);
-
-        // data dari form
-        $data = [
-            "email" => $request->email,
-            "password" => $request->password
-        ];
-        
-
-        if(Auth::attempt($data)){
-            return redirect('/dashboard');
-        }else{
-             return redirect('/')->with('error', 'Email atau password salah.');
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+ 
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            return redirect()->intended(route('kasir.dashboard'));
         }
+        
+        return redirect(route('login.index'))->withErrors('Email/password salah');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect(route('login.index'));
     }
 }
 
