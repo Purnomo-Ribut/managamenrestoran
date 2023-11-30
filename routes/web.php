@@ -27,11 +27,9 @@ Route::get('/dashboard', function () {
 Route::get('kasir/', 'Kasir\DashboardController@index')->name('kasir.dashboard');
 Route::get('kasir/test', 'Kasir\DashboardController@test')->name('kasir.tes');
 
-//Route::get('link/', 'folderCotroller\KategoriController@index')->name('folder view.nama file blade');
+
 Route::get('/manager', 'manager\KategoriController@index')->name('manager_index');
 // Route::get('manager/test', 'manager\KategoriController@test')->name('manager.test');
-Route::get('kategori/', 'manager\KategoriController@index')->name('manager.manager');
-
 
 Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
 Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');

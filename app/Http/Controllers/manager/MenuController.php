@@ -5,6 +5,7 @@ namespace App\Http\Controllers\manager;
 use App\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class MenuController extends Controller
 {
@@ -39,16 +40,25 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+
         // Validasi input jika diperlukan
         $request->validate([
             'nama' => 'required',
             'id_kategori' => 'required',
             'harga' => 'required',
             'stock' => 'required',
+            'image' => 'image|file|max:1024',
             'deskripsi' => 'required',
             // Sesuaikan dengan field yang dibutuhkan
         ]);
 
+        // Menyimpan gambar ke storage
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/assets/manager/gambarMenu');
+            $imageName = basename($imagePath);
+        } else {
+            $imageName = null; // Atau tentukan nilai default jika tidak ada gambar yang diunggah
+        }
 
         // Buat objek baru berdasarkan model menu
         $menu = new Menu();
@@ -56,14 +66,10 @@ class MenuController extends Controller
         $menu->nama = $request->input('nama');
         $menu->harga = $request->input('harga');
         $menu->stock = $request->input('stock');
+        $menu->image = $imageName;
         $menu->deskripsi = $request->input('deskripsi');
         $menu->save();
 
-        $menu->save();
-
-        // Redirect atau kembali ke halaman tertentu setelah data disimpan
-        // return redirect()->route('manager.manager')
-        //     ->with('success', 'Kategori berhasil ditambahkan');
         return redirect(route('manager_index'))->with('success', 'Data menu berhasil ditambahkan');
     }
 
