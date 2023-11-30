@@ -16,9 +16,21 @@
                             <label class="font-weight-normal">Nama</label>
                             <input type="text" class="form-control" name="nama" value="sairul" readonly>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6 mb-2">
                             <label class="font-weight-normal">No. Meja</label>
                             <input type="text" class="form-control" name="no_meja" value="25" readonly>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="font-weight-normal">Pilih metode pembayaran</label>
+                            <select name="metode" id="" class="form-control">
+                                <option value="">Debit</option>
+                                <option value="">Qris</option>
+                                <option value="">Tunai</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-2">
+                            <label class="font-weight-normal">Chef</label>
+                            <input type="text" class="form-control" name="no_meja" value="Dawan Lutfi" readonly>
                         </div>
                     </div>
                     <div class="btn btn-warning w-100">Checkout Now</div>
@@ -64,6 +76,10 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h3 class="font-weight-normal">Total:</h3>
+                            <h3>Rp.300.000</h3>
                         </div>
                     </div>
                 </div>
