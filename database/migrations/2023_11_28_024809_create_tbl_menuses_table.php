@@ -20,6 +20,7 @@ class CreateTblMenusesTable extends Migration
             $table->string('nama',255);
             $table->integer('harga');
             $table->integer('stock');
+            $table->string('image')->nullable();
             $table->text('deskripsi');
             $table->timestamps();
         });
