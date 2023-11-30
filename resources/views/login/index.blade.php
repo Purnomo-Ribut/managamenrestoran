@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,15 +17,16 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     {{-- bostrap --}}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {{-- css --}}
-    <link rel="stylesheet" href="{{ asset('css/login/login.css') }}">    
+    <link rel="stylesheet" href="{{ asset('css/login/login.css') }}">
 </head>
 
 <body>
     <div class="container">
         <div class="login">
-            <form action="/login" method="post"> 
+            <form action="/login" method="post">
                 @csrf
                 <h1>Login</h1>
                 <hr>
@@ -32,18 +34,29 @@
                 {{-- input email --}}
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" id="email"  name="email" placeholder="example@gmail.com" autocomplete="off" value="{{ old('email')}}" autofocus required>
+                    <input type="text" id="email" name="email" placeholder="example@gmail.com" autocomplete="off"
+                        value="{{ old('email')}}" autofocus required>
                 </div>
-                
+
                 {{-- input password --}}
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" required>
+                    <input type="password" id="password" name="password" placeholder="Password" autocomplete="off"
+                        required>
                 </div>
-                
-                @if(session('error'))
+
+                {{-- @if(session('error'))
                 <div class="alert alert-danger my-2">
                     {{ session('error') }}
+                </div>
+                @endif --}}
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
                 @endif
                 <button type="submit">Login</button>
@@ -72,8 +85,8 @@
 <ul>
     @foreach ($users as $user)
         <li>{{ $user->name }} - {{ $user->email }} - {{$user->password}}</li>
-    @endforeach
+@endforeach
 </ul>
 
 
- --}}
+--}}
