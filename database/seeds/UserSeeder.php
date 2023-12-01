@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert(
+        DB::table('users')->insert([
             [
                 'name' => 'manager',
                 'email' => 'manager@gmail.com',
@@ -31,6 +31,6 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('chef'),
                 'role' => 'chef',
             ]
-        );
+        ]);
     }
 }

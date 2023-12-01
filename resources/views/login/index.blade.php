@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Halaman Login | {{ config('app.name', 'Laravel') }}</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}}">
@@ -51,18 +51,16 @@
                 </div>
                 @endif --}}
                 @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+                <div class="alert alert-danger my-1">
+                    @foreach ($errors->all() as $error)
+                    {{ $error }}
+                    @endforeach                    
                 </div>
                 @endif
                 <button type="submit">Login</button>
-                <p>
+                {{-- <p>
                     <a href="{{ route('kasir.dashboard') }}">Sementara Pake Ini Dulu Yaa</a>
-                </p>
+                </p> --}}
                 {{-- <p>
                     <a href="">Forgot Password?</a>
                 </p> --}}
