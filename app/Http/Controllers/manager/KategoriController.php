@@ -19,11 +19,11 @@ class KategoriController extends Controller
         return view('manager.lihat_kategori', compact('kategoris'));
     }
 
-    public function test()
-    {
-        return view('manager.lihat_menu');
+    // public function test()
+    // {
+    //     return view('manager.manager');
         
-    }
+    // }
 
     /**
      * Show the form for creating a new resource.
