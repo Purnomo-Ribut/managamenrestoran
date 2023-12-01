@@ -37,9 +37,20 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
 });
 
 
+
+//Route::get('/manager', 'manager\KategoriController@index')->name('manager_index');
+//Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
+//Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
+
+// role manager (auth)
 Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () {
-    Route::get('/', 'manager\KategoriController@index')->name('manager_index');
+    Route::get('/manager', 'manager\KategoriController@index')->name('manager_index');
     // Route::get('manager/test', 'manager\KategoriController@test')->name('manager.test');
+    
+    //menu list 
+    Route::get('/manager/daftar-menu', [MenuController::class, 'index'])->name('lihat_menu');
+    //daftar kategori
+    Route::get('/manager/daftar-kategori', [KategoriController::class, 'index'])->name('lihat_kategori');
 
     Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
     Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');

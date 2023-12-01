@@ -17,7 +17,7 @@ class Menu extends Model
         'deskripsi'
     ];
 
-    public function tbl_kategoris() {
-        return $this->belongsTo('App\Kategori', 'id_kategori');
+    public function Kategori() {
+        return $this->belongsTo(Kategori::class,'id_kategori');
     }
 }
