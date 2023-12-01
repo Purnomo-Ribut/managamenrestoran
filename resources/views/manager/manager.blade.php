@@ -1,6 +1,6 @@
 @extends('kasir.master.template')
 
-@section('title', 'Dashboard kasir')
+@section('title', 'Dashboard Manager')
 
 @section('css')
 {{-- <link rel="stylesheet" href=""> --}}

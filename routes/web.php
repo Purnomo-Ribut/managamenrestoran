@@ -14,32 +14,47 @@ use App\Http\Controllers\manager\KategoriController;
 use App\Http\Controllers\manager\MenuController;
 
 // rute awal
-Route::get('/', function () {
-    return view('login.index');
-});
+// Route::get('/', function () {
+//     return view('login/index');
+// });
+
+// prepare login
+Route::get('/', 'LoginController@index')->name('login.index');
+Route::post('/login', 'LoginController@authenticate')->name('authenticate');
+Route::get('/logout', 'LoginController@logout')->name('logout');
+// and login
 
 
 Route::get('/dashboard', function () {
     return view('kasir.dashboard');
 });
 
-Route::prefix('kasir')->group(function() {
+Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     Route::get('/', 'Kasir\DashboardController@index')->name('kasir.dashboard');
     Route::get('test', 'Kasir\DashboardController@test')->name('kasir.tes');
 
     Route::get('checkout/{idCustomer}', 'Kasir\CheckoutController@index')->name('kasir.checkout');
-    // Route::resource('checkout', 'Kasir\DashboardController');
 });
 
 
-Route::get('/manager', 'manager\KategoriController@index')->name('manager_index');
-Route::get('/manager/daftar-menu', [MenuController::class, 'index'])->name('lihat_menu');
-Route::get('/manager/daftar-kategori', [KategoriController::class, 'index'])->name('lihat_kategori');
 
+//Route::get('/manager', 'manager\KategoriController@index')->name('manager_index');
+//Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
+//Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
 
-Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
-Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
+// role manager (auth)
+Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () {
+    Route::get('/manager', 'manager\KategoriController@index')->name('manager_index');
+    // Route::get('manager/test', 'manager\KategoriController@test')->name('manager.test');
+    
+    //menu list 
+    Route::get('/manager/daftar-menu', [MenuController::class, 'index'])->name('lihat_menu');
+    //daftar kategori
+    Route::get('/manager/daftar-kategori', [KategoriController::class, 'index'])->name('lihat_kategori');
 
+    Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
+    Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
+});
 
 
 
