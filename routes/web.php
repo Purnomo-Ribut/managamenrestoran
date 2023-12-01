@@ -32,9 +32,10 @@ Route::prefix('kasir')->group(function() {
 });
 
 
-
 Route::get('/manager', 'manager\KategoriController@index')->name('manager_index');
-// Route::get('manager/test', 'manager\KategoriController@test')->name('manager.test');
+Route::get('/manager/daftar-menu', [MenuController::class, 'index'])->name('lihat_menu');
+Route::get('/manager/daftar-kategori', [KategoriController::class, 'index'])->name('lihat_kategori');
+
 
 Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
 Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');

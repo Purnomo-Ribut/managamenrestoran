@@ -19,9 +19,7 @@
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMenu">
                         Tambah Menu
                     </button>
-                    <button type="button" class="btn btn-primary">
-                        Daftar Menu
-                    </button>
+                    <a href="{{ route('lihat_menu') }}" class="btn btn-primary">Daftar Menu</a>
                 </div>
             </div>
         </div>
@@ -61,7 +59,7 @@
                         <h5 class="card-title">Monitoring Kategori</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                         <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">Tambah Kategori</a>
-                        <a href="#" class="btn btn-primary">Data Kategori</a>
+                        <a href="{{ route('lihat_kategori') }}" class="btn btn-primary">Daftar Kategori</a>
                     </div>
                 </div>
             </div>

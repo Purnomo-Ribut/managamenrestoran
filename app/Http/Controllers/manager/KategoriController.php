@@ -15,15 +15,13 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $kategori = Kategori::all();
-        return view('manager.manager', [
-            'kategori' => $kategori
-        ]);
+        $kategoris = Kategori::all();
+        return view('manager.lihat_kategori', compact('kategoris'));
     }
 
     public function test()
     {
-        return view('manager.test');
+        return view('manager.lihat_menu');
         
     }
 
