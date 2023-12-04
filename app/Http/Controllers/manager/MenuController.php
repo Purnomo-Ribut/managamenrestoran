@@ -100,13 +100,10 @@ class MenuController extends Controller
      * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function edit(Menu $menu)
+    public function edit(Menu $menu, $id)
     {
-        $kategori = \App\Menu::all();
-        return view('manager.lihat_menu', [
-        'menu' => $menu,
-        'kategoris' => $kategori
-        ]);
+        $menu = Menu::where('id',$id) ->first();
+        return view('menu-edit', compact('menu'));
     }
 
     /**
@@ -118,7 +115,33 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'id_kategori' => 'required',
+            'harga' => 'required',
+            'stock' => 'required',
+            'image' => 'mimes:jpeg,png,jpg|max:1024',
+            'deskripsi' => 'required',
+            // Sesuaikan dengan field yang dibutuhkan
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/assets/manager/gambarMenu');
+            $imageName = basename($imagePath);
+        } else {
+            $imageName = null; // Atau tentukan nilai default jika tidak ada gambar yang diunggah
+        }
+
+        $menu->id_kategori = $request->input('id_kategori');
+        $menu->nama = $request->input('nama');
+        $menu->harga = $request->input('harga');
+        $menu->stock = $request->input('stock');
+        $menu->image = $imageName;
+        $menu->deskripsi = $request->input('deskripsi');
+        $menu->save();
+
+        return redirect(route('manager_index'))->with('success', 'Data menu berhasil edit');
+
     }
 
     /**

@@ -38,10 +38,6 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
 });
 
 
-//Route::get('/manager', 'manager\KategoriController@index')->name('manager_index');
-//Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
-//Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
-
 // role manager (auth)
 Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () {
     Route::get('/', 'manager\DashboardManController@index')->name('manager_index');
@@ -54,6 +50,9 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     // input data
     Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
     Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
+
+    //edit data menu
+    Route::post('/manager/{menu}/edit', 'manager\MenuController@update')->name('updateMenu');
 });
 
 Route::get('/menu', function(){return view('Customer.Menu');});
