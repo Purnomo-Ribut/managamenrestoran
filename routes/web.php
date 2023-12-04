@@ -45,7 +45,7 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
 // role manager (auth)
 Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () {
     Route::get('/', 'manager\DashboardManController@index')->name('manager_index');
-    
+
     //menu list
     Route::get('/manager/daftar-menu', [MenuController::class, 'index'])->name('lihat_menu');
     //daftar kategori
@@ -55,3 +55,5 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
     Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
 });
+
+Route::get('/menu', function(){return view('Customer.Menu');});
