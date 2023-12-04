@@ -6,6 +6,7 @@ use App\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\UploadedFile;
 
 
 class MenuController extends Controller
@@ -22,9 +23,10 @@ class MenuController extends Controller
         // return view('manager.lihat_menu', [
         //     'menus' => $menus
         // ]);
-
         $menus = Menu::all();
         return view('manager.lihat_menu', compact('menus'));
+        
+
     }
 
     /**
@@ -46,13 +48,15 @@ class MenuController extends Controller
     public function store(Request $request)
     {
 
+        // dd($request->all());
+
         // Validasi input jika diperlukan
         $request->validate([
             'nama' => 'required',
             'id_kategori' => 'required',
             'harga' => 'required',
             'stock' => 'required',
-            'image' => 'image|file|max:1024',
+            'image' => 'mimes:jpeg,png,jpg|max:1024',
             'deskripsi' => 'required',
             // Sesuaikan dengan field yang dibutuhkan
         ]);
@@ -84,7 +88,7 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-        //
+       //
     }
 
     /**
@@ -95,7 +99,11 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
-        //
+        $kategori = \App\Menu::all();
+        return view('manager.lihat_menu', [
+        'menu' => $menu,
+        'kategoris' => $kategori
+        ]);
     }
 
     /**

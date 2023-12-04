@@ -133,15 +133,24 @@
             <div>
               <label for="image">Gambar Menu</label>
             </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
+            <div class="mb-3">
+              {{-- <div class="input-group-prepend">
                 <span class="input-group-text" id="image">Upload</span>
-              </div>
-              <div class="custom-file">
-                <input type="file"  id="image" name="image" class="custom-file-input" onchange="validateFile(this)">
-                <label class="custom-file-label" for="image">Choose file</label>
+              </div> --}}
+              <div>
+                <input type="file"  id="image" name="image" class="form-control" onchange="validateFile(this)">
+                {{-- <label class="custom-file-label" for="image">Choose file</label> --}}
               </div>
             </div>
+            @if ($errors->any())
+                  <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                  </div>
+                @endif
           <div class="mt-3" id="alertContainer"></div>
             <div class="mb-3">
                 <label for="deskripsi" class="form-label">Deskripsi</label>
@@ -197,16 +206,6 @@
             alert(successMessage);
         }
     });
-
-//     $('.custom-file-input').change(function() {
-//     var $el = $(this),
-//     files = $el[0].files,
-//     label = files[0].name;
-//     if (files.length > 1) {
-//         label = label + " and " + String(files.length - 1) + " more files"
-//     }
-//     $el.next('.custom-file-label').html(label);
-// });
 
 function validateFile(input) {
           const file = input.files[0];
