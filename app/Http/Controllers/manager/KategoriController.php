@@ -96,7 +96,22 @@ class KategoriController extends Controller
      */
     public function update(Request $request, Kategori $kategori)
     {
-        //
+
+        $request->validate([
+            'nama' => 'required',
+            'deskripsi' => 'required',
+            // Sesuaikan dengan field yang dibutuhkan
+        ]);
+
+        $kategori->nama = $request->nama;
+        $kategori->deskripsi = $request->deskripsi;
+        $save = $kategori->save();
+
+        if($save){
+            return redirect()->route('manager_index')->with('success', 'Kategori berhasil diubah');
+        }
+        return redirect()->route('manager_index')->with('error', 'Kategori gagal diubah');
+
     }
 
     /**

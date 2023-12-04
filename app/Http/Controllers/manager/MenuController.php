@@ -80,7 +80,7 @@ class MenuController extends Controller
         $menu->deskripsi = $request->input('deskripsi');
         $menu->save();
 
-        return redirect(route('manager_index'))->with('success', 'Data menu berhasil ditambahkan');
+        return redirect(route('manager_index'))->with('success', 'Data menu berhasil Tambahkan');
     }
 
     /**
@@ -102,8 +102,8 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu, $id)
     {
-        $menu = Menu::where('id',$id) ->first();
-        return view('menu-edit', compact('menu'));
+        // $menu = Menu::where('id',$id) ->first();
+        // return view('menu-edit', compact('menu'));
     }
 
     /**
