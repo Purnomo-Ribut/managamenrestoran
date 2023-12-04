@@ -28,10 +28,10 @@ class LoginController extends Controller
                 // Redirect ke halaman manager
                 return redirect()->intended('/manager');
             } elseif ($user->role == 'kasir') {
-                // Redirect ke halaman kasir 
+                // Redirect ke halaman kasir
                 return redirect()->intended('/kasir');
             } elseif ($user->role == 'chef') {
-                // Redirect ke halaman chef 
+                // Redirect ke halaman chef
                 return redirect()->intended('/chef');
             }
         }
