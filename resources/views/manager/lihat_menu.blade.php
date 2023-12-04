@@ -64,14 +64,14 @@
                     <label for="harga" class="form-label">Harga</label>
                     <input type="number" class="form-control" id="harga" name="harga" value="{{$menu->harga}}" placeholder="contoh : 50000" required>
                   </div>
-                  {{-- <div class="mb-3">
+                  <div class="mb-3">
                     <label for="id_kategori">Kategori</label>
                     <select class="form-control" name="id_kategori" id="id_kategori" required="required">
-                      @foreach ($kategori as $kt)
+                      @foreach ($categories as $kt)
                       <option value="{{$kt->id}}" {{ $kt -> id == $menu->id_kategori ? 'selected' : ''}}>{{$kt->nama}}</option>
                       @endforeach
                     </select>
-                </div> --}}
+                </div>
                 <div class="mb-3">
                     <label for="stock" class="form-label">Stock</label>
                     <input type="number" class="form-control" id="stock" name="stock" value="{{$menu->stock}}"  placeholder="contoh : 20">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\manager;
 use App\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Kategori;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 
@@ -24,7 +25,9 @@ class MenuController extends Controller
         //     'menus' => $menus
         // ]);
         $menus = Menu::all();
-        return view('manager.lihat_menu', compact('menus'));
+        $categories = Kategori::all();
+        // dd($menus[0]->Kategori);
+        return view('manager.lihat_menu', compact('menus', 'categories'));
         
 
     }
