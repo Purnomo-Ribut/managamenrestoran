@@ -20,4 +20,9 @@ class Menu extends Model
     public function Kategori() {
         return $this->belongsTo(Kategori::class,'id_kategori');
     }
+
+    public function order()
+    {
+        return $this->hasOne('App\Order');
+    }
 }
