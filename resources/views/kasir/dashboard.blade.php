@@ -63,45 +63,21 @@
                                     <input type="search" class="form-control fuzzy-search" placeholder="Search...">
                                 </div>
                                 <div class="list d-flex flex-column">
+                                    @foreach ($orders as $order)
                                     <div class="row align-items-center w-100">
                                         <div class="col-3 position-relative">
                                             <div class="table-box bg-success">
-                                                35
+                                                {{$order->customer->no_table}}
                                             </div>
                                         </div>
                                         <div class="col-5">
-                                            <p class="order-name">Indra</p>
+                                            <p class="order-name">{{$order->customer->name}}</p>
                                         </div>
                                         <div class="col-4">
                                             <div class="btn btn-warning">Pay now</div>
                                         </div>
                                     </div>
-                                    <div class="row align-items-center w-100">
-                                        <div class="col-3 position-relative">
-                                            <div class="table-box bg-success">
-                                                35
-                                            </div>
-                                        </div>
-                                        <div class="col-5">
-                                            <p class="order-name">Ridwan</p>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="btn btn-warning">Pay now</div>
-                                        </div>
-                                    </div>
-                                    <div class="row align-items-center w-100">
-                                        <div class="col-3 position-relative">
-                                            <div class="table-box bg-success">
-                                                35
-                                            </div>
-                                        </div>
-                                        <div class="col-5">
-                                            <p class="order-name">Yanto</p>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="btn btn-warning">Pay now</div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -166,36 +142,18 @@
                     <h5>Daftar Chef</h5>
                 </div>
                 <div class="card-text">
+                    @foreach ($chef as $item)
                     <div class="row">
                         <div class="col-3">
                             <img src="{{asset('assets/kasir/img/user2-160x160.jpg')}}" alt="chef"
                                 class="w-100 rounded-circle">
                         </div>
                         <div class="col-9">
-                            <p>Sairul Edward</p>
+                            <p>{{$item->name}}</p>
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="{{asset('assets/kasir/img/user2-160x160.jpg')}}" alt="chef"
-                                class="w-100 rounded-circle">
-                        </div>
-                        <div class="col-9">
-                            <p>Sairul Edward</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="{{asset('assets/kasir/img/user2-160x160.jpg')}}" alt="chef"
-                                class="w-100 rounded-circle">
-                        </div>
-                        <div class="col-9">
-                            <p>Sairul Edward</p>
-                        </div>
-                    </div>
-                    <hr>
+                    @endforeach
                 </div>
             </div>
         </div>
