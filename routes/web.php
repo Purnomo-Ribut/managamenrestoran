@@ -57,5 +57,11 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::post('/kategori/{kategori}/edit', 'manager\KategoriController@update')->name('updateKategori');
 });
 
+Route::get('chef/', 'Chef\DashboardController@index')->name('chef.dashboard');
+Route::get('chef/test', 'Chef\DashboardController@test')->name('chef.tes');
+Route::get('/manager', function () {
+    return view('manager.manager');
+});
+
 Route::get('/menu', function(){return view('Customer.Menu');});
 Route::get('/menu1', function(){return view('Customer.test');});
