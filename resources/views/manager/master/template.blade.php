@@ -67,7 +67,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('kasir.master.sidebar')
+  @include('manager.master.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

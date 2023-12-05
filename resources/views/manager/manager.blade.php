@@ -3,7 +3,7 @@
 @section('title', 'Dashboard Manager')
 
 @section('css')
-{{-- <link rel="stylesheet" href=""> --}}
+<link rel="stylesheet" href="{{asset('assets/manager/css/style.css')}}">
 @endsection
 
 @section('content')
@@ -11,90 +11,82 @@
 <div class="container mt-4">
     <h1>Welcome to Dashboard Manager</h1>
     <div class="row">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Monitpring Data Menu</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMenu">
-                        Tambah Menu
-                    </button>
-                    <a href="{{ route('lihat_menu') }}" class="btn btn-primary">Daftar Menu</a>
-                </div>
-            </div>
+      <div class="col-sm-4" onclick="window.location.href='{{ route('lihat_menu') }}';">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+          <div class="card-header">Data Menu</div>
+          <div class="card-body">
+            <h5 class="card-title">Jumlah Makanan : 10</h5>
+            <h5 class="card-title">Jumlah Minuman : 10</h5>
+          </div>
         </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Monitoring Pelanggan</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Pelanggan</a>
-                </div>
-            </div>
+      </div>
+      <div class="col-sm-4" onclick="window.location.href='{{ route('lihat_kategori') }}';">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+          <div class="card-header">Data kategori</div>
+          <div class="card-body">
+            <h5 class="card-title">Secondary card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">
+              Kategori
+            </button>
+            <a href="{{ route('lihat_kategori') }}" class="btn btn-primary">Daftar Kategori</a> --}}
+          </div>
         </div>
-        {{-- <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Monitoring Data Karyawan</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#modalAddMenu">Tambah Karyawan</a>
-                    <a href="#" class="btn btn-primary">Data Karyawan</a>
-                </div>
-            </div>
-        </div> --}}
-    </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Monitoring Orderan</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Lihat Orderan</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Monitoring Kategori</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">Tambah Kategori</a>
-                        <a href="{{ route('lihat_kategori') }}" class="btn btn-primary">Daftar Kategori</a>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+          <div class="card-header">Data Pelanggan</div>
+          <div class="card-body">
+            <h5 class="card-title">Secondary card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMenu">
+              Tambah Menu
+          </button>
+          <a href="{{ route('lihat_menu') }}" class="btn btn-primary">Daftar Menu</a> --}}
+          </div>
         </div>
-        <div class="row">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Monitoring Orderan</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Lihat Orderan</a>
-                </div>
-            </div>
+      </div>
+
+      {{-- belum fix --}}
+      <div class="col-sm-4" onclick="window.location.href='{{ route('lihat_menu') }}';">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+          <div class="card-header">Data Menu</div>
+          <div class="card-body">
+            <h5 class="card-title">Secondary card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMenu">
+              Tambah Menu
+          </button>
+          <a href="{{ route('lihat_menu') }}" class="btn btn-primary">Daftar Menu</a> --}}
+          </div>
         </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Monitoring Data Chef</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Data Chef</a>
-                </div>
-            </div>
+      </div>
+      <div class="col-sm-4" onclick="window.location.href='{{ route('lihat_kategori') }}';">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+          <div class="card-header">Data kategori</div>
+          <div class="card-body">
+            <h5 class="card-title">Secondary card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">
+              Kategori
+            </button>
+            <a href="{{ route('lihat_kategori') }}" class="btn btn-primary">Daftar Kategori</a> --}}
+          </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Monitoring Pendapatan</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">pendapatan</a>
-                </div>
-            </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+          <div class="card-header">Data Karyawan</div>
+          <div class="card-body">
+            <h5 class="card-title">Secondary card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMenu">
+              Tambah Menu
+          </button>
+          <a href="{{ route('lihat_menu') }}" class="btn btn-primary">Daftar Menu</a> --}}
+          </div>
         </div>
-    </div>
+      </div>
     </div>
 
   <!-- Modal add menu-->

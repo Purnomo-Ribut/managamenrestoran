@@ -55,6 +55,9 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::post('/manager/{menu}/edit', 'manager\MenuController@update')->name('updateMenu');
     // edit kategori
     Route::post('/kategori/{kategori}/edit', 'manager\KategoriController@update')->name('updateKategori');
+
+    Route::get('/kategori/{kategori}/delete', 'manager\KategoriController@destroy')->name('deleteKategori');
+    Route::get('/menu/{menu}/delete', 'manager\MenuController@destroy')->name('deleteMenu');
 });
 
 Route::get('/menu', function(){return view('Customer.Menu');});

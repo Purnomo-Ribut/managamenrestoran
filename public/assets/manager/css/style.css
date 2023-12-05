@@ -1,0 +1,11 @@
+/* .card {
+    background: linear-gradient(45deg, #FFD68C, #FFECB3); /* Gradient oranye ke kuning kalem 
+  }  */
+
+  .card {
+    transition: transform 0.3s ease-in-out;
+  }
+  .card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
