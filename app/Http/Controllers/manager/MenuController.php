@@ -152,6 +152,7 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        //
+        $menu->delete();
+        return redirect (route('lihat_menu')) -> with('success','Data Berhasil Di Hapus');
     }
 }

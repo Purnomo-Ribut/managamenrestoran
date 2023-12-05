@@ -16,7 +16,7 @@ class CreateTblMenusesTable extends Migration
         Schema::create('tbl_menuses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_kategori');
-            $table->foreign('id_kategori')->references('id')->on('tbl_kategoris');
+            $table->foreign('id_kategori')->references('id')->on('tbl_kategoris')->onDelete('cascade');
             $table->string('nama',255);
             $table->integer('harga');
             $table->integer('stock');

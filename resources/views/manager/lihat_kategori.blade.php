@@ -1,6 +1,6 @@
 @extends('kasir.master.template')
 
-@section('title', 'Dashboard kasir')
+@section('title', 'Manager | Data Kategori')
 
 @section('css')
 {{-- <link rel="stylesheet" href=""> --}}
@@ -9,7 +9,11 @@
 @section('content')
 
 <body>
-    <h1>Lihat daftar Kategori</h1>
+    <h1>Lihat Daftar Kategori</h1>
+    <hr>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">Tambah Kategori</button>
+    <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a>
+    <hr>
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -30,13 +34,14 @@
                         data-target="#editkategori{{$kt->id}}">
                         Edit
                     </button>
-                    <a href="{{ route('lihat_menu') }}" class="btn btn-primary">Hapus</a>
+                    <a href="{{ route('deleteKategori', ['id' => $kt->id]) }}" class="btn btn-primary">Hapus</a>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 
+    {{-- modal edit --}}
     @foreach ($kategoris as $kt)
     <div class="modal fade" id="editkategori{{$kt->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -71,6 +76,46 @@
         </div>
     </div>
     @endforeach
+
+    {{-- modal tambah --}}
+  <div class="modal fade" id="modalKategori" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="{{ route('kategori.store') }}">
+            @csrf
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama Kategori</label>
+                <input type="text" class="form-control" id="nama" name="nama" placeholder="contoh : Makanan">
+              </div>
+              <div class="mb-3">
+                <label for="deskripsi" class="form-label">Deskripsi</label>
+                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" placeholder="Desripsi singkat kategori tersebut"></textarea>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+        let successMessage = '{{ session('success') }}';
+        if (successMessage) {
+            alert(successMessage);
+        }
+    });
+    </script>
 </body>
 @endsection
 
