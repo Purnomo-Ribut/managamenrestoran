@@ -11,34 +11,43 @@
 <div class="container mt-4">
     <h1>Welcome to Dashboard Manager</h1>
     <div class="row">
+      
+      {{-- batas --}}
       <div class="col-sm-4" onclick="window.location.href='{{ route('lihat_menu') }}';">
-        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-          <div class="card-header">Data Menu</div>
+        <div class="card  bg-white mb-3" style="max-width: 18rem;">
+          <div class="card-header">
+            <i class="fas fa-box " style="color: rgb(0, 0, 0);"></i> <!-- Ganti dengan icon yang diinginkan -->
+            <h5 class="text-dark m-3"> Data Menu </h5>
+          </div>
           <div class="card-body">
-            <h5 class="card-title">Jumlah Makanan : 10</h5>
-            <h5 class="card-title">Jumlah Minuman : 10</h5>
+            <h5 class="card-title text-dark">Jumlah Makanan : 10</h5>
+            <h5 class="card-title text-dark">Jumlah Minuman : 10</h5>
+            <h5 class="card-title text-dark">Jumlah Snack : 10</h5>
           </div>
         </div>
       </div>
       <div class="col-sm-4" onclick="window.location.href='{{ route('lihat_kategori') }}';">
         <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-          <div class="card-header">Data kategori</div>
+          <div class="card-header">
+            <i class="fa fa-th-list"  style="color: rgb(0, 0, 0);"></i>
+            <h5 class="text-dark m-3">Data kategori</h5>
+          </div>
           <div class="card-body">
-            <h5 class="card-title">Secondary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">
-              Kategori
-            </button>
-            <a href="{{ route('lihat_kategori') }}" class="btn btn-primary">Daftar Kategori</a> --}}
+            <h5 class="card-title">Makanan</h5> <br>
+            <h5 class="card-title">Minuman</h5> <br>
+            <h5 class="card-title">Snack</h5> <br>
           </div>
         </div>
       </div>
       <div class="col-sm-4" onclick="window.location.href='{{ route('data_pelanggan') }}';">
         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-          <div class="card-header">Data Pelanggan</div>
+          <div class="card-header">
+            <i class="fa fa-users"style="color: rgb(0, 0, 0);"></i>
+            <h5 class="text-dark m-3">Data Pelanggan</h5>
+          </div>
           <div class="card-body">
-            <h5 class="card-title">Secondary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 class="card-title">Jumlah Pelanggan</h5>
+            <p class="card-text">Informsi data pelanggan</p>
             {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMenu">
               Tambah Menu
           </button>
@@ -48,9 +57,12 @@
       </div>
 
       {{-- belum fix --}}
-      <div class="col-sm-4" onclick="window.location.href='{{ route('lihat_menu') }}';">
+      <div class="col-sm-4" onclick="window.location.href='{{ route('karyawan') }}';">
         <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-          <div class="card-header">Data Menu</div>
+          <div class="card-header">
+            <i class="fa fa-briefcase" style="color: rgb(0, 0, 0);"></i>
+            <h5 class="text-dark m-3">Data Karyawan</h5>
+          </div>
           <div class="card-body">
             <h5 class="card-title">Secondary card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
