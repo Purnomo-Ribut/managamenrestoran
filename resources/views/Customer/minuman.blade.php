@@ -11,9 +11,9 @@
                         @foreach ($menu as $item)
                         <div class="col-6 col-md-3 mb-3">
                             <div class="card border-0 shadow d-flex align-items-center">
-                                <img src="{{asset('storage/assets/manager/gambarMenu/'.$item->image)}}" class="card-img-top w-100"
+                                <img src="{{asset('storage/assets/manager/gambarMenu/'.$item->image)}}" class="card-img-top img-food w-100"
                                     alt="Pizza Original">
-                                <div class="card-body p-1">
+                                <div class="card-body">
                                     <div class="content-makanan">
                                         <h1>{{$item->nama}}</h1>
                                         <h2>{{$item->harga}}</h2>

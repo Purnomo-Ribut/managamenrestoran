@@ -1,21 +1,7 @@
-.menu-makan {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: white;
-    border-radius: 10px;
-}
-
-.image img {
-    width: 70px;
-    height: auto;
-    float: left;
-    margin-right: 20px;
-}
-
-.content-makanan {
-    flex: 1;
-}
+/* .img-food {
+    width: 200px !important;
+    height: auto !important;
+} */
 
 .content-makanan p,
 h2 {
@@ -39,14 +25,6 @@ h2 {
     gap: 10px;
 }
 
-.bg-header {
-    background-image: url("assets/kasir/img/foto-resto.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 200px;
-}
-
 .bg-white-header {
     background: linear-gradient(
         to right,
@@ -55,3 +33,19 @@ h2 {
     );
     height: 200px;
 }
+
+.nav-menu{
+    font-size: 21px !important;
+    margin-right: 4px;
+}
+
+/* @media (max-width: 768px) {
+    .img-food {
+        width: 180px !important;
+        height: auto !important;
+    }
+
+    .card-body h1{
+        font-size: 18px;
+    }
+  } */
