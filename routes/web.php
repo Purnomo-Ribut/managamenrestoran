@@ -13,6 +13,7 @@
 use App\Http\Controllers\manager\KategoriController;
 use App\Http\Controllers\manager\MenuController;
 use App\Http\Controllers\manager\DashboardManController;
+use App\Http\Controllers\manager\PelangganController;
 
 // rute awal
 // Route::get('/', function () {
@@ -43,9 +44,12 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::get('/', 'manager\DashboardManController@index')->name('manager_index');
 
     //menu list
-    Route::get('/manager/daftar-menu', [MenuController::class, 'index'])->name('lihat_menu');
+    Route::get('/daftar-menu', [MenuController::class, 'index'])->name('lihat_menu');
     //daftar kategori
-    Route::get('/manager/daftar-kategori', [KategoriController::class, 'index'])->name('lihat_kategori');
+    Route::get('/daftar-kategori', [KategoriController::class, 'index'])->name('lihat_kategori');
+    // data pelanggan
+    Route::get('/pelanggan', [PelangganController::class, 'index'])->name('data_pelanggan');
+
 
     // input data
     Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
@@ -62,9 +66,6 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
 
 Route::get('chef/', 'Chef\DashboardController@index')->name('chef.dashboard');
 Route::get('chef/test', 'Chef\DashboardController@test')->name('chef.tes');
-Route::get('/manager', function () {
-    return view('manager.manager');
-});
 
 Route::get('/menu', function(){return view('Customer.Menu');});
 Route::get('/menu1', function(){return view('Customer.test');});
