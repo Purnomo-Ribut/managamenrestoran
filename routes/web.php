@@ -72,8 +72,7 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::get('/karyawan/{karyawans}/delete', 'manager\KaryawanController@destroy')->name('deleteKaryawan');
 });
 
+Route::get('/menu','Customer\MenuController@index')->name('makanan.index');
+Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
 Route::get('chef/', 'Chef\DashboardController@index')->name('chef.dashboard');
 Route::get('chef/test', 'Chef\DashboardController@test')->name('chef.tes');
-
-Route::get('/menu', function(){return view('Customer.Menu');});
-Route::get('/menu1', function(){return view('Customer.test');});

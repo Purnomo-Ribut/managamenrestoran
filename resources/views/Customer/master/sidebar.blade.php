@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    
+
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -12,41 +12,39 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+            <a href="#" class="nav-link d-flex align-items-center">
+              <span class="material-symbols-outlined nav-menu">menu_book</span>
               <p>
-                Tables
+                Daftar Makanan
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Simple Tables</p>
+              <li class="nav-item ">
+                <a href="{{route('makanan.index')}}" class="nav-link d-flex align-items-center">
+                    <span class="material-symbols-outlined nav-menu">lunch_dining</span>
+                  <p>Makanan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>DataTables</p>
+                <a href="{{route('minuman.index')}}" class="nav-link d-flex align-items-center">
+                    <span class="material-symbols-outlined nav-menu">coffee</span>
+                  <p>Minuman</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>jsGrid</p>
+                <a href="pages/tables/jsgrid.html" class="nav-link d-flex align-items-center">
+                    <span class="material-symbols-outlined nav-menu">cookie</span>
+                  <p>Dessert</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i>
+            <a class="nav-link d-flex align-items-center" data-toggle="modal" data-target="#modalAdd">
+                <span class="material-symbols-outlined nav-menu">receipt_long</span>
               <p>
-                Calendar
-                <span class="badge badge-info right">2</span>
+                Total Pesanan
               </p>
             </a>
           </li>
