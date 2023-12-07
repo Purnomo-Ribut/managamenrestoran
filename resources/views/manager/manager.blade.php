@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4" onclick="window.location.href='{{ route('data_pelanggan') }}';">
         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
           <div class="card-header">Data Pelanggan</div>
           <div class="card-body">
