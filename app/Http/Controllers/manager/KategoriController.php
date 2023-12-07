@@ -62,7 +62,7 @@ class KategoriController extends Controller
         // Redirect atau kembali ke halaman tertentu setelah data disimpan
         // return redirect()->route('manager.manager')
         //     ->with('success', 'Kategori berhasil ditambahkan');
-        return redirect(route('manager_index'))->with('success', 'Data Kategori berhasil ditambahkan');
+        return redirect(route('lihat_kategori'))->with('success', 'Data Kategori berhasil ditambahkan');
     }
 
     /**
@@ -108,9 +108,9 @@ class KategoriController extends Controller
         $save = $kategori->save();
 
         if($save){
-            return redirect()->route('manager_index')->with('success', 'Kategori berhasil diubah');
+            return redirect()->route('lihat_kategori')->with('success', 'Kategori berhasil diubah');
         }
-        return redirect()->route('manager_index')->with('error', 'Kategori gagal diubah');
+        return redirect()->route('lihat_kategori')->with('error', 'Kategori gagal diubah');
 
     }
 
@@ -122,6 +122,7 @@ class KategoriController extends Controller
      */
     public function destroy(Kategori $kategori)
     {
-        //
+        $kategori->delete();
+        return redirect (route('lihat_kategori')) -> with('success','Data Berhasil Di Hapus');
     }
 }

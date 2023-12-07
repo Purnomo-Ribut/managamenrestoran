@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTblMenusesTable extends Migration
+class CreateKaryawansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateTblMenusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_menuses', function (Blueprint $table) {
+        Schema::create('tbl_karyawans', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_kategori');
-            $table->foreign('id_kategori')->references('id')->on('tbl_kategoris')->onDelete('cascade');
             $table->string('nama',255);
-            $table->integer('harga');
-            $table->integer('stock');
-            $table->string('image')->nullable();
-            $table->text('deskripsi');
+            $table->string('alamat',255);
+            $table->string('kota',255);
+            $table->string('gender',255);
+            $table->string('divisi',255);
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ class CreateTblMenusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_menuses');
+        Schema::dropIfExists('tbl_karyawans');
     }
 }

@@ -80,7 +80,7 @@ class MenuController extends Controller
         $menu->deskripsi = $request->input('deskripsi');
         $menu->save();
 
-        return redirect(route('manager_index'))->with('success', 'Data menu berhasil Tambahkan');
+        return redirect(route('lihat_menu'))->with('success', 'Data menu berhasil Tambahkan');
     }
 
     /**
@@ -140,7 +140,7 @@ class MenuController extends Controller
         $menu->deskripsi = $request->input('deskripsi');
         $menu->save();
 
-        return redirect(route('manager_index'))->with('success', 'Data menu berhasil edit');
+        return redirect(route('lihat_menu'))->with('success', 'Data menu berhasil edit');
 
     }
 
@@ -152,6 +152,7 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        //
+        $menu->delete();
+        return redirect (route('lihat_menu')) -> with('success','Data Berhasil Di Hapus');
     }
 }

@@ -10,9 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\manager\KaryawanController;
 use App\Http\Controllers\manager\KategoriController;
 use App\Http\Controllers\manager\MenuController;
 use App\Http\Controllers\manager\DashboardManController;
+use App\Http\Controllers\manager\PelangganController;
 
 // rute awal
 // Route::get('/', function () {
@@ -43,19 +45,34 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::get('/', 'manager\DashboardManController@index')->name('manager_index');
 
     //menu list
-    Route::get('/manager/daftar-menu', [MenuController::class, 'index'])->name('lihat_menu');
+    Route::get('/daftar-menu', [MenuController::class, 'index'])->name('lihat_menu');
     //daftar kategori
-    Route::get('/manager/daftar-kategori', [KategoriController::class, 'index'])->name('lihat_kategori');
+    Route::get('/daftar-kategori', [KategoriController::class, 'index'])->name('lihat_kategori');
+    // data pelanggan
+    Route::get('/pelanggan', [PelangganController::class, 'index'])->name('data_pelanggan');
+    //data karyawan
+    Route::get('/karyawan', [KaryawanController::class, 'index'])->name('karyawan');
+
 
     // input data
     Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
     Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
+    Route::post('/karyawan', [KaryawanController::class, 'store'])->name('karyawan.store');
 
     //edit data menu
     Route::post('/manager/{menu}/edit', 'manager\MenuController@update')->name('updateMenu');
     // edit kategori
     Route::post('/kategori/{kategori}/edit', 'manager\KategoriController@update')->name('updateKategori');
+    // edi kar
+    Route::post('/karyawan/{karyawans}/edit', 'manager\KaryawanController@update')->name('updateKaryawan');
+
+
+    Route::get('/kategori/{kategori}/delete', 'manager\KategoriController@destroy')->name('deleteKategori');
+    Route::get('/menu/{menu}/delete', 'manager\MenuController@destroy')->name('deleteMenu');
+    Route::get('/karyawan/{karyawans}/delete', 'manager\KaryawanController@destroy')->name('deleteKaryawan');
 });
 
 Route::get('/menu','Customer\MenuController@index')->name('makanan.index');
 Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
+Route::get('chef/', 'Chef\DashboardController@index')->name('chef.dashboard');
+Route::get('chef/test', 'Chef\DashboardController@test')->name('chef.tes');

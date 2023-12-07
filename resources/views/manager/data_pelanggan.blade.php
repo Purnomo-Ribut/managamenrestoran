@@ -1,6 +1,6 @@
 @extends('kasir.master.template')
 
-@section('title', 'Manager | Data Kategori')
+@section('title', 'Manager | Data Pelanggan')
 
 @section('css')
 {{-- <link rel="stylesheet" href=""> --}}
@@ -9,9 +9,9 @@
 @section('content')
 
 <body>
-    <h1>Lihat Daftar Kategori</h1>
+    <h1>Lihat Data Pelanggan</h1>
     <hr>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">Tambah Kategori</button>
+    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">Tambah Kategori</button>
     <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a>
     <hr>
     <table class="table table-bordered table-hover">
@@ -39,10 +39,10 @@
             </tr>
             @endforeach
         </tbody>
-    </table>
+    </table> --}}
 
     {{-- modal edit --}}
-    @foreach ($kategoris as $kt)
+    {{-- @foreach ($kategoris as $kt)
     <div class="modal fade" id="editkategori{{$kt->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -75,10 +75,10 @@
             </div>
         </div>
     </div>
-    @endforeach
+    @endforeach --}}
 
     {{-- modal tambah --}}
-  <div class="modal fade" id="modalKategori" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  {{-- <div class="modal fade" id="modalKategori" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
@@ -106,7 +106,7 @@
       </div>
     </div>
   </form>
-  </div>
+  </div> --}}
 
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
