@@ -9,3 +9,15 @@
     transform: scale(1.05);
     cursor: pointer;
   }
+
+  .card-header {
+    background-color: yellow;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+  }
+  .card-header i {
+    margin-right: 8px;
+    font-size: 35px;
+    margin-left: 8px;
+  }
