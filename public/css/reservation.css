@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.wrapper-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    .wrapper-card {
+        justify-content: flex-end;
+    }
+
+    .card {
+        width: 50%;
+    }
+
+    .card-title {
+        font-size: 35px;
+    }
+}
