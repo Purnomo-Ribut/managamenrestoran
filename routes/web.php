@@ -15,6 +15,7 @@ use App\Http\Controllers\manager\KategoriController;
 use App\Http\Controllers\manager\MenuController;
 use App\Http\Controllers\manager\DashboardManController;
 use App\Http\Controllers\manager\PelangganController;
+use App\Http\Controllers\manager\ChefController;
 
 // rute awal
 // Route::get('/', function () {
@@ -52,24 +53,30 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::get('/pelanggan', [PelangganController::class, 'index'])->name('data_pelanggan');
     //data karyawan
     Route::get('/karyawan', [KaryawanController::class, 'index'])->name('karyawan');
+    // data chef
+    Route::get('/chefDash', [ChefController::class, 'index'])->name('chef');
 
 
     // input data
     Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
     Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
     Route::post('/karyawan', [KaryawanController::class, 'store'])->name('karyawan.store');
+    Route::post('/chefDash', [ChefController::class, 'store'])->name('chef.store');
 
     //edit data menu
     Route::post('/manager/{menu}/edit', 'manager\MenuController@update')->name('updateMenu');
     // edit kategori
     Route::post('/kategori/{kategori}/edit', 'manager\KategoriController@update')->name('updateKategori');
-    // edi kar
+    // edit kar
     Route::post('/karyawan/{karyawans}/edit', 'manager\KaryawanController@update')->name('updateKaryawan');
+    // edit chef
+    Route::post('/chef/{chef}/edit', 'manager\ChefController@update')->name('updateChef');
 
 
     Route::get('/kategori/{kategori}/delete', 'manager\KategoriController@destroy')->name('deleteKategori');
     Route::get('/menu/{menu}/delete', 'manager\MenuController@destroy')->name('deleteMenu');
     Route::get('/karyawan/{karyawans}/delete', 'manager\KaryawanController@destroy')->name('deleteKaryawan');
+    Route::get('/chef/{chef}/delete', 'manager\ChefController@destroy')->name('deleteChef');
 });
 
 Route::get('/menu','Customer\MenuController@index')->name('makanan.index');
