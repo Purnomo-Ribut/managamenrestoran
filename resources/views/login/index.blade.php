@@ -54,7 +54,7 @@
                 <div class="alert alert-danger my-1">
                     @foreach ($errors->all() as $error)
                     {{ $error }}
-                    @endforeach                    
+                    @endforeach
                 </div>
                 @endif
                 <button type="submit">Login</button>
