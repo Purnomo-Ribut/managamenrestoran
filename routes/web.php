@@ -86,6 +86,8 @@ Route::middleware('registered')->group(function() {
     Route::get('/menu','Customer\MenuController@index')->name('makanan.index');
     Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
     
+    Route::post('/cart','Customer\OrderController@addCart')->name('addcart');
+    
     Route::get('/reservasi/flush','Customer\ReservationController@flush')->name('reservasi.logout');
 });
 
