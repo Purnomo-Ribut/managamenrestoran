@@ -79,7 +79,15 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::get('/chef/{chef}/delete', 'manager\ChefController@destroy')->name('deleteChef');
 });
 
-Route::get('/menu','Customer\MenuController@index')->name('makanan.index');
-Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
+Route::get('/reservasi','Customer\ReservationController@index')->name('reservasi');
+Route::post('/reservasi','Customer\ReservationController@store')->name('reservasi.store');
+
+Route::middleware('registered')->group(function() {
+    Route::get('/menu','Customer\MenuController@index')->name('makanan.index');
+    Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
+    
+    Route::get('/reservasi/flush','Customer\ReservationController@flush')->name('reservasi.logout');
+});
+
 Route::get('chef/', 'Chef\DashboardController@index')->name('chef.dashboard');
 Route::get('chef/test', 'Chef\DashboardController@test')->name('chef.tes');
