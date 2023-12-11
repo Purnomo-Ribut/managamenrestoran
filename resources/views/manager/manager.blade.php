@@ -1,4 +1,4 @@
-@extends('kasir.master.template')
+@extends('manager.master.template')
 
 @section('title', 'Dashboard Manager')
 
@@ -9,7 +9,7 @@
 @section('content')
 <body>
 <div class="container mt-4">
-    <h1>Welcome to Dashboard Manager</h1>
+    {{-- <h1>Welcome to Dashboard Manager</h1> --}}
     <div class="row">
       
       {{-- batas --}}
@@ -132,12 +132,12 @@
               <label for="image">Gambar Menu</label>
             </div>
             <div class="mb-3">
-              {{-- <div class="input-group-prepend">
+              <div class="input-group-prepend">
                 <span class="input-group-text" id="image">Upload</span>
-              </div> --}}
+              </div>
               <div>
-                <input type="file"  id="image" name="image" class="form-control" onchange="validateFile(this)">
-                {{-- <label class="custom-file-label" for="image">Choose file</label> --}}
+                <input type="file" id="image" name="image" class="form-control" onchange="validateFile(this)">
+                <label class="custom-file-label" for="image">Choose file</label>
               </div>
             </div>
             @if ($errors->any())
@@ -198,12 +198,12 @@
   {{-- Modal add kategori end--}}
 
   <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-        let successMessage = '{{ session('success') }}';
-        if (successMessage) {
-            alert(successMessage);
-        }
-    });
+    // window.addEventListener('DOMContentLoaded', (event) => {
+    //     let successMessage = '{{ session('success') }}';
+    //     if (successMessage) {
+    //         alert(successMessage);
+    //     }
+    // });
 
 function validateFile(input) {
           const file = input.files[0];

@@ -1,4 +1,4 @@
-@extends('kasir.master.template')
+@extends('manager.master.chef.template')
 
 @section('title', 'Manager | Data Karyawan')
 
@@ -9,7 +9,7 @@
 @section('content')
 
 <body>
-    <h1>Lihat Data karyawan</h1>
+    {{-- <h1>Lihat Data karyawan</h1> --}}
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addChef">Tambah Chef</button>
     <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a>
     <hr>

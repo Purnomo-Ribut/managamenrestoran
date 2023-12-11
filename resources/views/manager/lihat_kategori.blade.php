@@ -1,4 +1,4 @@
-@extends('kasir.master.template')
+@extends('manager.master.kategori.template')
 
 @section('title', 'Manager | Data Kategori')
 
@@ -9,7 +9,7 @@
 @section('content')
 
 <body>
-    <h1>Lihat Daftar Kategori</h1>
+    {{-- <h1>Lihat Daftar Kategori</h1> --}}
     <hr>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">Tambah Kategori</button>
     <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a>
