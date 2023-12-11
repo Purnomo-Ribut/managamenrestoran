@@ -31,7 +31,7 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    @include('kasir.master.navbar')
+    @include('chef.master.navbar')
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -64,7 +64,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('kasir.master.sidebar')
+  @include('chef.master.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -73,12 +73,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Dashboard Chef</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">Dashboard Chef</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -106,7 +106,7 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">ResToGo</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
