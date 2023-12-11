@@ -28,7 +28,7 @@ class ReservationController extends Controller
         $saved = $customer->save();
 
         if($saved){
-            $request->session()->put('reserved', $saved);
+            $request->session()->put('reserved', ['id' => $customer->id, 'name' => $customer->name, 'no_table' => $customer->no_table]);
             return redirect()->route('makanan.index');
         }
 
