@@ -59,7 +59,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Edit Menu</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -95,11 +95,11 @@
                     <span class="input-group-text" id="image">Upload</span>
                   </div> --}}
                   <div>
-                    <input type="file"  id="image" name="image" value="{{$menu->image}}"  class="form-control" onchange="validateFile(this)">
+                    <input type="file"  id="image" name="image" value="{{$menu->image}}" class="form-control" onchange="validateFile(this)">
                     {{-- <label class="custom-file-label" for="image">Choose file</label> --}}
                   </div>
                 </div>
-                @if ($errors->any())
+                {{-- @if ($errors->any())
                       <div class="alert alert-danger">
                       <ul>
                         @foreach ($errors->all() as $error)
@@ -107,12 +107,22 @@
                         @endforeach
                       </ul>
                       </div>
-                    @endif
+                    @endif --}}
               <div class="mt-3" id="alertContainer"></div>
-                <div class="mb-3">
+              <div class="row">
+                <div class="col-6">
+                  <p>Gambar lama</p>
+                  <img src="{{ asset('storage/assets/manager/gambarMenu/' . $menu->image) }}" alt="gambarlama" style="max-width: 200px; max-height: 200px;">
+                </div>
+                <div class="col-6">
+                  <p>gambar baru</p>
+                  <div id="review"></div>
+                </div>
+              </div>
+              <div class="mb-3">
                     <label for="deskripsi" class="form-label">Deskripsi</label>
                     <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" placeholder="Desripsi singkat menu tersebut">{{$menu->deskripsi}}</textarea>
-                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -123,14 +133,14 @@
       </form>
       </div>
       @endforeach
-      <!-- Modal add menu end-->
+      <!-- Modal edit menu end-->
 
       {{-- add menu --}}
       <div class="modal fade" id="modalAddMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Tambah Menu Baru</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -163,10 +173,10 @@
                 </div>
                 <div class="mb-3">
                   <div>
-                    <input type="file" id="image" name="image" class="form-control" onchange="validateFile(this)">
+                    <input type="file" id="image" name="image" class="form-control" onchange="validateFile2(this)">
                   </div>
                 </div>
-                @if ($errors->any())
+                {{-- @if ($errors->any())
                       <div class="alert alert-danger">
                       <ul>
                         @foreach ($errors->all() as $error)
@@ -174,8 +184,9 @@
                         @endforeach
                       </ul>
                       </div>
-                  @endif
-              <div class="mt-3" id="alertContainer1"></div>
+                  @endif --}}
+              <div class="mt-3" id="alertContainer2"></div>
+              <div id="review"></div>
                 <div class="mb-3">
                     <label for="deskripsi" class="form-label">Deskripsi</label>
                     <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" placeholder="Desripsi singkat menu tersebut"></textarea>
@@ -190,15 +201,17 @@
       </form>
       </div>
       <!-- Modal add menu end-->
+
     <script>
       function validateFile(input) {
         const file = input.files[0];
         const fileSize = file.size; // File size in bytes
         const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
         const maxSizeMB = 1; // Maximum file size in megabytes
+        const review = document.getElementById('review');
       
         if (!allowedTypes.includes(file.type) || fileSize > maxSizeMB * 1024 * 1024) {
-          const alertContainer = document.getElementById('alertContainer1');
+          const alertContainer = document.getElementById('alertContainer');
           alertContainer.innerHTML = `
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
               File harus berupa PNG, JPEG, atau JPG dengan ukuran maksimum 1MB!
@@ -208,7 +221,7 @@
               </div>
             `;
           } else {
-            const alertContainer = document.getElementById('alertContainer1');
+            const alertContainer = document.getElementById('alertContainer');
             alertContainer.innerHTML = `
               <div class="alert alert-success alert-dismissible fade show" role="alert">
                 File Sesuai, Silahkan Upload !!
@@ -217,6 +230,60 @@
                 </button>
               </div>
             `;
+            const reader = new FileReader();
+      
+            reader.onload = function(e) {
+            const imgElement = document.createElement('img');
+            imgElement.setAttribute('src', e.target.result);
+            imgElement.setAttribute('width', '200px'); // Atur lebar gambar disini
+            imgElement.setAttribute('height', 'auto'); // Atur tinggi gambar disini
+            review.innerHTML = ''; // Hapus pratinjau sebelumnya jika ada
+            review.appendChild(imgElement); // Tampilkan gambar yang dipilih
+          }
+          reader.readAsDataURL(file); // Baca data gambar sebagai URL
+          }
+      }
+
+      function validateFile2(input) {
+        const file = input.files[0];
+        const fileSize = file.size; // File size in bytes
+        const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+        const maxSizeMB = 1; // Maximum file size in megabytes
+
+        const review = document.getElementById('review');
+      
+        if (!allowedTypes.includes(file.type) || fileSize > maxSizeMB * 1024 * 1024) {
+          const alertContainer = document.getElementById('alertContainer2');
+          alertContainer.innerHTML = `
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              File harus berupa PNG, JPEG, atau JPG dengan ukuran maksimum 1MB!
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+            `;
+          } else {
+            const alertContainer = document.getElementById('alertContainer2');
+            alertContainer.innerHTML = `
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                File Sesuai, Silahkan Upload !!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            `;
+
+            const reader = new FileReader();
+      
+            reader.onload = function(e) {
+            const imgElement = document.createElement('img');
+            imgElement.setAttribute('src', e.target.result);
+            imgElement.setAttribute('width', '200px'); // Atur lebar gambar disini
+            imgElement.setAttribute('height', 'auto'); // Atur tinggi gambar disini
+            review.innerHTML = ''; // Hapus pratinjau sebelumnya jika ada
+            review.appendChild(imgElement); // Tampilkan gambar yang dipilih
+          }
+          reader.readAsDataURL(file); // Baca data gambar sebagai URL
           }
       }
 
