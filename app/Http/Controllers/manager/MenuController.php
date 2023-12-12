@@ -28,8 +28,6 @@ class MenuController extends Controller
         $categories = Kategori::all();
         // dd($menus[0]->Kategori);
         return view('manager.lihat_menu', compact('menus', 'categories'));
-        
-
     }
 
     /**
@@ -65,8 +63,11 @@ class MenuController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/assets/manager/gambarMenu');
-            $imageName = basename($imagePath);
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName(); // Dapatkan nama asli gambar
+
+            // Simpan gambar dengan nama aslinya
+            $imagePath = $image->storeAs('public/assets/manager/gambarMenu', $imageName);
         } else {
             $imageName = null; // Atau tentukan nilai default jika tidak ada gambar yang diunggah
         }
@@ -91,7 +92,7 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-       //
+        //
     }
 
     /**
@@ -126,11 +127,20 @@ class MenuController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/assets/manager/gambarMenu');
-            $imageName = basename($imagePath);
+            // Jika ada gambar yang diunggah, simpan gambar dengan nama aslinya
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName(); // Dapatkan nama asli gambar
+
+            // Simpan gambar dengan nama aslinya
+            $imagePath = $image->storeAs('public/assets/manager/gambarMenu', $imageName);
+
+            // Kemudian Anda dapat mengganti properti gambar pada entitas Anda dengan $imageName
+            $menu->image = basename($imagePath);
         } else {
-            $imageName = null; // Atau tentukan nilai default jika tidak ada gambar yang diunggah
+            // Jika tidak ada gambar yang diunggah, biarkan gambar yang sudah ada tetap sama
+            $imageName = $menu->image;
         }
+
 
         $menu->id_kategori = $request->input('id_kategori');
         $menu->nama = $request->input('nama');
@@ -141,7 +151,6 @@ class MenuController extends Controller
         $menu->save();
 
         return redirect(route('lihat_menu'))->with('success', 'Data menu berhasil edit');
-
     }
 
     /**
@@ -153,6 +162,6 @@ class MenuController extends Controller
     public function destroy(Menu $menu)
     {
         $menu->delete();
-        return redirect (route('lihat_menu')) -> with('success','Data Berhasil Di Hapus');
+        return redirect(route('lihat_menu'))->with('success', 'Data Berhasil Di Hapus');
     }
 }

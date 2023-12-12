@@ -1,14 +1,14 @@
-@extends('kasir.master.template')
+@extends('manager.master.menu.template')
 
 @section('title', 'Manager | Data Menu')
 
+@section('addJavascript')
 @section('css')
 {{-- <link rel="stylesheet" href=""> --}}
 @endsection
 
 @section('content')
 <body>
-  <h1>Lihat Daftar Menu</h1>
   <hr>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMenu">Tambah Menu</button>
     <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a>
@@ -29,13 +29,19 @@
         <tbody>
           @foreach ($menus as $menu)
           <tr>
-            <th scope="row">{{$loop->index + 1}}</th>
+            <th scope="row">{{$loop->index + 1}}.</th>
             <td>{{$menu->kategori ? $menu->kategori->nama : '-' }}</td>
             <td>{{$menu->nama}}</td>
-            <td>{{$menu->harga}}</td>
+            <td>Rp {{ number_format($menu->harga, 0, ',', '.') }}</td>
             <td>{{$menu->stock}}</td>
             <td>{{$menu->deskripsi}}</td>
-            <td><img src="{{ asset('storage/assets/manager/gambarMenu/' . $menu->image) }}" alt="gambarmenu" style="max-width: 200px; max-height: 200px;"></td>
+            <td>
+              @if($menu->image)
+                  <img src="{{ asset('storage/assets/manager/gambarMenu/' . $menu->image) }}" alt="gambarmenu" style="max-width: 200px; max-height: 200px;">
+              @else
+                  <p>Tidak ada gambar</p>
+              @endif
+          </td>
             <td>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editMenu{{$menu->id}}">
                 Edit
@@ -156,12 +162,8 @@
                   <label for="image">Gambar Menu</label>
                 </div>
                 <div class="mb-3">
-                  {{-- <div class="input-group-prepend">
-                    <span class="input-group-text" id="image">Upload</span>
-                  </div> --}}
                   <div>
-                    <input type="file"  id="image" name="image" class="form-control" onchange="validateFile(this)">
-                    {{-- <label class="custom-file-label" for="image">Choose file</label> --}}
+                    <input type="file" id="image" name="image" class="form-control" onchange="validateFile(this)">
                   </div>
                 </div>
                 @if ($errors->any())
@@ -172,8 +174,8 @@
                         @endforeach
                       </ul>
                       </div>
-                    @endif
-              <div class="mt-3" id="alertContainer"></div>
+                  @endif
+              <div class="mt-3" id="alertContainer1"></div>
                 <div class="mb-3">
                     <label for="deskripsi" class="form-label">Deskripsi</label>
                     <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" placeholder="Desripsi singkat menu tersebut"></textarea>
@@ -189,12 +191,41 @@
       </div>
       <!-- Modal add menu end-->
     <script>
+      function validateFile(input) {
+        const file = input.files[0];
+        const fileSize = file.size; // File size in bytes
+        const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+        const maxSizeMB = 1; // Maximum file size in megabytes
+      
+        if (!allowedTypes.includes(file.type) || fileSize > maxSizeMB * 1024 * 1024) {
+          const alertContainer = document.getElementById('alertContainer1');
+          alertContainer.innerHTML = `
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              File harus berupa PNG, JPEG, atau JPG dengan ukuran maksimum 1MB!
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+            `;
+          } else {
+            const alertContainer = document.getElementById('alertContainer1');
+            alertContainer.innerHTML = `
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                File Sesuai, Silahkan Upload !!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            `;
+          }
+      }
+
       window.addEventListener('DOMContentLoaded', (event) => {
         let successMessage = '{{ session('success') }}';
         if (successMessage) {
             alert(successMessage);
         }
-    });
+      });
     </script>
 </body>
 @endsection

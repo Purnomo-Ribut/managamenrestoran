@@ -82,7 +82,7 @@
                                 <i class="fas fa-tasks card-icon"></i> Pending Orders
                             </h5>
                             <p class="card-text">Check and process pending orders.</p>
-                            <div class="card-value">10</div>
+                            <div class="card-value">{{$order}}</div>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                             <p class="card-text text-white">View orders currently in progress.</p>
                             <div class="card-value text-white">15</div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="card text-white bg-success mb-3">
@@ -112,24 +112,10 @@
         </div>
         <div class="col-12 col-md-3">
     <!-- Profile Section -->
-    <div class="dropdown ml-auto">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="path/to/your/user-icon.png" alt="User Icon" class="user-icon">
-            Chef Name <!-- Replace with the actual chef name -->
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-            <!-- Add profile information here, e.g., links to profile page, settings, etc. -->
-            <a class="dropdown-item" href="#">Profile</a>
-            <a class="dropdown-item" href="#">Settings</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Logout</a>
-        </div>
-    </div>
     <div class="card">
-        <div class="card-body">
-            <p>
-                Welcome to your chef dashboard! Here, you can manage your orders and create new ones.
-            </p>
+        <div class="card-body text-center">
+            <img class="card-img-top rounded-circle w-25" src="https://cdn-icons-png.flaticon.com/512/3461/3461980.png">
+            <h3>{{$profil->name}}</h3>
         </div>
     </div>
 </div>

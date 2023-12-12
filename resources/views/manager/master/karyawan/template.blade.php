@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +13,9 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/kasir/css/adminlte.min.css')}}">
+
+  {{-- link datatable --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
   
   @yield('css')
 </head>
@@ -31,7 +33,7 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    @include('chef.master.navbar')
+    @include('kasir.master.navbar')
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -64,7 +66,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('chef.master.sidebar')
+  @include('manager.master.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -73,12 +75,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard Chef</h1>
+            <h1 class="m-0">Dashboard data Karyawan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard Chef</li>
+              <li class="breadcrumb-item"><a href="{{ route('manager_index') }}">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">Karyawan</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -106,7 +109,7 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">ResToGo</a>.</strong>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
@@ -127,9 +130,18 @@
 <!-- OPTIONAL SCRIPTS -->
 {{-- <script src="plugins/chart.js/Chart.min.js"></script> --}}
 <!-- AdminLTE for demo purposes -->
-{{-- <script src="{{asset('assets/kasir/js/demo.js')}}"></script> --}}
+<script src="{{asset('assets/kasir/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-{{-- <script src="{{asset('assets/kasir/js/pages/dashboard3.js')}}"></script> --}}
+<script src="{{asset('assets/kasir/js/pages/dashboard3.js')}}"></script>
+
+{{-- script dattables --}}
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+	<script>
+		new DataTable('#dataTable');
+	</script>
 
 @stack('scripts')
 </body>

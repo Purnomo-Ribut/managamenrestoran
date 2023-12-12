@@ -1,4 +1,4 @@
-@extends('kasir.master.template')
+@extends('manager.master.template')
 
 @section('title', 'Dashboard Manager')
 
@@ -9,7 +9,7 @@
 @section('content')
 <body>
 <div class="container mt-4">
-    <h1>Welcome to Dashboard Manager</h1>
+    {{-- <h1>Welcome to Dashboard Manager</h1> --}}
     <div class="row">
       
       {{-- batas --}}
@@ -55,8 +55,6 @@
           </div>
         </div>
       </div>
-
-      {{-- belum fix --}}
       <div class="col-sm-4" onclick="window.location.href='{{ route('karyawan') }}';">
         <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
           <div class="card-header">
@@ -66,26 +64,22 @@
           <div class="card-body">
             <h5 class="card-title">Secondary card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMenu">
-              Tambah Menu
-          </button>
-          <a href="{{ route('lihat_menu') }}" class="btn btn-primary">Daftar Menu</a> --}}
           </div>
         </div>
       </div>
-      <div class="col-sm-4" onclick="window.location.href='{{ route('lihat_kategori') }}';">
-        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-          <div class="card-header">Data kategori</div>
-          <div class="card-body">
-            <h5 class="card-title">Secondary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">
-              Kategori
-            </button>
-            <a href="{{ route('lihat_kategori') }}" class="btn btn-primary">Daftar Kategori</a> --}}
+        {{-- belum fix --}}
+        <div class="col-sm-4" onclick="window.location.href='{{ route('chef') }}';">
+          <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+              <i class="fa fa-cutlery" style="color: rgb(0, 0, 0);"></i>
+              <h5 class="text-dark m-3">Data chef</h5>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Secondary card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
           </div>
         </div>
-      </div>
       <div class="col-sm-4">
         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
           <div class="card-header">Data Karyawan</div>
@@ -138,12 +132,12 @@
               <label for="image">Gambar Menu</label>
             </div>
             <div class="mb-3">
-              {{-- <div class="input-group-prepend">
+              <div class="input-group-prepend">
                 <span class="input-group-text" id="image">Upload</span>
-              </div> --}}
+              </div>
               <div>
-                <input type="file"  id="image" name="image" class="form-control" onchange="validateFile(this)">
-                {{-- <label class="custom-file-label" for="image">Choose file</label> --}}
+                <input type="file" id="image" name="image" class="form-control" onchange="validateFile(this)">
+                <label class="custom-file-label" for="image">Choose file</label>
               </div>
             </div>
             @if ($errors->any())
@@ -204,12 +198,12 @@
   {{-- Modal add kategori end--}}
 
   <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-        let successMessage = '{{ session('success') }}';
-        if (successMessage) {
-            alert(successMessage);
-        }
-    });
+    // window.addEventListener('DOMContentLoaded', (event) => {
+    //     let successMessage = '{{ session('success') }}';
+    //     if (successMessage) {
+    //         alert(successMessage);
+    //     }
+    // });
 
 function validateFile(input) {
           const file = input.files[0];
