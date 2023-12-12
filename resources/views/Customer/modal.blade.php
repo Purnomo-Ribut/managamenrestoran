@@ -86,6 +86,50 @@
     </div>
 </div>
 
+{{-- Add Cart Modal --}}
+
+<div class="modal fade" id="addCart" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Masukan detail pesanan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{route('addcart')}}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <div class="d-flex align-items-center w-100">
+                        <button type="button" class="btn btn-default btn-number border-0" data-type="minus"
+                            data-field="quantity">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <div style="width: 25%" class="d-flex justify-content-center">
+                            <input type="number" name="quantity" class="input form-control text-center border-0"
+                                id="quantity" value="1" min="1">
+                        </div>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-number" data-type="plus"
+                                data-field="quantity">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Catatan</label>
+                        <textarea class="form-control" name="desc" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).ready(function () {
         $('.btn-number').click(function (e) {
@@ -108,4 +152,5 @@
             }
         });
     });
+
 </script>

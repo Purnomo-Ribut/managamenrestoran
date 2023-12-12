@@ -24,9 +24,9 @@
                 <div class="row">
                     @foreach ($menu as $item)
                     <div class="col-6 col-md-3 mb-3">
-                        <div class="card border-0 shadow d-flex align-items-center">
+                        <div class="card border-0 shadow">
                             <img src="{{asset('storage/assets/manager/gambarMenu/'.$item->image)}}"
-                                class="card-img-top w-75" alt="Pizza Original">
+                                class="card-img-top w-100" alt="Pizza Original">
                             <div class="card-body p-1">
                                 <div class="content-makanan">
                                     <h1 class="Judul">{{$item->nama}}</h1>
@@ -34,10 +34,9 @@
                                     <p class="makanan">{{$item->deskripsi}}</p>
                                 </div>
                                 <div>
-                                    <button
-                                        class="add-button btn btn-warning d-flex justify-content-center align-items-center"
+                                    <button data-target="#addCart" data-toggle="modal" class="add-button btn btn-warning d-flex justify-content-center align-items-center"
                                         style="font-size: 12px;">ADD <span class="material-symbols-outlined"
-                                            style="font-size: 15px; font-weight: bold;">add</span>
+                                            style="font-size: 15px; font-weight: bold">add</span>
                                     </button>
                                 </div>
                             </div>
@@ -58,9 +57,5 @@
 </section>
 
 @include('Customer.modal')
-</div>
-</div>
-</div>
-
 
 @endsection
