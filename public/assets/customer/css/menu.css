@@ -3,14 +3,22 @@
     height: auto !important;
 } */
 
-.content-makanan p,
-h2 {
+.button-gap{
+    gap: 10px;
+}
+
+.input::-webkit-inner-spin-button,
+.input::-webkit-outer-spin-button {
+  display: none;
+}
+
+.makanan p,h2 {
     font-size: 14px;
     margin-bottom: 4px;
     /* Sesuaikan nilai ini sesuai dengan keinginan Anda */
 }
 
-.content h1 {
+.Judul{
     font-size: 18px;
     margin-bottom: 4px;
 }
@@ -37,6 +45,17 @@ h2 {
 .nav-menu{
     font-size: 21px !important;
     margin-right: 4px;
+    font-weight: bold !important;
+}
+
+.cart{
+    font-size: 35px !important;
+    font-weight: bold !important;
+}
+
+.kuning{
+    border-radius: 30px;
+    cursor: pointer;
 }
 
 /* @media (max-width: 768px) {
