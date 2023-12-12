@@ -8,17 +8,19 @@
             <div class="card-body">
 
                 <div class="d-flex">
+                    @foreach ($categories as $category)
                     <button type="button"
                         class="btn btn-warning mb-2 me-2 justify-content-center d-flex align-items-center"
-                        onclick="window.location.href='{{route('makanan.index')}}'">
-                        <span class="material-symbols-outlined nav-menu">lunch_dining</span> Makanan
+                        onclick="window.location.href='{{route('makanan.index', $category->id)}}'">
+                        <span class="material-symbols-outlined nav-menu">lunch_dining</span> {{$category->nama}}
                     </button>
+                    @endforeach
 
-                    <button type="button"
+                    {{-- <button type="button"
                         class="btn btn-warning mb-2 me-2 justify-content-center d-flex align-items-center"
                         onclick="window.location.href='{{route('minuman.index')}}'">
-                        <span class="material-symbols-outlined nav-menu">coffee</span> Minuman
-                    </button>
+                    <span class="material-symbols-outlined nav-menu">coffee</span> Minuman
+                    </button> --}}
                 </div>
 
                 <div class="row">
@@ -34,7 +36,9 @@
                                     <p class="makanan">{{$item->deskripsi}}</p>
                                 </div>
                                 <div>
-                                    <button data-target="#addCart" data-toggle="modal" data-id-menu="{{$item->id}}" data-price-menu="{{$item->harga}}" class="add-button btn btn-warning d-flex justify-content-center align-items-center"
+                                    <button data-target="#addCart" data-toggle="modal" data-id-menu="{{$item->id}}"
+                                        data-price-menu="{{$item->harga}}"
+                                        class="add-button btn btn-warning d-flex justify-content-center align-items-center"
                                         style="font-size: 12px;">ADD <span class="material-symbols-outlined"
                                             style="font-size: 15px; font-weight: bold">add</span>
                                     </button>

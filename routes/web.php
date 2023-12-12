@@ -93,11 +93,12 @@ Route::middleware('registered')->group(function() {
 
 
 //Customer
-Route::get('/menu','Customer\MenuController@index')->name('makanan.index');
-Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
+Route::get('/menu/{id}','Customer\MenuController@index')->name('makanan.index');
 Route::get('/tes', function () {
     return view('Customer.modal');
 });
+
+// CHEF
 
 Route::get('chef/', 'Chef\DashboardController@index')->name('chef.dashboard');
 Route::get('chef/test', 'Chef\DashboardController@test')->name('chef.tes');
