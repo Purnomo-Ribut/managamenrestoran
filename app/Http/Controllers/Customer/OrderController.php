@@ -11,7 +11,7 @@ class OrderController extends Controller
     
     public function addCart(Request $request)
     {
-        $session =$request->session()->get('reserved');
+        $session = $request->session()->get('reserved');
         
         $cart = new Cart;
         $cart->customer_id = $session['id'];

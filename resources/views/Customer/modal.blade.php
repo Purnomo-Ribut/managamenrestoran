@@ -10,10 +10,11 @@
             <!-- Body Modal -->
             <div class="modal-body border-bottom">
                 <form>
-                    <div class="form-group mb-1">
+                    @foreach ($carts as $cart)
+                    <div class="form-group pb-3 border-bottom">
                         <div class="input-group d-flex align-items-center">
                             <div class="label">
-                                <label for="quantity" class="mr-2">Rendang</label> <!-- Tambahkan label di sini -->
+                                <label for="quantity" class="mr-2">{{$cart->menu->nama}}</label> <!-- Tambahkan label di sini -->
                             </div>
                             <div class="d-block ml-auto">
                                 <div class="d-flex align-items-center justify-content-end">
@@ -23,7 +24,7 @@
                                     </button>
                                     <div style="width: 25%" class="d-flex justify-content-center">
                                         <input type="number" name="quantity"
-                                            class="input form-control text-center border-0" id="quantity" value="1"
+                                            class="input form-control text-center border-0" id="quantity" value="{{$cart->qty}}"
                                             min="1">
                                     </div>
                                     <span class="input-group-btn">
@@ -36,50 +37,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <textarea name="deskripsi" id="deskripsi" rows="1" placeholder="Deskripsi..."
-                            style="width: 100%;" class="form-control border-0"></textarea>
-                    </div>
+                    @endforeach
                 </form>
             </div>
-            <div class="modal-body border-bottom">
-                <form>
-                    <div class="form-group mb-1">
-                        <div class="input-group d-flex align-items-center">
-                            <div class="label">
-                                <label for="quantity" class="mr-2">Rendang</label> <!-- Tambahkan label di sini -->
-                            </div>
-                            <div class="d-block ml-auto">
-                                <div class="d-flex align-items-center justify-content-end">
-                                    <button type="button" class="btn btn-default btn-number border-0" data-type="minus"
-                                        data-field="quantity">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <div style="width: 25%" class="d-flex justify-content-center">
-                                        <input type="number" name="quantity"
-                                            class="input form-control text-center border-0" id="quantity" value="1"
-                                            min="1">
-                                    </div>
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default btn-number" data-type="plus"
-                                            data-field="quantity">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="deskripsi" id="deskripsi" rows="1" placeholder="Deskripsi..."
-                            style="width: 100%;" class="form-control border-0"></textarea>
-                    </div>
-                </form>
-            </div>
-
             <!-- Footer Modal -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Simpan</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Checkout pesanan</button>
             </div>
 
         </div>
@@ -100,6 +63,8 @@
             <form action="{{route('addcart')}}" method="post">
                 @csrf
                 <div class="modal-body">
+                    <input type="hidden" name="menu_id" id="menu_id" value="">
+                    <input type="hidden" name="price" id="price" value="">
                     <div class="d-flex align-items-center w-100">
                         <button type="button" class="btn btn-default btn-number border-0" data-type="minus"
                             data-field="quantity">
@@ -123,7 +88,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button class="btn btn-primary">Save changes</button>
                 </div>
             </form>
         </div>

@@ -34,7 +34,7 @@
                                     <p class="makanan">{{$item->deskripsi}}</p>
                                 </div>
                                 <div>
-                                    <button data-target="#addCart" data-toggle="modal" class="add-button btn btn-warning d-flex justify-content-center align-items-center"
+                                    <button data-target="#addCart" data-toggle="modal" data-id-menu="{{$item->id}}" data-price-menu="{{$item->harga}}" class="add-button btn btn-warning d-flex justify-content-center align-items-center"
                                         style="font-size: 12px;">ADD <span class="material-symbols-outlined"
                                             style="font-size: 15px; font-weight: bold">add</span>
                                     </button>
