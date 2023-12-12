@@ -1,13 +1,10 @@
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>@yield('title', 'Employee Dashboard')</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!--jquery -->
+    <!--jquery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <!-- bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -23,106 +20,55 @@
   <link rel="stylesheet" href="{{asset('assets/customer/css/menu.css')}}">
   <!-- icon-google -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,100,0,0" />
-
-  @yield('css')
+    <title>Document</title>
 </head>
-<!--
-`body` tag options:
-
-  Apply one or more of the following classes to to the body tag
-  to get the desired effect
-
-  * sidebar-collapse
-  * sidebar-mini
--->
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color: #f4ce14;">
-    <!-- Left navbar links -->
-    @include('Customer.master.navbar')
-    <div class="container d-flex justify-content-center">
-                <h2 class="navbar-brand mx-auto">
-                    Restaurant Jaya
-                </h2>
-    </div>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
-        </a>
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </form>
+<body>
+    <nav class="navbar navbar-expand navbar-white navbar-light " style="background-color: #f4ce14;">
+        <!-- Left navbar links -->
+        @include('Customer.master.navbar')
+        <div class="container d-flex justify-content-center">
+                    <h2 class="navbar-brand mx-auto">
+                        Restaurant Jaya
+                    </h2>
         </div>
-      </li>
 
-      <!-- Messages Dropdown Menu -->
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Navbar Search -->
+          <li class="nav-item">
+            <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+              <i class="fas fa-search"></i>
+            </a>
+            <div class="navbar-search-block">
+              <form class="form-inline">
+                <div class="input-group input-group-sm">
+                  <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                  <div class="input-group-append">
+                    <button class="btn btn-navbar" type="submit">
+                      <i class="fas fa-search"></i>
+                    </button>
+                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </li>
 
-    </ul>
-  </nav>
-  <!-- /.navbar -->
+          <!-- Messages Dropdown Menu -->
 
-  <!-- Main Sidebar Container -->
-  @include('customer.master.sidebar')
+        </ul>
+      </nav>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        @yield('content')
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    @yield('content')
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+    @include('Customer.modal')
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="{{asset('assets/kasir/js/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-  </footer>
-</div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<!-- Bootstrap -->
-<script src="{{asset('assets/kasir/js/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- AdminLTE -->
-<script src="{{asset('assets/kasir/js/adminlte.js')}}"></script>
-
-<!-- OPTIONAL SCRIPTS -->
-{{-- <script src="plugins/chart.js/Chart.min.js"></script> --}}
-<!-- AdminLTE for demo purposes -->
-{{-- <script src="{{asset('assets/kasir/js/demo.js')}}"></script> --}}
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-{{-- <script src="{{asset('assets/kasir/js/pages/dashboard3.js')}}"></script> --}}
-
-@stack('scripts')
 </body>
 </html>
+
