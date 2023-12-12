@@ -58,4 +58,17 @@
 
 @include('Customer.modal')
 
+<script>
+    const addButton = document.querySelectorAll('.add-button');
+    addButton.forEach(element => {
+        element.addEventListener('click', function () {
+            let idMenu = this.getAttribute('data-id-menu');
+            let priceMenu = this.getAttribute('data-price-menu');
+            document.querySelector('#menu_id').value = idMenu
+            document.querySelector('#price').value = priceMenu
+        })
+    });
+
+</script>
+
 @endsection
