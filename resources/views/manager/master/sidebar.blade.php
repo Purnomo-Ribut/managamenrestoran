@@ -25,20 +25,32 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('manager_index') }}" class="nav-link">
                     <i class="nav-icon fa fa-dashboard"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"> <i class="nav-icon fa fa-th"></i>
-                    <p>Daftar Jurusan</p>
+                <a href="{{ route('lihat_menu') }}" class="nav-link"> <i class="nav-icon fas fa-box"></i>
+                    <p>Daftar menu</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fa fa-book"></i>
-                    <p>Daftar Mapel</p>
+                <a href="{{ route('lihat_kategori') }}" class="nav-link">
+                    <i class="nav-icon fa fa-th-list"></i>
+                    <p>Daftar Kategori</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('karyawan') }}" class="nav-link">
+                    <i class="nav-icon fa fa-briefcase"></i>
+                    <p>Data Karyawan</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('chef') }}" class="nav-link">
+                    <i class="nav-icon fa fa-cutlery"></i>
+                    <p>Data Chef</p>
                 </a>
             </li>
             <li class="nav-item">
