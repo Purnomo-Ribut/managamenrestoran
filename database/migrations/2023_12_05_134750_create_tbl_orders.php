@@ -17,12 +17,8 @@ class CreateTblOrders extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('menu_id');
-            $table->integer('qty');
-            $table->integer('price');
             $table->foreign('customer_id')->references('id')->on('tbl_customers')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('menu_id')->references('id')->on('tbl_menuses')->onDelete('cascade');
             $table->timestamps();
         });
     }
