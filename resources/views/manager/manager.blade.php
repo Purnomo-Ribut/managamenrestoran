@@ -14,7 +14,7 @@
       
       {{-- batas --}}
       <div class="col-sm-4" onclick="window.location.href='{{ route('lihat_menu') }}';">
-        <div class="card  bg-white mb-3" style="max-width: 18rem;">
+        <div class="card bg-white mb-3" style="max-width: 18rem;">
           <div class="card-header">
             <i class="fas fa-box " style="color: rgb(0, 0, 0);"></i> <!-- Ganti dengan icon yang diinginkan -->
             <h5 class="text-dark m-3"> Data Menu </h5>
@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="col-sm-4" onclick="window.location.href='{{ route('lihat_kategori') }}';">
-        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+        <div class="card bg-white mb-3" style="max-width: 18rem;">
           <div class="card-header">
             <i class="fa fa-th-list"  style="color: rgb(0, 0, 0);"></i>
             <h5 class="text-dark m-3">Data kategori</h5>
@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="col-sm-4" onclick="window.location.href='{{ route('data_pelanggan') }}';">
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card bg-white mb-3" style="max-width: 18rem;">
           <div class="card-header">
             <i class="fa fa-users"style="color: rgb(0, 0, 0);"></i>
             <h5 class="text-dark m-3">Data Pelanggan</h5>
@@ -56,7 +56,7 @@
         </div>
       </div>
       <div class="col-sm-4" onclick="window.location.href='{{ route('karyawan') }}';">
-        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card bg-white mb-3" style="max-width: 18rem;">
           <div class="card-header">
             <i class="fa fa-briefcase" style="color: rgb(0, 0, 0);"></i>
             <h5 class="text-dark m-3">Data Karyawan</h5>
@@ -69,7 +69,7 @@
       </div>
         {{-- belum fix --}}
         <div class="col-sm-4" onclick="window.location.href='{{ route('chef') }}';">
-          <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+          <div class="card bg-white mb-3" style="max-width: 18rem;">
             <div class="card-header">
               <i class="fa fa-cutlery" style="color: rgb(0, 0, 0);"></i>
               <h5 class="text-dark m-3">Data chef</h5>
@@ -81,7 +81,7 @@
           </div>
         </div>
       <div class="col-sm-4">
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card bg-white mb-3" style="max-width: 18rem;">
           <div class="card-header">Data Karyawan</div>
           <div class="card-body">
             <h5 class="card-title">Secondary card title</h5>

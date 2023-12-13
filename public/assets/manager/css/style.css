@@ -4,6 +4,7 @@
 
   .card {
     transition: transform 0.3s ease-in-out;
+    background-color: #17a2b8;
   }
   .card:hover {
     transform: scale(1.05);
@@ -11,13 +12,17 @@
   }
 
   .card-header {
-    background-color: yellow;
+    background-color: #ffc107;
     padding: 8px;
     display: flex;
     align-items: center;
   }
   .card-header i {
     margin-right: 8px;
-    font-size: 35px;
+    font-size: 30px;
     margin-left: 8px;
+  }
+
+  .card-header h5 {
+    font-size: 20px;
   }
