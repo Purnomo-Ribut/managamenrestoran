@@ -112,11 +112,11 @@
               <div class="row">
                 <div class="col-6">
                   <p>Gambar lama</p>
-                  <img src="{{ asset('storage/assets/manager/gambarMenu/' . $menu->image) }}" alt="gambarlama" style="max-width: 200px; max-height: 200px;">
-                </div>
-                <div class="col-6">
-                  <p>gambar baru</p>
-                  <div id="review"></div>
+                  @if($menu->image)
+                  <img src="{{ asset('storage/assets/manager/gambarMenu/' . $menu->image) }}" alt="gambarmenu" style="max-width: 200px; max-height: 200px;">
+                  @else
+                  <p>Tidak ada gambar</p>
+                  @endif
                 </div>
               </div>
               <div class="mb-3">
@@ -186,7 +186,6 @@
                       </div>
                   @endif --}}
               <div class="mt-3" id="alertContainer2"></div>
-              <div id="review"></div>
                 <div class="mb-3">
                     <label for="deskripsi" class="form-label">Deskripsi</label>
                     <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" placeholder="Desripsi singkat menu tersebut"></textarea>
@@ -230,19 +229,8 @@
                 </button>
               </div>
             `;
-            const reader = new FileReader();
-      
-            reader.onload = function(e) {
-            const imgElement = document.createElement('img');
-            imgElement.setAttribute('src', e.target.result);
-            imgElement.setAttribute('width', '200px'); // Atur lebar gambar disini
-            imgElement.setAttribute('height', 'auto'); // Atur tinggi gambar disini
-            review.innerHTML = ''; // Hapus pratinjau sebelumnya jika ada
-            review.appendChild(imgElement); // Tampilkan gambar yang dipilih
           }
-          reader.readAsDataURL(file); // Baca data gambar sebagai URL
-          }
-      }
+        }
 
       function validateFile2(input) {
         const file = input.files[0];
@@ -272,20 +260,8 @@
                 </button>
               </div>
             `;
-
-            const reader = new FileReader();
-      
-            reader.onload = function(e) {
-            const imgElement = document.createElement('img');
-            imgElement.setAttribute('src', e.target.result);
-            imgElement.setAttribute('width', '200px'); // Atur lebar gambar disini
-            imgElement.setAttribute('height', 'auto'); // Atur tinggi gambar disini
-            review.innerHTML = ''; // Hapus pratinjau sebelumnya jika ada
-            review.appendChild(imgElement); // Tampilkan gambar yang dipilih
           }
-          reader.readAsDataURL(file); // Baca data gambar sebagai URL
-          }
-      }
+        }
 
       window.addEventListener('DOMContentLoaded', (event) => {
         let successMessage = '{{ session('success') }}';

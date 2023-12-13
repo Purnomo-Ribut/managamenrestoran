@@ -1,6 +1,6 @@
 @extends('manager.master.chef.template')
 
-@section('title', 'Manager | Data Karyawan')
+@section('title', 'Manager | Data Chef')
 
 @section('css')
 {{-- <link rel="stylesheet" href=""> --}}
