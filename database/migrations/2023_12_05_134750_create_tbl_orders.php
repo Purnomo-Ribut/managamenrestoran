@@ -18,7 +18,7 @@ class CreateTblOrders extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('customer_id')->references('id')->on('tbl_customers')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('tbl_users')->onDelete('cascade');
             $table->timestamps();
         });
     }
