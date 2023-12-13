@@ -22,4 +22,9 @@ class Order extends Model
     {
         return $this->belongsTo('App\Menu');
     }
+
+    public function orderDetails()
+    {
+        return $this->hasMany('App\OrderDetails');
+    }
 }

@@ -83,8 +83,10 @@ Route::get('/reservasi','Customer\ReservationController@index')->name('reservasi
 Route::post('/reservasi','Customer\ReservationController@store')->name('reservasi.store');
 
 Route::middleware('registered')->group(function() {
-    Route::get('/menu','Customer\MenuController@index')->name('makanan.index');
-    Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
+    Route::get('/menu/{id?}','Customer\MenuController@index')->name('makanan.index');
+    Route::get('/cart/remove/{id}','Customer\OrderController@removeCart')->name('remove.cart');
+    Route::post('/cart/checkout','Customer\OrderController@checkout')->name('checkout.cart');
+    // Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
     
     Route::post('/cart','Customer\OrderController@addCart')->name('addcart');
     
@@ -93,7 +95,7 @@ Route::middleware('registered')->group(function() {
 
 
 //Customer
-Route::get('/menu/{id}','Customer\MenuController@index')->name('makanan.index');
+// Route::get('/menu/{id}','Customer\MenuController@index')->name('makanan.index');
 Route::get('/tes', function () {
     return view('Customer.modal');
 });

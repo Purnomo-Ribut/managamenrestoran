@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Kategori;
 use App\Menu;
 
 class ReservationController extends Controller
@@ -19,6 +20,7 @@ class ReservationController extends Controller
     {
         $customer = new Customer;
         $menu = Menu::first();
+        $categories = Kategori::all();
 
         $validation = $request->validate([
             'nama' => 'required',
@@ -31,7 +33,7 @@ class ReservationController extends Controller
 
         if($saved){
             $request->session()->put('reserved', ['id' => $customer->id, 'name' => $customer->name, 'no_table' => $customer->no_table]);
-            return redirect()->route('makanan.index', $menu->id);
+            return redirect()->route('makanan.index', $menu ? $menu->id : '');
         }
 
         return redirect()->back()->withErrors(['msg' => "Terjadi kesalahan"]);

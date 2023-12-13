@@ -9,12 +9,19 @@
             </div>
             <!-- Body Modal -->
             <div class="modal-body border-bottom">
-                <form>
+                <form action="{{route('checkout.cart')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     @foreach ($carts as $cart)
+                    <input type="hidden" value="{{$cart->menu->id}}" name="menu_id[]">
+                    <input type="hidden" value="{{$cart->menu->harga * $cart->qty}}" id="price-item" name="price[]">
                     <div class="form-group pb-3 border-bottom">
                         <div class="input-group d-flex align-items-center">
                             <div class="label">
-                                <label for="quantity" class="mr-2">{{$cart->menu->nama}}</label> <!-- Tambahkan label di sini -->
+                                <div class="d-flex flex-column">
+                                    <label for="quantity" class="mr-2">{{$cart->menu->nama}}</label>
+                                    <p class="mr-2">@rupiah($cart->menu->harga * $cart->qty)</p>
+                                    <a href="{{route('remove.cart', $cart->id)}}">Hapus Item</a>
+                                </div>
                             </div>
                             <div class="d-block ml-auto">
                                 <div class="d-flex align-items-center justify-content-end">
@@ -23,9 +30,9 @@
                                         <i class="fas fa-minus"></i>
                                     </button>
                                     <div style="width: 25%" class="d-flex justify-content-center">
-                                        <input type="number" name="quantity"
-                                            class="input form-control text-center border-0" id="quantity" value="{{$cart->qty}}"
-                                            min="1">
+                                        <input type="number" name="quantity[]"
+                                            class="input form-control text-center border-0" id="quantity"
+                                            value="{{$cart->qty}}" min="1">
                                     </div>
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-default btn-number" data-type="plus"
@@ -37,12 +44,17 @@
                             </div>
                         </div>
                     </div>
+
                     @endforeach
+                    <div class="d-flex justify-content-between">
+                        <h3>Total</h3>
+                        <h3 id="total-price">Rp. 300.000</h3>
+                    </div>
+                    <!-- Footer Modal -->
+                    <div class="modal-footer">
+                        <button class="btn btn-warning">Checkout pesanan</button>
+                    </div>
                 </form>
-            </div>
-            <!-- Footer Modal -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Checkout pesanan</button>
             </div>
 
         </div>

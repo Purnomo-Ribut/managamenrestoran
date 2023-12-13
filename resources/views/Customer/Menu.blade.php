@@ -15,12 +15,6 @@
                         <span class="material-symbols-outlined nav-menu">lunch_dining</span> {{$category->nama}}
                     </button>
                     @endforeach
-
-                    {{-- <button type="button"
-                        class="btn btn-warning mb-2 me-2 justify-content-center d-flex align-items-center"
-                        onclick="window.location.href='{{route('minuman.index')}}'">
-                    <span class="material-symbols-outlined nav-menu">coffee</span> Minuman
-                    </button> --}}
                 </div>
 
                 <div class="row">
@@ -32,7 +26,7 @@
                             <div class="card-body p-1">
                                 <div class="content-makanan">
                                     <h1 class="Judul">{{$item->nama}}</h1>
-                                    <h2 class="makanan">{{$item->harga}}</h2>
+                                    <h2 class="makanan">@rupiah($item->harga)</h2>
                                     <p class="makanan">{{$item->deskripsi}}</p>
                                 </div>
                                 <div>
@@ -51,7 +45,7 @@
             </div>
             <div class="container-fluid d-flex justify-content-end">
                 <a data-toggle="modal" data-target="#myModal">
-                    <div class="kuning d-flex justify-content-center align-items-center bg-warning mb-2 w-20">
+                    <div class="kuning d-flex justify-content-center align-items-center bg-warning mb-2 p-2 shadow">
                         <span class="material-symbols-outlined cart">shopping_cart</span>
                     </div>
                 </a>
@@ -72,7 +66,33 @@
             document.querySelector('#price').value = priceMenu
         })
     });
+</script>
 
+<script>
+    const priceItem = document.querySelectorAll('#price-item');
+    const totalPrice = document.querySelector('#total-price');
+    const price = [];
+
+    function formatRupiah(number) {
+        if (typeof number !== 'number') {
+            return 'Invalid input';
+        }
+        var parts = number.toFixed(2).split('.');
+        
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+        var result = 'Rp ' + parts.join(',');
+
+        return result;
+    }
+
+    priceItem.forEach(el => {
+        const originalPrice = parseInt(el.value);
+        price.push(originalPrice);
+    })
+    const total = price.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    console.log(total)
+    totalPrice.textContent = formatRupiah(total);
 </script>
 
 @endsection
