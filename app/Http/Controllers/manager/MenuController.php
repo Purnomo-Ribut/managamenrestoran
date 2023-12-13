@@ -127,14 +127,19 @@ class MenuController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            // Jika ada gambar yang diunggah, simpan gambar dengan nama aslinya
+            // Hapus gambar lama dari storage jika ada
+            if ($menu->image) {
+                Storage::delete('public/assets/manager/gambarMenu/' . $menu->image);
+            }
+
+            // Jika ada gambar yang diunggah, simpan gambar baru dengan nama aslinya
             $image = $request->file('image');
             $imageName = $image->getClientOriginalName(); // Dapatkan nama asli gambar
 
-            // Simpan gambar dengan nama aslinya
+            // Simpan gambar baru dengan nama aslinya
             $imagePath = $image->storeAs('public/assets/manager/gambarMenu', $imageName);
 
-            // Kemudian Anda dapat mengganti properti gambar pada entitas Anda dengan $imageName
+            // Kemudian Anda dapat mengganti properti gambar pada entitas Anda dengan $imageName baru
             $menu->image = basename($imagePath);
         } else {
             // Jika tidak ada gambar yang diunggah, biarkan gambar yang sudah ada tetap sama
@@ -161,7 +166,14 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
+        // Hapus gambar dari storage
+        if ($menu->image) {
+            Storage::delete('public/assets/manager/gambarMenu/' . $menu->image);
+        }
+
+        // Hapus entri dari database
         $menu->delete();
+
         return redirect(route('lihat_menu'))->with('success', 'Data Berhasil Di Hapus');
     }
 }
