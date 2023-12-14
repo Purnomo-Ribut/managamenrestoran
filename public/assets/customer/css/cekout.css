@@ -1,0 +1,46 @@
+.check{
+    font-size: 100px !important;
+}
+
+.hasil{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.kotak-putih {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+  padding: 10px;
+  text-align: center;
+  }
+
+
+body{
+    background-color: #F4CE14;
+}
+
+.ikon{
+    margin-top: 16px !important;
+}
+
+.content{
+    margin-top: 10px;
+    font-size: 14px !important;
+}
+
+@media (min-width:375px) and (max-width: 768px){
+    .kotak-putih{
+        top: 40%;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px){
+    .kotak-putih{
+        top: 32%;
+    }
+}
