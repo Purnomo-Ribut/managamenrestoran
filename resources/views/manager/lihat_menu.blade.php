@@ -4,6 +4,9 @@
 
 @section('addJavascript')
 @section('css')
+<script>
+	
+</script>
 {{-- <link rel="stylesheet" href=""> --}}
 @endsection
 
@@ -46,7 +49,7 @@
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editMenu{{$menu->id}}">
                 Edit
             </button>
-              <a href="{{ route('deleteMenu', ['id' => $menu->id]) }}" class="btn btn-primary">Hapus</a>
+            <a href="{{ route('deleteMenu', ['id' => $menu->id]) }}" class="btn btn-primary">Hapus</a>
             </td>
           </tr>
           @endforeach
@@ -95,7 +98,7 @@
                     <span class="input-group-text" id="image">Upload</span>
                   </div> --}}
                   <div>
-                    <input type="file"  id="image" name="image" value="{{$menu->image}}" class="form-control" onchange="validateFile(this)">
+                    <input type="file"  id="image" name="image" value="{{$menu->image}}" class="form-control" accept="image/*" onchange="validateFile(this)">
                     {{-- <label class="custom-file-label" for="image">Choose file</label> --}}
                   </div>
                 </div>
@@ -173,7 +176,7 @@
                 </div>
                 <div class="mb-3">
                   <div>
-                    <input type="file" id="image" name="image" class="form-control" onchange="validateFile2(this)">
+                    <input type="file" id="image" name="image" class="form-control" accept="image/*" onchange="validateFile(this)">
                   </div>
                 </div>
                 {{-- @if ($errors->any())
@@ -232,7 +235,7 @@
           }
         }
 
-      function validateFile2(input) {
+      function validateFile(input) {
         const file = input.files[0];
         const fileSize = file.size; // File size in bytes
         const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
@@ -262,14 +265,10 @@
             `;
           }
         }
+  </script>
 
-      window.addEventListener('DOMContentLoaded', (event) => {
-        let successMessage = '{{ session('success') }}';
-        if (successMessage) {
-            alert(successMessage);
-        }
-      });
-    </script>
+  @include('sweetalert::alert')
+
 </body>
 @endsection
 

@@ -31,12 +31,13 @@
           <thead>
               <tr>
                   <th scope="col">Nama Pelanggan</th>
-                  <th scope="col">Barang yang Dibeli</th>
+                  <th scope="col">Menu Yang Dibeli</th>
                   <th scope="col">Total Harga</th>
               </tr>
           </thead>
           <tbody>
               <tr>
+                
                   <td>John Doe</td>
                   <td>Item A, Item B</td>
                   <td>$150</td>
