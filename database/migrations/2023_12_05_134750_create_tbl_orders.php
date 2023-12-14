@@ -16,7 +16,8 @@ class CreateTblOrders extends Migration
         Schema::create('tbl_orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('customer_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('order_code');
             $table->foreign('customer_id')->references('id')->on('tbl_customers')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('tbl_users')->onDelete('cascade');
             $table->timestamps();

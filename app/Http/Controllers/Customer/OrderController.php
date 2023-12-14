@@ -39,13 +39,16 @@ class OrderController extends Controller
 
     public function checkout(Request $request)
     {
+        $code = "PSN-".rand(100000,999999);
+        
         $data = $request->except(['_token']);
         $session = $request->session()->get('reserved');
         $dataLength = count($data['menu_id']);
 
         $order = new Order;
         $order->customer_id = $session['id'];
-        $order->user_id = 1;
+        // $order->user_id = 1;
+        $order->order_code = $code;
         $saved = $order->save();
 
         if($saved){
@@ -57,10 +60,19 @@ class OrderController extends Controller
                 $orderDetail->qty = $data['quantity'][$i];
                 $orderDetail->save();
             }
-            return redirect()->route('reservasi.logout');
+            return redirect()->route('ordered');
         }
 
         return redirect()->back()->withErrors(['msg' => "Terjadi kesalahan"]); 
+    }
+
+    public function ordered()
+    {
+        $session = session()->get('reserved');
+        $order = Order::where('customer_id', $session['id'])->first();
+        $totalPrice = $order->orderDetails->sum('price');
+        // dd($totalPrice);
+        return view('Customer.cekout', compact('order', 'totalPrice'));
     }
     
 }

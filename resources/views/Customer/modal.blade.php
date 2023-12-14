@@ -77,24 +77,28 @@
                 <div class="modal-body">
                     <input type="hidden" name="menu_id" id="menu_id" value="">
                     <input type="hidden" name="price" id="price" value="">
-                    @foreach ($menu as $item)
-                    <h1 class="Judul">{{$item->nama}}</h1>
-                    @endforeach
-                    <div class="d-flex align-items-center w-100">
-                        <button type="button" class="btn btn-default btn-number border-0" data-type="minus"
-                            data-field="quantity">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <div style="width: 25%" class="d-flex justify-content-center">
-                            <input type="number" name="quantity" class="input form-control text-center border-0"
-                                id="quantity" value="1" min="1">
+                    <div class="row">
+                        <div class="col-6">
+                            <h1 class="Judul mb-3" id="productName">Product</h1>
                         </div>
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-default btn-number" data-type="plus"
-                                data-field="quantity">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </span>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center w-100 justify-content-end">
+                                <button type="button" class="btn btn-default btn-number border-0" data-type="minus"
+                                    data-field="quantity">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <div style="width: 25%" class="d-flex justify-content-center">
+                                    <input type="number" name="quantity" class="input form-control text-center border-0"
+                                        id="quantity" value="1" min="1">
+                                </div>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-number" data-type="plus"
+                                        data-field="quantity">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -117,7 +121,7 @@
 
             var fieldName = $(this).attr('data-field');
             var type = $(this).attr('data-type');
-            var input = $("input[name='" + fieldName + "']");
+            var input = $("#quantity");
             var currentVal = parseInt(input.val());
 
             if (!isNaN(currentVal)) {

@@ -25,6 +25,6 @@ class Order extends Model
 
     public function orderDetails()
     {
-        return $this->hasMany('App\OrderDetails');
+        return $this->hasMany('App\OrderDetail');
     }
 }

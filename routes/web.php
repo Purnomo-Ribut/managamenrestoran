@@ -91,6 +91,7 @@ Route::middleware('registered')->group(function() {
     Route::post('/cart','Customer\OrderController@addCart')->name('addcart');
 
     Route::get('/reservasi/flush','Customer\ReservationController@flush')->name('reservasi.logout');
+    Route::get('/ordered','Customer\OrderController@ordered')->name('ordered');
 });
 
 
