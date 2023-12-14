@@ -30,7 +30,7 @@
                                     <p class="makanan">{{$item->deskripsi}}</p>
                                 </div>
                                 <div>
-                                    <button data-target="#addCart" data-toggle="modal" data-id-menu="{{$item->id}}"
+                                    <button data-target="#addCart" data-toggle="modal" data-product-name="{{$item->nama}}" data-id-menu="{{$item->id}}"
                                         data-price-menu="{{$item->harga}}"
                                         class="add-button btn btn-warning d-flex justify-content-center align-items-center"
                                         style="font-size: 12px;">ADD <span class="material-symbols-outlined"
@@ -60,10 +60,13 @@
     const addButton = document.querySelectorAll('.add-button');
     addButton.forEach(element => {
         element.addEventListener('click', function () {
+            // const productName = document.querySelector('#productName');
             let idMenu = this.getAttribute('data-id-menu');
             let priceMenu = this.getAttribute('data-price-menu');
+            let productName = this.getAttribute('data-product-name');
             document.querySelector('#menu_id').value = idMenu
             document.querySelector('#price').value = priceMenu
+            document.querySelector('#productName').textContent = productName
         })
     });
 </script>

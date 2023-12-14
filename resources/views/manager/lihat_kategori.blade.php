@@ -107,16 +107,10 @@
     </div>
   </form>
   </div>
-
-    <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-        let successMessage = '{{ session('success') }}';
-        if (successMessage) {
-            alert(successMessage);
-        }
-    });
-    </script>
+  @include('sweetalert::alert')
 </body>
+
+
 @endsection
 
 {{-- Javascript --}}
