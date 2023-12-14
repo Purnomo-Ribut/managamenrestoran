@@ -17,6 +17,9 @@ class CreateTblOrders extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('user_id');
+            $table->integer('total');      
+            $table->string('status_pembayaran');                 
+            $table->string('metode_pembayaran'); 
             $table->foreign('customer_id')->references('id')->on('tbl_customers')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('tbl_users')->onDelete('cascade');
             $table->timestamps();

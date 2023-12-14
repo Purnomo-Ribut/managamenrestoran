@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Kasir;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Order;
+use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
@@ -12,9 +14,18 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($idCustomer)
+    public function index($idcustomer)
     {
-        return view('kasir.checkout');
+        $orders = Order::with('menu')->where('customer_id', $idcustomer)->get();
+        // gabungan 3 tabel
+        $data = DB::table('tbl_carts')
+            ->join('tbl_menuses', 'tbl_carts.menu_id', '=', 'tbl_menuses.id')
+            ->join('tbl_customers', 'tbl_carts.customer_id', '=', 'tbl_customers.id')
+            ->select('tbl_carts.*', 'tbl_menuses.*', 'tbl_customers.*')
+            ->where('tbl_carts.customer_id', '=', $idcustomer)
+            ->get();
+
+        return view('kasir.checkout', ['orders' => $orders, 'data' => $data]);
     }
 
     /**
@@ -33,9 +44,23 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $idCustomer)
     {
-        //
+        $order = Order::where('customer_id', $idCustomer)->first();
+
+        // Check if the order exists
+        if ($order) {
+            // Update the order details
+            $order->user_id = $request->chef;
+            $order->total = $request->total;
+            $order->status_pembayaran = 'Sudah Dibayar';
+            $order->metode_pembayaran = $request->metode;
+            $order->save();
+
+            return redirect()->route('kasir.dashboard');
+        } else {            
+            return redirect()->route('kasir.dashboard')->with('error', 'Order not found');
+        }
     }
 
     /**

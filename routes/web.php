@@ -36,11 +36,16 @@ Route::get('/dashboard', function () {
 Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     Route::get('/', 'Kasir\DashboardController@index')->name('kasir.dashboard');
     Route::get('test', 'Kasir\DashboardController@test')->name('kasir.tes');
-
+    
     Route::get('checkout/{idCustomer}', 'Kasir\CheckoutController@index')->name('kasir.checkout');
+
+    // tambahkan pembayaran kasir 
+    Route::post('checkout/{idCustomer}', 'Kasir\CheckoutController@store')->name('bayar');
+
+    // 
 });
 
-
+ 
 // role manager (auth)
 Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () {
     Route::get('/', 'manager\DashboardManController@index')->name('manager_index');

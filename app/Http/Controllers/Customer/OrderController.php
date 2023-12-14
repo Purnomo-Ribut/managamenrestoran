@@ -46,6 +46,9 @@ class OrderController extends Controller
         $order = new Order;
         $order->customer_id = $session['id'];
         $order->user_id = 1;
+        $order->total = 0;
+        $order->status_pembayaran = "Belum - Dibayar";
+        $order->metode_pembayaran = "kosong";
         $saved = $order->save();
 
         if($saved){
