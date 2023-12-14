@@ -8,6 +8,15 @@
 
 @section('content')
 <div class="row">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="col-12 col-md-9">
         <div class="row">
             <div class="col-12 col-md-4">
@@ -63,7 +72,8 @@
                                     <input type="search" class="form-control fuzzy-search" placeholder="Search...">
                                 </div>
                                 <div class="list d-flex flex-column">
-                                    @foreach ($orders as $order)
+                                    @foreach ($ordersBelumDibayar as $order) 
+                                    {{-- @foreach ($orders as $order) --}}
                                     <div class="row align-items-center w-100">
                                         <div class="col-3 position-relative">
                                             <div class="table-box bg-success">
@@ -74,7 +84,7 @@
                                             <p class="order-name">{{$order->customer->name}}</p>
                                         </div>
                                         <div class="col-4">
-                                            <div class="btn btn-warning">Pay now</div>
+                                            <div><a href="{{ route('kasir.checkout', ['id' => $order->customer->id]) }}"class="btn btn-warning" > Pay now</a> </div>
                                         </div>
                                     </div>
                                     @endforeach
@@ -96,36 +106,22 @@
                                     <input type="search" class="form-control fuzzy-search" placeholder="Search...">
                                 </div>
                                 <div class="list d-flex flex-column">
+                                    @foreach ($ordersSudahDibayar as $order) 
                                     <div class="row align-items-center w-100">
-                                        <div class="col-3 position-relative">
+                                        <div class="col-3 position-relative">                                            
                                             <div class="table-box bg-success">
-                                                35
+                                                {{$order->customer->no_table}}
                                             </div>
                                         </div>
-                                        <div class="col-9">
-                                            <p class="transaction-name">Udin</p>
+                                        <div class="col-5">
+                                            <p class="transaction-name">{{$order->customer->name}}</p>
+                                        </div>
+                                        <div class="col-4">
+                                            <div ><a href="#" class="btn btn-info"> Detail</a> </div>
                                         </div>
                                     </div>
-                                    <div class="row align-items-center w-100">
-                                        <div class="col-3 position-relative">
-                                            <div class="table-box bg-success">
-                                                35
-                                            </div>
-                                        </div>
-                                        <div class="col-9">
-                                            <p class="transaction-name">Sairul</p>
-                                        </div>
-                                    </div>
-                                    <div class="row align-items-center w-100">
-                                        <div class="col-3 position-relative">
-                                            <div class="table-box bg-success">
-                                                35
-                                            </div>
-                                        </div>
-                                        <div class="col-9">
-                                            <p class="transaction-name">Ucup</p>
-                                        </div>
-                                    </div>
+                                    @endforeach
+                                    
                                 </div>
                             </div>
                         </div>
