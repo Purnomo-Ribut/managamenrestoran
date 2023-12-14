@@ -1,4 +1,4 @@
-<!-- Modal ADD-->
+<!-- Cart Modal-->
 <div class="tambahModal modal fade" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -61,7 +61,7 @@
     </div>
 </div>
 
-{{-- Add Cart Modal --}}
+{{-- Add Modal --}}
 
 <div class="modal fade" id="addCart" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
@@ -77,6 +77,9 @@
                 <div class="modal-body">
                     <input type="hidden" name="menu_id" id="menu_id" value="">
                     <input type="hidden" name="price" id="price" value="">
+                    @foreach ($menu as $item)
+                    <h1 class="Judul">{{$item->nama}}</h1>
+                    @endforeach
                     <div class="d-flex align-items-center w-100">
                         <button type="button" class="btn btn-default btn-number border-0" data-type="minus"
                             data-field="quantity">
@@ -96,7 +99,7 @@
 
                     <div class="form-group">
                         <label>Catatan</label>
-                        <textarea class="form-control" name="desc" rows="5"></textarea>
+                        <textarea class="form-control" name="desc" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
