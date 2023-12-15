@@ -71,7 +71,7 @@
 @endsection
 
 @section('content')
-
+ 
     <div class="row">
         <div class="col-12 col-md-9">
             <div class="row">
@@ -82,7 +82,7 @@
                                 <i class="fas fa-tasks card-icon"></i> Pending Orders
                             </h5>
                             <p class="card-text">Check and process pending orders.</p>
-                            <div class="card-value">{{$order}}</div>
+                            <div class="card-value">{{$totalOrder}}</div>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                                 <i class="fas fa-spinner card-icon"></i> In Progress
                             </h5>
                             <p class="card-text text-white">View orders currently in progress.</p>
-                            <div class="card-value text-white">15</div>
+                            <div class="card-value text-white">{{$totalOrder}}</div>
                         </div>
                     </div> 
                 </div>
@@ -104,92 +104,50 @@
                                 <i class="fas fa-check-circle card-icon"></i> Completed Orders
                             </h5>
                             <p class="card-text">Review completed orders.</p>
-                            <div class="card-value">25</div>
+                            <div class="card-value">{{$totalOrder}}</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-3">
-    <!-- Profile Section -->
-    <div class="card">
-        <div class="card-body text-center">
-            <img class="card-img-top rounded-circle w-25" src="https://cdn-icons-png.flaticon.com/512/3461/3461980.png">
-            <h3>{{$profil->name}}</h3>
-        </div>
-    </div>
-</div>
-        <div class="container">
-    <div class="row">
-        <div class="col-12 col-md-6">
-            <div class="col-15">
-                <div class="card border-warning">
-                    <br>
-                    <h5 class="card-title col-md-10 mb-1">
-                        <i class="fas fa-tasks card-icon"></i> New Orders to Process
-                    </h5>
-                    <div class="card-body md-4 overflow-auto" style="max-height: 25rem;">
-                        <ul class="order-list">
-                            <li class="order-list-item">
-                                <h6>Order #123</h6>
-                                <p>Details: Lorem ipsum dolor sit amet.</p>
-                                <small>Received: 10 minutes ago</small>
-                            </li>
-                            <li class="order-list-item">
-                                <h6>Order #124</h6>
-                                <p>Details: Consectetur adipiscing elit.</p>
-                                <small>Received: 15 minutes ago</small>
-                            </li>
-                            <li class="order-list-item">
-                                <h6>Order #125</h6> 
-                                <p>Details: Lorem ipsum dolor sit amet.</p>
-                                <small>Received: 10 minutes ago</small>
-                            </li>
-                            <li class="order-list-item">
-                                <h6>Order #126</h6>
-                                <p>Details: Lorem ipsum dolor sit amet.</p>
-                                <small>Received: 10 minutes ago</small>
-                            </li>
-                        </ul>
-                    </div>
+        <!-- Profile Section -->
+        <div class="col-12 col-md-3 w-100">
+            <div class="card">
+                <div class="card-body text-center">
+                    <img class="card-img-top rounded-circle w-25" src="https://cdn-icons-png.flaticon.com/512/3461/3461980.png">
+                    <h3>{{$profil->name}}</h3>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-6">
-            <div class="col-15">
-                <div class="card border-success mb-3">
-                    <br>
-                <h5 class="card-title col-md-10 mb-1">
-                            <i class="fas fa-spinner card-icon"></i> orders that are being processed
+        <!-- Profile Section End -->
+
+        <!-- List Order Section -->
+        <div class="row">
+            <div class="col-12 col-md-12 ml-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <div class="d-flex flex-column w-200 list-order" id="order-list">
+                                <div class="input-box mb-3">
+                            <i class="fas fa-check-circle card-icon"></i> Completed Order
                         </h5>
                         <div class="card-body md-4 overflow-auto" style="max-height: 25rem;">
-                        <ul class="order-list">
-                            <li class="order-list-item">
-                                <h6>Order #123</h6>
-                                <p>Details: Lorem ipsum dolor sit amet.</p>
-                                <small>Received: 10 minutes ago</small>
-                            </li>
-                            <li class="order-list-item">
-                                <h6>Order #124</h6>
-                                <p>Details: Consectetur adipiscing elit.</p>
-                                <small>Received: 15 minutes ago</small>
-                            </li>
-                            <li class="order-list-item">
-                                <h6>Order #125</h6> 
-                                <p>Details: Consectetur adipiscing elit.</p>
-                                <small>Received: 10 minutes ago</small>
-                            </li>
-                            <li class="order-list-item">
-                                <h6>Order #126</h6>
-                                <p>Details: Consectetur adipiscing elit.</p>
-                                <small>Received: 10 minutes ago</small>
-                            </li>
-                        </ul>
+                            <ul class="order-list">
+                            @foreach ($order as $item)
+                                <li class="order-list-item">
+                                    <h6>{{$loop->index + 1}}</h6>
+                                    <p>{{$item->customer->name}}</p>
+                                    <small>Received: 10 minutes ago</small>
+                                    <button class="btn btn-success btn-sm ml-2">Finish Cook</button>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        <!-- List Order Section End -->
+            
 @endsection
 
 {{-- Javascript --}}
