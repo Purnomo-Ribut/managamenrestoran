@@ -82,7 +82,7 @@
                                 <i class="fas fa-tasks card-icon"></i> Pending Orders
                             </h5>
                             <p class="card-text">Check and process pending orders.</p>
-                            <div class="card-value">{{$order}}</div>
+                            <div class="card-value">{{$totalOrder}}</div>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                             <p class="card-text text-white">View orders currently in progress.</p>
                             <div class="card-value text-white">15</div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="card text-white bg-success mb-3">
@@ -130,18 +130,20 @@
                     </h5>
                     <div class="card-body md-4 overflow-auto" style="max-height: 25rem;">
                         <ul class="order-list">
+                            @foreach ($order as $order)
                             <li class="order-list-item">
-                                <h6>Order #123</h6>
-                                <p>Details: Lorem ipsum dolor sit amet.</p>
+                                <h6>{{$loop->index + 1}}</h6>
+                                <p>{{$order->status_pembayaran}}</p>
                                 <small>Received: 10 minutes ago</small>
                             </li>
-                            <li class="order-list-item">
+                            @endforeach
+                            {{-- <li class="order-list-item">
                                 <h6>Order #124</h6>
                                 <p>Details: Consectetur adipiscing elit.</p>
                                 <small>Received: 15 minutes ago</small>
                             </li>
                             <li class="order-list-item">
-                                <h6>Order #125</h6> 
+                                <h6>Order #125</h6>
                                 <p>Details: Lorem ipsum dolor sit amet.</p>
                                 <small>Received: 10 minutes ago</small>
                             </li>
@@ -149,7 +151,7 @@
                                 <h6>Order #126</h6>
                                 <p>Details: Lorem ipsum dolor sit amet.</p>
                                 <small>Received: 10 minutes ago</small>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>

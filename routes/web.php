@@ -113,4 +113,4 @@ Route::get('chef/', 'Chef\DashboardController@index')->name('chef.dashboard');
 Route::get('chef/test', 'Chef\DashboardController@test')->name('chef.tes');
 
 Route::post('/chef/{chef}/edit', 'Chef\ProfileController@update')->name('EditProfile');
-Route::get('chef/update/', 'Chef\ProfileController@index')->name('Edit.Chef');
+// Route::get('chef/update/', 'Chef\ProfileController@index')->name('Edit.Chef');
