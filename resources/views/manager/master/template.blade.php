@@ -14,6 +14,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/kasir/css/adminlte.min.css')}}">
 
+  {{-- jquery --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
   {{-- link datatable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
   

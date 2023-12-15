@@ -26,7 +26,7 @@ class LoginController extends Controller
 
             if ($user->role == 'manager') {
                 // Redirect ke halaman manager
-                return redirect()->intended('/manager');
+                return redirect()->intended('/manager')->with('success', 'Anda Berhasil Login');
             } elseif ($user->role == 'kasir') {
                 // Redirect ke halaman kasir
                 return redirect()->intended('/kasir');
