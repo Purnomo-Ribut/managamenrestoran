@@ -9,9 +9,10 @@
 @section('content')
     <div class="row">
         <div class="col-12 col-md-8">
-            <div class="card">
-                <div class="card-body">
+            <div class="card">                
+                <div class="card-body">                    
                     @foreach ($orders as $order)
+                    <h4>Id Pesanan : <b>{{ $order->order_code }}</b> </h4>
                         <form action="{{ route('bayar', ['idCustomer' => $order->customer->id]) }}" method="POST">
                             @csrf
                             <div class="row mb-3">
@@ -26,9 +27,9 @@
                                         $totalHarga = 0;
                                     @endphp
 
-                                    @foreach ($data as $menu)
+                                    @foreach ($data as $harga)
                                         @php
-                                            $totalHarga += $menu->harga;
+                                            $totalHarga += $harga->price;
                                         @endphp
                                     @endforeach
                                     <input type="text" class="form-control" name="total" value="{{ $totalHarga }}"
@@ -61,7 +62,14 @@
                                 {{-- chef yang ada --}}
                                 <div class="col-12 col-md-6 mb-2">
                                     <label class="font-weight-normal">Chef</label>
-                                    <input type="text" class="form-control" name="chef" value="2" readonly>
+                                    {{-- <input type="text" class="form-control" name="chef" value="{{ $order->user->name }}" readonly> --}}
+                                    <select name="chef" class="form-control">
+                                        @foreach ($chef as $chef)
+                                            <option value="{{ $chef->id }}">
+                                                {{ $chef->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                             </div>
@@ -90,23 +98,26 @@
                     <h4>Ordered Menu</h4>
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th>Gambar</th>
+                            <tr>                                
                                 <th>Menu</th>                                
                                 <th>Deskripsi</th>
+                                <th>Qty</th>
                                 <th>Harga</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($data as $menu)
-                                <tr>
+                            @foreach ($data as $order)
+                                <tr>                                    
+                                    <td>{{ $order->nama }}</td>                                    
                                     <td>
-                                        <img src="https://hips.hearstapps.com/hmg-prod/images/classic-cheese-pizza-recipe-2-64429a0cb408b.jpg?crop=0.6666666666666667xw:1xh;center,top&resize=1200:*"
-                                            alt="menu" class="w-100 rounded-circle">
+                                        @if($order->description)
+                                            {{ $order->description }}
+                                        @else
+                                            <span class="text-muted">-</span>
+                                        @endif
                                     </td>
-                                    <td>{{ $menu->nama }}</td>                                    
-                                    <td>{{ $menu->description }}</td>
-                                    <td>{{ $menu->harga }}</td>
+                                    <td>{{ $order->qty }}</td>
+                                    <td>{{ $order->harga }}</td>
                                 </tr>
                             @endforeach
                             {{-- perhitungan jumlah total --}}
@@ -114,9 +125,9 @@
                                 $totalHarga = 0;
                             @endphp
 
-                            @foreach ($data as $menu)
+                            @foreach ($data as $harga)
                                 @php
-                                    $totalHarga += $menu->harga;
+                                    $totalHarga += $harga->price;
                                 @endphp
                             @endforeach
                             <tr>
