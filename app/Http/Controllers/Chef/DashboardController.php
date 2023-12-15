@@ -11,9 +11,11 @@ class DashboardController extends Controller
     
     public function index()
     {
-        $order=Order::all()->count();
+        $totalOrder= Order::all()->count();
+        $order = Order::all();
         $profil=Auth::user();
-        return view('chef.dashboard', compact('order','profil'));
+        //$detailOrder = Order::all();
+        return view('chef.dashboard', compact('order','totalOrder','profil'));
     }
 
     public function test()
