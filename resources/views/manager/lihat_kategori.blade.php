@@ -3,7 +3,22 @@
 @section('title', 'Manager | Data Kategori')
 
 @section('css')
-{{-- <link rel="stylesheet" href=""> --}}
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+<script>
+	confirmDelete = function(button) {
+		var url = $(button).data('url');
+		swal({
+			'title': 'Konfirmasi Hapus',
+			'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
+			'dangermode': true,
+			'buttons': true
+		}).then(function(value) {
+			if (value) {
+				window.location = url;
+			}
+		})
+	}
+</script>
 @endsection
 
 @section('content')
@@ -34,7 +49,7 @@
                         data-target="#editkategori{{$kt->id}}">
                         Edit
                     </button>
-                    <a href="{{ route('deleteKategori', ['id' => $kt->id]) }}" class="btn btn-primary">Hapus</a>
+                    <a onclick="confirmDelete(this)" data-url="{{ route('deleteKategori', ['id' => $kt->id]) }}" class="btn btn-danger" role="button">Hapus</a>
                 </td>
             </tr>
             @endforeach

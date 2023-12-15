@@ -4,6 +4,7 @@
 
 @section('addJavascript')
 @section('css')
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
 <script>
 	confirmDelete = function(button) {
 		var url = $(button).data('url');
@@ -20,6 +21,7 @@
 	}
 </script>
 {{-- <link rel="stylesheet" href=""> --}}
+
 @endsection
 
 @section('content')
