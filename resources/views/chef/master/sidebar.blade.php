@@ -26,7 +26,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-header">Profile</li>
           <li class="nav-item">
-            <a href="{{route('Edit.Chef')}}" class="nav-link"> 
+            <a href="#" class="nav-link"> 
             <i class="fa-solid fa-gear"></i>
               <p class="ml-2">
                 Setting

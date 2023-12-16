@@ -4,10 +4,24 @@
 
 @section('addJavascript')
 @section('css')
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
 <script>
-	
+	confirmDelete = function(button) {
+		var url = $(button).data('url');
+		swal({
+			'title': 'Konfirmasi Hapus',
+			'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
+			'dangermode': true,
+			'buttons': true
+		}).then(function(value) {
+			if (value) {
+				window.location = url;
+			}
+		})
+	}
 </script>
 {{-- <link rel="stylesheet" href=""> --}}
+
 @endsection
 
 @section('content')
@@ -49,7 +63,7 @@
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editMenu{{$menu->id}}">
                 Edit
             </button>
-            <a href="{{ route('deleteMenu', ['id' => $menu->id]) }}" class="btn btn-primary">Hapus</a>
+            <a onclick="confirmDelete(this)" data-url="{{ route('deleteMenu', ['id' => $menu->id]) }}" class="btn btn-danger" role="button">Hapus</a>
             </td>
           </tr>
           @endforeach
