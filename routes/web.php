@@ -92,20 +92,18 @@ Route::middleware('registered')->group(function() {
     Route::get('/cart/remove/{id}','Customer\OrderController@removeCart')->name('remove.cart');
     Route::post('/cart/checkout','Customer\OrderController@checkout')->name('checkout.cart');
     // Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
-
+    
     Route::post('/cart','Customer\OrderController@addCart')->name('addcart');
-
+    
     Route::get('/reservasi/flush','Customer\ReservationController@flush')->name('reservasi.logout');
-    Route::get('/ordered','Customer\OrderController@ordered')->name('ordered');
 });
 
 
 //Customer
-// Route::get('/menu/{id}','Customer\MenuController@index')->name('makanan.index');
+Route::get('/menu/{id}','Customer\MenuController@index')->name('makanan.index');
 Route::get('/tes', function () {
-    return view('Customer.cekout');
-})->name('cekout');
-
+    return view('Customer.modal');
+});
 
 // CHEF
 
@@ -113,4 +111,9 @@ Route::get('chef/', 'Chef\DashboardController@index')->name('chef.dashboard');
 Route::get('chef/test', 'Chef\DashboardController@test')->name('chef.tes');
 
 Route::post('/chef/{chef}/edit', 'Chef\ProfileController@update')->name('EditProfile');
+
+Route::get('chef/update/', 'Chef\ProfileController@index')->name('Edit.Chef');
+
+
 // Route::get('chef/update/', 'Chef\ProfileController@index')->name('Edit.Chef');
+
