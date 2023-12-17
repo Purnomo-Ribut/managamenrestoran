@@ -1,4 +1,4 @@
-@extends('customer.master.template')
+{{-- @extends('customer.master.template')
 
 
 @section('content')
@@ -76,4 +76,4 @@
             });
         });
     </script>
-@endsection
+@endsection --}}

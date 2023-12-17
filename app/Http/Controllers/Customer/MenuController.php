@@ -15,5 +15,20 @@ class MenuController extends Controller
         $carts = Cart::where('customer_id', $session['id'])->get();
         $categories = Kategori::all();
         return view('Customer.menu', compact('menu', 'carts', 'categories'));
+        //['menu' => 'menu']
+    }
+
+    public function search(Request $request){
+        if($request->has('search')){
+            $menu = Menu::where('nama', 'LIKE', '%'.$request->search.'%')->get();
+        }
+        else{
+            $menu = Menu::all();
+        }
+        $session = session()->get('reserved');
+        $carts = Cart::where('customer_id', $session['id'])->get();
+        $categories = Kategori::all();
+
+        return view('Customer.menu', compact('menu','carts','categories'));
     }
 }
