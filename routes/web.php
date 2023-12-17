@@ -82,6 +82,9 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::get('/menu/{menu}/delete', 'manager\MenuController@destroy')->name('deleteMenu');
     Route::get('/karyawan/{karyawans}/delete', 'manager\KaryawanController@destroy')->name('deleteKaryawan');
     Route::get('/chef/{chef}/delete', 'manager\ChefController@destroy')->name('deleteChef');
+
+    //logout
+    Route::post('/logout', 'LoginController@logout')->name('logout');
 });
 
 Route::get('/reservasi','Customer\ReservationController@index')->name('reservasi');
@@ -93,6 +96,8 @@ Route::middleware('registered')->group(function() {
     Route::post('/cart/checkout','Customer\OrderController@checkout')->name('checkout.cart');
     // Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
 
+
+    Route::get('/ordered','Customer\OrderController@ordered')->name('ordered');
     Route::post('/cart','Customer\OrderController@addCart')->name('addcart');
 
     Route::get('/reservasi/flush','Customer\ReservationController@flush')->name('reservasi.logout');
