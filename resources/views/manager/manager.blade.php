@@ -10,14 +10,14 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-4">
+      <div class="col-lg-4 col-md-6 mb-4">
         <div class="card bg-success text-white">
             <div class="card-header">
-                Pendapatan Bulan Ini
+                <i class="fas fa-dollar-sign"></i> Total Pendapatan
             </div>
             <div class="card-body">
-                <h5 class="card-title">Rp 1.000.000</h5>
-                <p class="card-text">Ini adalah jumlah pendapatan yang diperoleh pada bulan ini.</p>
+                <h5 class="card-title">@rupiah($totalHarga)</h5>
+                <p class="card-text">Ini adalah jumlah pendapatan yang diperoleh</p>
             </div>
         </div>
     </div>
@@ -31,23 +31,16 @@
           <thead>
               <tr>
                   <th scope="col">Nama Pelanggan</th>
-                  <th scope="col">Menu Yang Dibeli</th>
                   <th scope="col">Total Harga</th>
               </tr>
           </thead>
           <tbody>
+            @foreach ($orders as $order)
               <tr>
-                
-                  <td>John Doe</td>
-                  <td>Item A, Item B</td>
-                  <td>$150</td>
+                <td>{{$order->customer_id ? $order->customer->name : '-'}}</td>
+                <td>{{$order->total}}</td>
               </tr>
-              <tr>
-                  <td>Jane Smith</td>
-                  <td>Item C, Item D, Item E</td>
-                  <td>$300</td>
-              </tr>
-              <!-- Tambahkan baris sesuai dengan data yang ingin ditampilkan -->
+              @endforeach
           </tbody>
       </table>
       </div>

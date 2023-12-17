@@ -18,7 +18,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
   {{-- link datatable --}}
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
   
   @yield('css')
 </head>
@@ -48,7 +48,7 @@
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control form-control-navbar" id="filter" type="text" placeholder="Search" aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                   <i class="fas fa-search"></i>
@@ -61,9 +61,7 @@
           </form>
         </div>
       </li>
-
       <!-- Messages Dropdown Menu -->
-
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -144,6 +142,22 @@
 	<script>
 		new DataTable('#dataTable');
 	</script>
+
+  <script>
+    const filter = document.getElementById("filter");
+    const items = document.querySelectorAll("tbody tr");
+    filter.addEventListener("input", (e) => filterData(e.target.value));
+
+    function filterData(search) {
+        items.forEach((item) => {
+            if (item.innerText.toLowerCase().includes(search.toLowerCase())) {
+                item.classList.remove("d-none");
+            } else {
+                item.classList.add("d-none");
+            }
+        });
+    }
+  </script>
 
 @stack('scripts')
 </body>
