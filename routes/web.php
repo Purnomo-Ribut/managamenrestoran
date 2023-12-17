@@ -39,13 +39,13 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     
     Route::get('checkout/{idCustomer}', 'Kasir\CheckoutController@index')->name('kasir.checkout');
 
-    // tambahkan pembayaran kasir 
+    // tambahkan pembayaran kasir
     Route::post('checkout/{idCustomer}', 'Kasir\CheckoutController@store')->name('bayar');
 
-    // 
+    //
 });
 
- 
+
 // role manager (auth)
 Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () {
     Route::get('/', 'manager\DashboardManController@index')->name('manager_index');
@@ -82,6 +82,9 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::get('/menu/{menu}/delete', 'manager\MenuController@destroy')->name('deleteMenu');
     Route::get('/karyawan/{karyawans}/delete', 'manager\KaryawanController@destroy')->name('deleteKaryawan');
     Route::get('/chef/{chef}/delete', 'manager\ChefController@destroy')->name('deleteChef');
+
+    //logout
+    Route::post('/logout', 'LoginController@logout')->name('logout');
 });
 
 Route::get('/reservasi','Customer\ReservationController@index')->name('reservasi');
@@ -92,6 +95,8 @@ Route::middleware('registered')->group(function() {
     Route::get('/cart/remove/{id}','Customer\OrderController@removeCart')->name('remove.cart');
     Route::post('/cart/checkout','Customer\OrderController@checkout')->name('checkout.cart');
     // Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
+
+    Route::get('/ordered','Customer\OrderController@ordered')->name('ordered');
     
     Route::post('/cart','Customer\OrderController@addCart')->name('addcart');
     

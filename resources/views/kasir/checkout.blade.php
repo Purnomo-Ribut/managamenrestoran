@@ -9,8 +9,8 @@
 @section('content')
     <div class="row">
         <div class="col-12 col-md-8">
-            <div class="card">                
-                <div class="card-body">                    
+            <div class="card">
+                <div class="card-body">
                     @foreach ($orders as $order)
                     <h4>Id Pesanan : <b>{{ $order->order_code }}</b> </h4>
                         <form action="{{ route('bayar', ['idCustomer' => $order->customer->id]) }}" method="POST">
@@ -81,8 +81,6 @@
                                     <button type="submit" class="btn btn-warning w-100">Checkout Now</button>
                                 </div>
                             </div>
-
-                           
                         </form>
                     @endforeach
 
@@ -98,8 +96,8 @@
                     <h4>Ordered Menu</h4>
                     <table class="table">
                         <thead>
-                            <tr>                                
-                                <th>Menu</th>                                
+                            <tr>
+                                <th>Menu</th>
                                 <th>Deskripsi</th>
                                 <th>Qty</th>
                                 <th>Harga</th>
@@ -107,8 +105,8 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $order)
-                                <tr>                                    
-                                    <td>{{ $order->nama }}</td>                                    
+                                <tr>
+                                    <td>{{ $order->nama }}</td>
                                     <td>
                                         @if($order->description)
                                             {{ $order->description }}
