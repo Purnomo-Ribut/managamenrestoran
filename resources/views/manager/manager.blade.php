@@ -60,5 +60,5 @@
 @push('scripts')
 <script>
     let table = new DataTable('#myTable');
-  </script>
+</script>
 @endpush

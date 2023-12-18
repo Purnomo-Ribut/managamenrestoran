@@ -27,10 +27,14 @@
 @section('content')
 <body>
   <hr>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMenu">Tambah Menu</button>
-    <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a>
-    <hr>
-    <table class="table table-bordered table-hover">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMenu">Tambah Menu</button>
+  {{-- <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a> --}}
+  <hr>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="myTable">
         <thead>
           <tr>
             <th scope="col">No</th>
@@ -69,6 +73,10 @@
           @endforeach
         </tbody>
       </table>
+    </div>
+  </div>
+  </div>
+</div>
 
       
       @foreach ($menus as $menu)
@@ -288,5 +296,7 @@
 
 {{-- Javascript --}}
 @push('scripts')
-
+<script>
+  let table = new DataTable('#myTable');
+</script>
 @endpush
