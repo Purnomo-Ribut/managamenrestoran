@@ -48,12 +48,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('chef') }}" class="nav-link">
-                    <i class="nav-icon fa fa-cutlery"></i>
-                    <p>Data Chef</p>
-                </a>
-            </li>
-            <li class="nav-item">
                 <form id="logout-form" action="{{route('logout')}}" method="get"> 
                     @csrf
                 </form>
