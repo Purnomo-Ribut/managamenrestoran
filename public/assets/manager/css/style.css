@@ -5,9 +5,9 @@
 }
 
 /* Efek hover pada kartu */
-.card:hover {
+/* .card:hover {
   transform: scale(1.02);
-}
+} */
 
 /* Gaya untuk header kartu */
 .card-header {
