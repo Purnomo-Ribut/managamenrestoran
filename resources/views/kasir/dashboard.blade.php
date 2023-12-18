@@ -141,8 +141,7 @@
                                                     </tr>
                                                 @empty
                                                     <tr>
-                                                        <td colspan="4" class="text-center text-muted">Tidak ada data
-                                                            yang tersedia.</td>
+                                                        <td colspan="4" class="text-center text-muted">Belum Ada Transaksi.</td>
                                                     </tr>
                                                 @endforelse
                                             </tbody>

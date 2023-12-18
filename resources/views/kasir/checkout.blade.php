@@ -8,11 +8,11 @@
 
 @section('content')
     <div class="row">
-        <div class="col-12 col-md-8">
-            <div class="card">                
-                <div class="card-body">                    
+        <div class="col-12 col-lg-8">
+            <div class="card">
+                <div class="card-body">
                     @foreach ($orders as $order)
-                    <h4>Id Pesanan : <b>{{ $order->order_code }}</b> </h4>
+                        <h4>Id Pesanan : <b>{{ $order->order_code }}</b> </h4>
                         <form action="{{ route('bayar', ['idCustomer' => $order->customer->id]) }}" method="POST">
                             @csrf
                             <div class="row mb-3">
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
 
-                           
+
                         </form>
                     @endforeach
 
@@ -92,25 +92,26 @@
 
 
         {{-- konten list menu  --}}
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <h4>Ordered Menu</h4>
                     <table class="table">
                         <thead>
-                            <tr>                                
-                                <th>Menu</th>                                
+                            <tr>
+                                <th>Menu</th>
                                 <th>Deskripsi</th>
                                 <th>Qty</th>
                                 <th>Harga</th>
                             </tr>
                         </thead>
                         <tbody>
+                        <tfoot>
                             @foreach ($data as $order)
-                                <tr>                                    
-                                    <td>{{ $order->nama }}</td>                                    
+                                <tr>
+                                    <td>{{ $order->nama }}</td>
                                     <td>
-                                        @if($order->description)
+                                        @if ($order->description)
                                             {{ $order->description }}
                                         @else
                                             <span class="text-muted">-</span>
@@ -135,6 +136,7 @@
                                 <td>Total</td>
                                 <td>{{ $totalHarga }}</td>
                             </tr>
+                        </tfoot>
                         </tbody>
                     </table>
 
