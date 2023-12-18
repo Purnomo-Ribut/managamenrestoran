@@ -30,7 +30,7 @@
     <hr>
     <table class="table table-bordered table-hover">
         <thead>
-            <tr>
+            <tr class="text-center">
                 <th scope="col">No</th>
                 <th scope="col">Nama Kayawan</th>
                 <th scope="col">Alamat</th>
@@ -43,12 +43,29 @@
         <tbody>
             @foreach ($karyawans as $kar)
             <tr>
-                <th scope="row">{{$loop->index + 1}}</th>
-                <td>{{$kar->nama}}</td>
+                <th scope="row"  class="text-center">{{$loop->index + 1}}</th>
+                <td>{{$kar->name}}</td>
                 <td>{{$kar->alamat}}</td>
-                <td>{{$kar->kota}}</td>
-                <td>{{$kar->gender}}</td>
-                <td>{{$kar->divisi}}</td>
+                <td  class="text-center">{{$kar->kota}}</td>
+                <td  class="text-center">{{$kar->gender}}</td>
+                <td  class="text-center">
+                  @switch($kar->role)
+                      @case('manager')
+                          Manager
+                          @break
+              
+                      @case('kasir')
+                          Kasir
+                          @break
+
+                      @case('chef')
+                      Chef
+                      @break
+              
+                      @default
+                        Belum Ada
+                  @endswitch
+              </td>
                 <td>
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#editKar{{$kar->id}}">
@@ -78,7 +95,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama Karyawan</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="{{$kar->nama}}" placeholder="Nama Lengkap" required>
+                    <input type="text" class="form-control" id="nama" name="nama" value="{{$kar->name}}" placeholder="Nama Lengkap" required>
                   </div>
                   <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
@@ -91,13 +108,13 @@
                 <div class="mb-3">
                     <label for="gender" class="form-label">Jenis Kelamin</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="pria" value="pria" {{ $kar->gender === 'pria' ? 'checked' : '' }}>
+                        <input class="form-check-input" type="radio" name="gender" id="pria" value="Laki - Laki" {{ $kar->gender === 'Laki - Laki' ? 'checked' : '' }}>
                         <label class="form-check-label" for="pria">
                           Pria
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="wanita" value="wanita" {{ $kar->gender === 'wanita' ? 'checked' : '' }}>
+                        <input class="form-check-input" type="radio" name="gender" id="wanita" value="Perempuan" {{ $kar->gender === 'Perempuan' ? 'checked' : '' }}>
                         <label class="form-check-label" for="wanita">
                           Wanita
                         </label>
@@ -106,10 +123,9 @@
                 <div class="mb-3">
                     <label for="divisi" class="form-label">Divisi</label>
                     <select class="custom-select" name="divisi" id="divisi">
-                        <option value="Manager" {{ $kar->divisi === 'Manager' ? 'selected' : '' }}>Manager</option>
-                        <option value="Chef" {{ $kar->divisi === 'Chef' ? 'selected' : '' }}>Chef</option>
-                        <option value="Chef" {{ $kar->divisi === 'Kasir' ? 'selected' : '' }}>kasir</option>
-                        <option value="Pelayan" {{ $kar->divisi === 'Pelayan' ? 'selected' : '' }}>Pelayan</option>
+                        <option value="manager" {{ $kar->role === 'manager' ? 'selected' : '' }}>Manager</option>
+                        <option value="chef" {{ $kar->role === 'chef' ? 'selected' : '' }}>Chef</option>
+                        <option value="kasir" {{ $kar->role === 'kasir' ? 'selected' : '' }}>Kasir</option>                        
                     </select>
                 </div>
             </div>
@@ -166,12 +182,23 @@
                 <div class="mb-3">
                     <label for="divisi" class="form-label">Divisi</label>
                     <select class="custom-select" name="divisi" id="divisi">
-                        <option value="Manager">Manager</option>
-                        <option value="Chef">Chef</option>
-                        <option value="Kasir">Kasir</option>
-                        <option value="Pelayan" selected>Pelayan</option>
+                        <option value="manager">Manager</option>
+                        <option value="chef">Chef</option>
+                        <option value="kasir">Kasir</option>                        
                       </select>
                 </div>
+
+                <hr>
+                <h6>Akun Karyawan</h6>
+                <div class="mb-3">
+                  <label for="user" class="form-label">Username</label>
+                  <input type="email" class="form-control" id="user" name="user" placeholder="example@gmail.com" required autocomplete="off">
+                </div>
+                <div class="mb-3">
+                  <label for="pass" class="form-label">Password</label>
+                  <input type="text" class="form-control" id="pass" name="pass" placeholder="Masukkan Password " required autocomplete="off">
+                </div>
+
                 {{-- <div>
                   <label for="image">Profil</label>
                 </div> --}}

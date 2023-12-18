@@ -54,7 +54,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <form id="logout-form" action="{{route('logout')}}" method="post">
+                <form id="logout-form" action="{{route('logout')}}" method="get"> 
                     @csrf
                 </form>
                 <a href="javascript:void(0)" class="nav-link" onclick="$('#logout-form').submit();">
