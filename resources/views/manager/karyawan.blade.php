@@ -24,59 +24,67 @@
 @section('content')
 
 <body>
-    {{-- <h1>Lihat Data karyawan</h1> --}}
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addKar">Tambah Karyawan</button>
-    <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a>
-    <hr>
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr class="text-center">
-                <th scope="col">No</th>
-                <th scope="col">Nama Kayawan</th>
-                <th scope="col">Alamat</th>
-                <th scope="col">Kota</th>
-                <th scope="col">Jenis Kelamin</th>
-                <th scope="col">Divisi</th>
-                <th scope="col">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($karyawans as $kar)
-            <tr>
-                <th scope="row"  class="text-center">{{$loop->index + 1}}</th>
-                <td>{{$kar->name}}</td>
-                <td>{{$kar->alamat}}</td>
-                <td  class="text-center">{{$kar->kota}}</td>
-                <td  class="text-center">{{$kar->gender}}</td>
-                <td  class="text-center">
-                  @switch($kar->role)
-                      @case('manager')
-                          Manager
-                          @break
-              
-                      @case('kasir')
-                          Kasir
-                          @break
-
-                      @case('chef')
-                      Chef
-                      @break
-              
-                      @default
-                        Belum Ada
-                  @endswitch
-              </td>
-                <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#editKar{{$kar->id}}">
-                        Edit
-                    </button>
-                    <a onclick="confirmDelete(this)" data-url="{{ route('deleteKaryawan', ['id' => $kar->id]) }}" class="btn btn-danger" role="button">Hapus</a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+        {{-- <h1>Lihat Data karyawan</h1> --}}
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addKar">Tambah Karyawan</button>
+        {{-- <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a> --}}
+        <hr>
+        <div class="container">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+              <table class="table table-bordered table-hover" id="myTable">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Kayawan</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">Kota</th>
+                        <th scope="col">Jenis Kelamin</th>
+                        <th scope="col">Divisi</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($karyawans as $kar)
+                    <tr>
+                        <th scope="row"  class="text-center">{{$loop->index + 1}}</th>
+                        <td>{{$kar->name}}</td>
+                        <td>{{$kar->alamat}}</td>
+                        <td  class="text-center">{{$kar->kota}}</td>
+                        <td  class="text-center">{{$kar->gender}}</td>
+                        <td  class="text-center">
+                          @switch($kar->role)
+                              @case('manager')
+                                  Manager
+                                  @break
+                      
+                              @case('kasir')
+                                  Kasir
+                                  @break
+        
+                              @case('chef')
+                              Chef
+                              @break
+                      
+                              @default
+                                Belum Ada
+                          @endswitch
+                      </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#editKar{{$kar->id}}">
+                                Edit
+                            </button>
+                            <a onclick="confirmDelete(this)" data-url="{{ route('deleteKaryawan', ['id' => $kar->id]) }}" class="btn btn-danger" role="button">Hapus</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            </div>
+          </div>
+          </div>
+        </div>
 
     {{-- edit karyawan --}}
     @foreach ($karyawans as $kar)
@@ -238,5 +246,7 @@
 
 {{-- Javascript --}}
 @push('scripts')
-
+<script>
+  let table = new DataTable('#myTable');
+</script>
 @endpush
