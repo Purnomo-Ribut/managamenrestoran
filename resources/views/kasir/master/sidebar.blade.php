@@ -60,7 +60,7 @@
           {{-- logout --}}
           {{-- profil --}}
           <li class="nav-item">
-            <a href="{{route('logout')}}" class="nav-link">
+            <a href="{{route('logout1')}}" class="nav-link">
               {{-- <i class="nav-icon fa-solid fa-user"></i> --}}
               <i class="nav-icon fa fa-sign-out"></i>
               <p>

@@ -29,14 +29,15 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 // and login
 
 
-Route::get('/dashboard', function () {
-    return view('kasir.dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('kasir.dashboard');
+// });
 
 Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     Route::get('/', 'Kasir\DashboardController@index')->name('kasir.dashboard');
     Route::get('test', 'Kasir\DashboardController@test')->name('kasir.tes');
 
+    // checkout + detail
     Route::get('checkout/{idCustomer}', 'Kasir\CheckoutController@index')->name('kasir.checkout');
     Route::get('order', 'Kasir\OrderListController@index')->name('order.list');
     Route::get('order/detail/{idOrder}', 'Kasir\OrderListController@detail')->name('order.detail');
@@ -48,6 +49,9 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     
     // tambahkan pembayaran kasir
     Route::post('checkout/{idCustomer}', 'Kasir\CheckoutController@store')->name('bayar');
+
+    // logout
+    Route::get('/logout', 'LoginController@logout')->name('logout1');
 
     //
 });
