@@ -18,7 +18,6 @@
                     <th scope="col">Kategroi</th>
                     <th scope="col">Nama Menu</th>
                     <th scope="col">Harga</th>
-                    <th scope="col">Stock</th>
                     <th scope="col">Deskripsi</th>
                     <th scope="col">Gambar</th>
                 </tr>
@@ -31,7 +30,6 @@
                     <td>{{$orderDetail->menu->kategori ? $orderDetail->menu->kategori->nama : '-' }}</td>
                     <td>{{$orderDetail->menu->nama}}</td>
                     <td>@rupiah($orderDetail->menu->harga)</td>
-                    <td>{{$orderDetail->menu->stock}}</td>
                     <td>{{$orderDetail->menu->deskripsi}}</td>
                     <td>
                         <img src="{{ $orderDetail->menu->image ? asset('storage/assets/manager/gambarMenu/' . $orderDetail->menu->image) : asset('assets/img/no-image.png') }}" alt="gambarmenu"
