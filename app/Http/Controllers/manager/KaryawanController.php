@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\manager;
 
-use App\Karyawans;
+use App\user;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +15,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $karyawans = Karyawans::all();
+        $karyawans = user::all();
         return view('manager.karyawan', compact('karyawans'));
     }
 
@@ -44,18 +44,22 @@ class KaryawanController extends Controller
             'kota' => 'required',
             'gender' => 'required',
             'divisi' => 'required',
+            'user' => 'required',
+            'pass' => 'required',
             // Sesuaikan dengan field yang dibutuhkan
         ]);
 
         // Buat objek baru berdasarkan model Kategori
-        $karyawans = new Karyawans();
+        $karyawans = new user();
 
         // Isi field dengan data dari form
-        $karyawans->nama = $request->input('nama');
+        $karyawans->name = $request->input('nama');
         $karyawans->alamat = $request->input('alamat');
         $karyawans->kota = $request->input('kota');
         $karyawans->gender = $request->input('gender');
-        $karyawans->divisi = $request->input('divisi');
+        $karyawans->role = $request->input('divisi');
+        $karyawans->password = bcrypt( $request->input('pass'));
+        $karyawans->email = $request->input('user');
 
         $karyawans->save();
 
@@ -71,7 +75,7 @@ class KaryawanController extends Controller
      * @param  \App\Karyawans  $karyawans
      * @return \Illuminate\Http\Response
      */
-    public function show(Karyawans $karyawans)
+    public function show(user $karyawans)
     {
         //
     }
@@ -82,7 +86,7 @@ class KaryawanController extends Controller
      * @param  \App\Karyawans  $karyawans
      * @return \Illuminate\Http\Response
      */
-    public function edit(Karyawans $karyawans)
+    public function edit(user $karyawans)
     {
         //
     }
@@ -91,10 +95,10 @@ class KaryawanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Karyawans  $karyawans
+     * @param  \App\user  $karyawans
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Karyawans $karyawans)
+    public function update(Request $request, user $karyawans)
     {
         $request->validate([
             'nama' => 'required',
@@ -105,11 +109,11 @@ class KaryawanController extends Controller
             // Sesuaikan dengan field yang dibutuhkan
         ]);
 
-        $karyawans->nama = $request->nama;
+        $karyawans->name = $request->nama;
         $karyawans->alamat = $request->alamat;
         $karyawans->kota = $request->kota;
         $karyawans->gender = $request->gender;
-        $karyawans->divisi = $request->divisi;
+        $karyawans->role = $request->divisi;
 
         $save =  $karyawans->save();
       
@@ -126,7 +130,7 @@ class KaryawanController extends Controller
      * @param  \App\Karyawans  $karyawans
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Karyawans $karyawans)
+    public function destroy(user $karyawans)
     {
         $karyawans->delete();
         return redirect (route('karyawan')) -> with('success','Data Berhasil Di Hapus');
