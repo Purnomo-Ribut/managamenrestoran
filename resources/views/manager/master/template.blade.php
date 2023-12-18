@@ -36,7 +36,7 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    @include('kasir.master.navbar')
+    @include('manager.master.navbar')
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -109,10 +109,10 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2023 <a href="{{ route('manager_index') }}">ResToGo</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
+      <b>Version</b> 1.0.0
     </div>
   </footer>
 </div>
