@@ -36,16 +36,18 @@ Route::get('/dashboard', function () {
 Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     Route::get('/', 'Kasir\DashboardController@index')->name('kasir.dashboard');
     Route::get('test', 'Kasir\DashboardController@test')->name('kasir.tes');
-    
-    Route::get('checkout/{idCustomer}', 'Kasir\CheckoutController@index')->name('kasir.checkout');
 
-    // tambahkan pembayaran kasir 
+    Route::get('checkout/{idCustomer}', 'Kasir\CheckoutController@index')->name('kasir.checkout');
+    Route::get('order', 'Kasir\OrderListController@index')->name('order.list');
+    Route::get('order/detail/{idOrder}', 'Kasir\OrderListController@detail')->name('order.detail');
+
+    // tambahkan pembayaran kasir
     Route::post('checkout/{idCustomer}', 'Kasir\CheckoutController@store')->name('bayar');
 
-    // 
+    //
 });
 
- 
+
 // role manager (auth)
 Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () {
     Route::get('/', 'manager\DashboardManController@index')->name('manager_index');
@@ -82,6 +84,9 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::get('/menu/{menu}/delete', 'manager\MenuController@destroy')->name('deleteMenu');
     Route::get('/karyawan/{karyawans}/delete', 'manager\KaryawanController@destroy')->name('deleteKaryawan');
     Route::get('/chef/{chef}/delete', 'manager\ChefController@destroy')->name('deleteChef');
+
+    //logout
+    Route::post('/logout', 'LoginController@logout')->name('logout');
 });
 
 Route::get('/reservasi','Customer\ReservationController@index')->name('reservasi');
@@ -93,19 +98,19 @@ Route::middleware('registered')->group(function() {
     Route::post('/cart/checkout','Customer\OrderController@checkout')->name('checkout.cart');
     // Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
 
+
+    Route::get('/ordered','Customer\OrderController@ordered')->name('ordered');
     Route::post('/cart','Customer\OrderController@addCart')->name('addcart');
 
     Route::get('/reservasi/flush','Customer\ReservationController@flush')->name('reservasi.logout');
-    Route::get('/ordered','Customer\OrderController@ordered')->name('ordered');
 });
 
 
 //Customer
-// Route::get('/menu/{id}','Customer\MenuController@index')->name('makanan.index');
+Route::get('/menu/{id}','Customer\MenuController@index')->name('makanan.index');
 Route::get('/tes', function () {
-    return view('Customer.cekout');
-})->name('cekout');
-
+    return view('Customer.modal');
+});
 
 // CHEF
 
@@ -113,4 +118,11 @@ Route::get('chef/', 'Chef\DashboardController@index')->name('chef.dashboard');
 Route::get('chef/test', 'Chef\DashboardController@test')->name('chef.tes');
 
 Route::post('/chef/{chef}/edit', 'Chef\ProfileController@update')->name('EditProfile');
+
 Route::get('chef/update/', 'Chef\ProfileController@index')->name('Edit.Chef');
+
+Route::get('/search/menu', 'Customer\MenuController@search')->name('Search');
+
+
+// Route::get('chef/update/', 'Chef\ProfileController@index')->name('Edit.Chef');
+

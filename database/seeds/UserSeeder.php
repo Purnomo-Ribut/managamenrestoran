@@ -40,6 +40,7 @@ class UserSeeder extends Seeder
                 'kota' => 'Surabaya',
                 'gender' => 'Laki - Laki',
             ],
+
             [
                 'name' => 'Juna',
                 'email' => 'juna@gmail.com',

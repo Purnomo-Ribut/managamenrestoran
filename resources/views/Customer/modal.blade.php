@@ -73,7 +73,7 @@
                 </button>
             </div>
             <form action="{{route('addcart')}}" method="post">
-                @csrf
+                @csrf 
                 <div class="modal-body">
                     <input type="hidden" name="menu_id" id="menu_id" value="">
                     <input type="hidden" name="price" id="price" value="">
