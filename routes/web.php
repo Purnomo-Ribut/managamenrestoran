@@ -41,6 +41,11 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     Route::get('order', 'Kasir\OrderListController@index')->name('order.list');
     Route::get('order/detail/{idOrder}', 'Kasir\OrderListController@detail')->name('order.detail');
 
+    // profil 
+    Route::get('/profil', function () {
+        return view('kasir/profil.index');
+    })->name('profil');
+    
     // tambahkan pembayaran kasir
     Route::post('checkout/{idCustomer}', 'Kasir\CheckoutController@store')->name('bayar');
 
