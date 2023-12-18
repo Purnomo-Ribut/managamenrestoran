@@ -43,13 +43,13 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     Route::get('order/detail/{idOrder}', 'Kasir\OrderListController@detail')->name('order.detail');
 
     // profil 
-    Route::get('/profil', 'Kasir\ProfilController@index')->name('profil2');   
+    Route::get('/profile', 'Kasir\ProfilController@index')->name('profil2');   
     // update data profil dan user
-    Route::post('/profil/profil/{id}', 'Kasir\ProfilController@update')->name('profil.update2');
-    Route::post('/profil/user/{id}', 'Kasir\ProfilController@user')->name('user.update2');
+    Route::post('/profile/profil/{id}', 'Kasir\ProfilController@update')->name('profil.update2');
+    Route::post('/profile/user/{id}', 'Kasir\ProfilController@user')->name('user.update2');
     // update password
-    Route::post('/profil/password/{id}', 'Kasir\ProfilController@pass')->name('pass.update2');
-    
+    Route::post('/profile/password/{id}', 'Kasir\ProfilController@pass')->name('pass.update2');
+     
     // tambahkan pembayaran kasir
     Route::post('checkout/{idCustomer}', 'Kasir\CheckoutController@store')->name('bayar');
 
@@ -101,12 +101,12 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::get('/logout', 'LoginController@logout')->name('logout3');
 
     // profil 
-    Route::get('/profil', 'Kasir\ProfilController@index')->name('profil');   
+    Route::get('/profil', 'manager\ProfilController@index')->name('profil');   
     // update data profil dan user
-    Route::post('/profil/profil/{id}', 'Kasir\ProfilController@update')->name('profil.update');
-    Route::post('/profil/user/{id}', 'Kasir\ProfilController@user')->name('user.update');
+    Route::post('/profil/profil/{id}', 'manager\ProfilController@update')->name('profil.update');
+    Route::post('/profil/user/{id}', 'manager\ProfilController@user')->name('user.update');
     // update password
-    Route::post('/profil/password/{id}', 'Kasir\ProfilController@pass')->name('pass.update');
+    Route::post('/profil/password/{id}', 'manager\ProfilController@pass')->name('pass.update');
 });
 
 Route::get('/reservasi','Customer\ReservationController@index')->name('reservasi');
