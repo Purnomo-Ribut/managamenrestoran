@@ -1,11 +1,11 @@
-@extends('kasir.master.template')
+@extends('manager.master.template')
 
 @section('title', 'Halaman Profil')
 @section('css')
     <link rel="stylesheet" href="{{ asset('kasir/css/profil.css') }}">
 @endsection
 @section('header', 'Profile')
-@section('content')
+@section('content') 
     <div class="container">
         <div class="row gutters-sm">
             <div class="col-md-4 d-none d-md-block">

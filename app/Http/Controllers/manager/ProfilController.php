@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Kasir;
+namespace App\Http\Controllers\manager;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +12,7 @@ class ProfilController extends Controller
 {
     public function index()
     {
-        return view('kasir/profil.index');
+        return view('manager/profil');
     }
 
     // controller update 
@@ -36,9 +36,9 @@ class ProfilController extends Controller
         $simpan = $user->save();
 
         if ($simpan) {
-            return redirect()->route('profil2')->with('success', 'Profil berhasil diubah');
+            return redirect()->route('profil')->with('success', 'Profil berhasil diubah');
         }        
-        return redirect()->route('profil2')->with('error', 'Profil gagal diubah');
+        return redirect()->route('profil')->with('error', 'Profil gagal diubah');
     }
 
     // controller username
@@ -56,9 +56,9 @@ class ProfilController extends Controller
         $simpan = $user->save();
 
         if ($simpan) {
-            return redirect()->route('profil2')->with('berhasil', 'Username berhasil diubah');
+            return redirect()->route('profil')->with('berhasil', 'Username berhasil diubah');
         }        
-        return redirect()->route('profil2')->with('salah', 'Profil gagal diubah');
+        return redirect()->route('profil')->with('salah', 'Profil gagal diubah');
     }
 
     // password controller 
@@ -80,6 +80,6 @@ class ProfilController extends Controller
 
         $user->update(['password' => bcrypt($request->passbaru)]);
 
-        return redirect()->route('profil2')->with('benar', 'Password Berhasil Dirubah.');
+        return redirect()->route('profil')->with('benar', 'Password Berhasil Dirubah.');
     }
 }
