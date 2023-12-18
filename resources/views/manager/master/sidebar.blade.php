@@ -48,19 +48,19 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('chef') }}" class="nav-link">
-                    <i class="nav-icon fa fa-cutlery"></i>
-                    <p>Data Chef</p>
+                <a href="{{ route('profil') }}" class="nav-link">
+                    <i class="nav-icon fa-solid fa-user"></i>
+                    <p>Profil</p>
                 </a>
             </li>
             <li class="nav-item">
-                <form id="logout-form" action="{{route('logout')}}" method="get"> 
-                    @csrf
-                </form>
-                <a href="javascript:void(0)" class="nav-link" onclick="$('#logout-form').submit();">
+                <a href="{{route('logout3')}}" class="nav-link">
+                    {{-- <i class="nav-icon fa-solid fa-user"></i> --}}
                     <i class="nav-icon fa fa-sign-out"></i>
-                    <p>Logout</p>
-                </a>
+                    <p>
+                     Logout
+                    </p>
+                  </a>
             </li>
             {{-- <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
