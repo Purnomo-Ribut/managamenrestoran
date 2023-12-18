@@ -43,12 +43,12 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     Route::get('order/detail/{idOrder}', 'Kasir\OrderListController@detail')->name('order.detail');
 
     // profil 
-    Route::get('/profil', 'Kasir\ProfilController@index')->name('profil');   
+    Route::get('/profil', 'Kasir\ProfilController@index')->name('profil2');   
     // update data profil dan user
-    Route::post('/profil/profil/{id}', 'Kasir\ProfilController@update')->name('profil.update');
-    Route::post('/profil/user/{id}', 'Kasir\ProfilController@user')->name('user.update');
+    Route::post('/profil/profil/{id}', 'Kasir\ProfilController@update')->name('profil.update2');
+    Route::post('/profil/user/{id}', 'Kasir\ProfilController@user')->name('user.update2');
     // update password
-    Route::post('/profil/password/{id}', 'Kasir\ProfilController@pass')->name('pass.update');
+    Route::post('/profil/password/{id}', 'Kasir\ProfilController@pass')->name('pass.update2');
     
     // tambahkan pembayaran kasir
     Route::post('checkout/{idCustomer}', 'Kasir\CheckoutController@store')->name('bayar');

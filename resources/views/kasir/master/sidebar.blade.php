@@ -48,7 +48,7 @@
 
           {{-- profil --}}
           <li class="nav-item">
-            <a href="{{route('profil')}}" class="nav-link">
+            <a href="{{route('profil2')}}" class="nav-link">
               <i class="nav-icon fa-solid fa-user"></i>
               {{-- <i class="nav-icon fas fa-calendar-alt"></i> --}}
               <p>

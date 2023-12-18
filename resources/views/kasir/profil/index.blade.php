@@ -85,7 +85,7 @@
                             <h6>Informasi Data Diri</h6>
                             <hr>
 
-                            <form action="{{ route('profil.update', ['id' => Auth::user()->id]) }}" method="post">
+                            <form action="{{ route('profil.update2', ['id' => Auth::user()->id]) }}" method="post">
                                 {{-- alert sukses --}}
                                 @if (session('success'))
                                     <div class="alert alert-info alert-dismissible fade show" role="alert">
@@ -147,7 +147,7 @@
                         <div class="tab-pane" id="account">
                             <h6>Seting Username</h6>
                             <hr>
-                            <form action="{{ route('user.update', ['id' => Auth::user()->id]) }}" method="post">
+                            <form action="{{ route('user.update2', ['id' => Auth::user()->id]) }}" method="post">
                                 {{-- alert sukses --}}
                                 @if (session('berhasil'))
                                     <div class="alert alert-info alert-dismissible fade show" role="alert">
@@ -189,7 +189,7 @@
                         <div class="tab-pane" id="security">
                             <h6>Setting Password</h6>
                             <hr>
-                            <form method="post" action="{{ route('pass.update', ['id' => Auth::user()->id]) }}">
+                            <form method="post" action="{{ route('pass.update2', ['id' => Auth::user()->id]) }}">
                                 @csrf
                                 @if (session('benar'))
                                     <div class="alert alert-info alert-dismissible fade show" role="alert">

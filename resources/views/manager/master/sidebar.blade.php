@@ -53,8 +53,7 @@
             </li>
             
             <li class="nav-item">
-                <a href="{{route('logout3')}}" class="nav-link">
-                    {{-- <i class="nav-icon fa-solid fa-user"></i> --}}
+                <a href="{{route('logout3')}}" class="nav-link">                    
                     <i class="nav-icon fa fa-sign-out"></i>
                     <p>
                      Logout
