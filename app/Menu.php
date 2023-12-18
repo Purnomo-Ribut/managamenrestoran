@@ -25,4 +25,9 @@ class Menu extends Model
     {
         return $this->hasOne('App\Order');
     }
+
+    public function orderDetail()
+    {
+        return $this->hasMany('App\OrderDetail');
+    }
 }

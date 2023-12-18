@@ -38,6 +38,8 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     Route::get('test', 'Kasir\DashboardController@test')->name('kasir.tes');
 
     Route::get('checkout/{idCustomer}', 'Kasir\CheckoutController@index')->name('kasir.checkout');
+    Route::get('order', 'Kasir\OrderListController@index')->name('order.list');
+    Route::get('order/detail/{idOrder}', 'Kasir\OrderListController@detail')->name('order.detail');
 
     // tambahkan pembayaran kasir
     Route::post('checkout/{idCustomer}', 'Kasir\CheckoutController@store')->name('bayar');
