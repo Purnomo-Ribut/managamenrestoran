@@ -8,7 +8,9 @@
 
 @section('content')
     <div class="row">
+
         <div class="col-12 col-lg-8">
+
             <div class="card">
                 <div class="card-body">
                     @foreach ($orders as $order)
@@ -81,8 +83,6 @@
                                     <button type="submit" class="btn btn-warning w-100">Checkout Now</button>
                                 </div>
                             </div>
-
-
                         </form>
                     @endforeach
 

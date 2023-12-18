@@ -7,14 +7,37 @@
         <div class="card">
             <div class="card-body">
 
-                <div class="d-flex">
+
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex">
                     @foreach ($categories as $category)
+                    @if($category->nama == 'makanan')
                     <button type="button"
                         class="btn btn-warning mb-2 me-2 justify-content-center d-flex align-items-center"
                         onclick="window.location.href='{{route('makanan.index', $category->id)}}'">
                         <span class="material-symbols-outlined nav-menu">lunch_dining</span> {{$category->nama}}
                     </button>
+                    @else
+                    <button type="button"
+                        class="btn btn-warning mb-2 me-2 justify-content-center d-flex align-items-center"
+                        onclick="window.location.href='{{route('makanan.index', $category->id)}}'">
+                        <span class="material-symbols-outlined">water_medium</span> {{$category->nama}}
+                    </button>
+                    @endif
                     @endforeach
+                </div>
+
+                <div class="d-flex">
+                    <form action="/search/menu" method="GET">
+                        {{-- @csrf --}}
+                        <div class="row">
+                            <input type="search" name="search" class="form-control col" placeholder="Cari">
+                            <button type="submit" class="btn btn-primary col-3 ms-1 bg-warning">
+                                <span class="material-symbols-outlined">search</span>
+                            </button>
+                        </div>
+                      </form>
+                </div>
                 </div>
 
                 <div class="row">
