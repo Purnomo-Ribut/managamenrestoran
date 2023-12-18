@@ -25,6 +25,7 @@
         </div>
         <div class="card">
             <div class="card-body">
+              <div class="table-responsive">
                 <table class="table table-striped" id="myTable">
                     <thead>
                         <tr>
@@ -48,6 +49,7 @@
                     </tbody>
                 </table>
             </div>
+          </div>
         </div>
     </div>
     @include('sweetalert::alert')
@@ -56,5 +58,7 @@
 
 {{-- Javascript --}}
 @push('scripts')
-
+<script>
+    let table = new DataTable('#myTable');
+  </script>
 @endpush
