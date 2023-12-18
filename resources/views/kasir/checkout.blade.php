@@ -118,7 +118,8 @@
                                         @endif
                                     </td>
                                     <td>{{ $order->qty }}</td>
-                                    <td>{{ $order->harga }}</td>
+                                    <td>Rp {{ number_format($order->harga, 0, ',', '.') }}</td>
+
                                 </tr>
                             @endforeach
                             {{-- perhitungan jumlah total --}}
@@ -134,7 +135,8 @@
                             <tr>
                                 <td colspan="2"></td>
                                 <td>Total</td>
-                                <td>{{ $totalHarga }}</td>
+                                <td>Rp {{ number_format($totalHarga, 0, ',', '.') }}</td>
+                                {{-- <td>{{ $totalHarga }}</td> --}}
                             </tr>
                         </tfoot>
                         </tbody>
