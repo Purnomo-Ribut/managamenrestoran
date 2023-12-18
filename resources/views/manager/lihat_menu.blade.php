@@ -41,7 +41,6 @@
             <th scope="col">Kategroi</th>
             <th scope="col">Nama Menu</th>
             <th scope="col">Harga</th>
-            <th scope="col">Stock</th>
             <th scope="col">Deskripsi</th>
             <th scope="col">Gambar</th>
             <th scope="col">Aksi</th>
@@ -54,7 +53,6 @@
             <td>{{$menu->kategori ? $menu->kategori->nama : '-' }}</td>
             <td>{{$menu->nama}}</td>
             <td>Rp {{ number_format($menu->harga, 0, ',', '.') }}</td>
-            <td>{{$menu->stock}}</td>
             <td>{{$menu->deskripsi}}</td>
             <td>
               @if($menu->image)
@@ -107,10 +105,6 @@
                       <option value="{{$kt->id}}" {{ $kt -> id == $menu->id_kategori ? 'selected' : ''}}>{{$kt->nama}}</option>
                       @endforeach
                     </select>
-                </div>
-                <div class="mb-3">
-                    <label for="stock" class="form-label">Stock</label>
-                    <input type="number" class="form-control" id="stock" name="stock" value="{{$menu->stock}}"  placeholder="contoh : 20">
                 </div>
                 <div>
                   <label for="image">Gambar Menu</label>
@@ -188,10 +182,6 @@
                         <option value="{{ $kt->id }}">{{ $kt->nama }}</option>
                         @endforeach
                       </select>
-                </div>
-                <div class="mb-3">
-                    <label for="stock" class="form-label">Stock</label>
-                    <input type="number" class="form-control" id="stock" name="stock" placeholder="contoh : 20">
                 </div>
                 <div>
                   <label for="image">Gambar Menu</label>

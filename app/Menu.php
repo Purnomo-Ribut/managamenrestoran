@@ -12,7 +12,6 @@ class Menu extends Model
         'id_kategori',
         'nama',
         'harga',
-        'stock',
         'image',
         'deskripsi'
     ];

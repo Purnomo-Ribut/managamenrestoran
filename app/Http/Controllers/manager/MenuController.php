@@ -56,7 +56,6 @@ class MenuController extends Controller
             'nama' => 'required',
             'id_kategori' => 'required',
             'harga' => 'required',
-            'stock' => 'required',
             'image' => 'mimes:jpeg,png,jpg|max:1024',
             'deskripsi' => 'required',
             // Sesuaikan dengan field yang dibutuhkan
@@ -120,7 +119,6 @@ class MenuController extends Controller
             'nama' => 'required',
             'id_kategori' => 'required',
             'harga' => 'required',
-            'stock' => 'required',
             'image' => 'mimes:jpeg,png,jpg|max:1024',
             'deskripsi' => 'required',
             // Sesuaikan dengan field yang dibutuhkan
@@ -150,7 +148,6 @@ class MenuController extends Controller
         $menu->id_kategori = $request->input('id_kategori');
         $menu->nama = $request->input('nama');
         $menu->harga = $request->input('harga');
-        $menu->stock = $request->input('stock');
         $menu->image = $imageName;
         $menu->deskripsi = $request->input('deskripsi');
         $menu->save();

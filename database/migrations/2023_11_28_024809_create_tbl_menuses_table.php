@@ -19,7 +19,6 @@ class CreateTblMenusesTable extends Migration
             $table->foreign('id_kategori')->references('id')->on('tbl_kategoris')->onDelete('cascade');
             $table->string('nama',255);
             $table->integer('harga');
-            $table->integer('stock');
             $table->string('image')->nullable();
             $table->text('deskripsi');
             $table->timestamps();
