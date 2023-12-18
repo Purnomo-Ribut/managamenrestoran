@@ -173,7 +173,7 @@
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="wanita" value="wanita">
+                        <input class="form-check-input" type="radio" name="gender" id="Perempuan" value="Perempuan">
                         <label class="form-check-label" for="wanita">
                           Wanita
                         </label>
