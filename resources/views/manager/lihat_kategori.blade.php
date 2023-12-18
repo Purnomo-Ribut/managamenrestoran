@@ -24,37 +24,44 @@
 @section('content')
 
 <body>
-    {{-- <h1>Lihat Daftar Kategori</h1> --}}
-    <hr>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">Tambah Kategori</button>
-    <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a>
-    <hr>
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th scope="col">No</th>
-                <th scope="col">Nama Kategori</th>
-                <th scope="col">Deskripsi</th>
-                <th scope="col">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($kategoris as $kt)
-            <tr>
-                <th scope="row">{{$loop->index + 1}}</th>
-                <td>{{$kt->nama}}</td>
-                <td>{{$kt->deskripsi}}</td>
-                <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#editkategori{{$kt->id}}">
-                        Edit
-                    </button>
-                    <a onclick="confirmDelete(this)" data-url="{{ route('deleteKategori', ['id' => $kt->id]) }}" class="btn btn-danger" role="button">Hapus</a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+  <hr>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">Tambah Kategori</button>
+  {{-- <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a> --}}
+  <hr>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+        <table class="table table-bordered table-hover" id="myTable">
+          <thead>
+              <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Nama Kategori</th>
+                  <th scope="col">Deskripsi</th>
+                  <th scope="col">Aksi</th>
+              </tr>
+          </thead>
+          <tbody>
+              @foreach ($kategoris as $kt)
+              <tr>
+                  <th scope="row">{{$loop->index + 1}}</th>
+                  <td>{{$kt->nama}}</td>
+                  <td>{{$kt->deskripsi}}</td>
+                  <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal"
+                          data-target="#editkategori{{$kt->id}}">
+                          Edit
+                      </button>
+                      <a onclick="confirmDelete(this)" data-url="{{ route('deleteKategori', ['id' => $kt->id]) }}" class="btn btn-danger" role="button">Hapus</a>
+                  </td>
+              </tr>
+              @endforeach
+          </tbody>
+      </table>
+      </div>
+    </div>
+    </div>
+  </div>
 
     {{-- modal edit --}}
     @foreach ($kategoris as $kt)
@@ -130,5 +137,7 @@
 
 {{-- Javascript --}}
 @push('scripts')
-
+<script>
+  let table = new DataTable('#myTable');
+</script>
 @endpush
