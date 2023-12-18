@@ -1,4 +1,4 @@
-@extends('kasir.master.template')
+@extends('kasir.master.profil.template')
 
 @section('title', 'Halaman Profil')
 @section('css')
@@ -231,24 +231,20 @@
                                     <input type="text" class="form-control" id="passbaru" name="passbaru" required
                                         autocomplete="off">
                                 </div>
-
                                 <div class="form-group">
                                     <label for="passbaru2">Konfirmasi Password Baru</label>
                                     <input type="text" class="form-control" id="passbaru2"
                                         name="passbaru_confirmation" required autocomplete="off">
                                 </div>
-
                                 <div class="d-flex justify-content-end">
                                     <input class="btn btn-info w-25" type="submit" value="Ubah Password">
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
+    @include('sweetalert::alert')
 @endsection

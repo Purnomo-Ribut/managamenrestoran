@@ -14,7 +14,8 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/kasir/css/adminlte.min.css')}}">
 
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+  {{-- link datatable --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
   
   @yield('css')
 </head>
@@ -44,7 +45,7 @@
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control form-control-navbar" id="filter" type="search" placeholder="Search" aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                   <i class="fas fa-search"></i>
@@ -74,12 +75,15 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">@yield('header', 'Dashboard')</h1>
+            @auth
+            <h1 class="m-0">Selamat Datang, {{Auth::user()->name}} </h1>
+            @endauth
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li> --}}
+              <li class="breadcrumb-item"><a href="{{ route('manager_index') }}">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">Profil</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -125,14 +129,36 @@
 <!-- AdminLTE -->
 <script src="{{asset('assets/kasir/js/adminlte.js')}}"></script>
 
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-
 <!-- OPTIONAL SCRIPTS -->
 {{-- <script src="plugins/chart.js/Chart.min.js"></script> --}}
 <!-- AdminLTE for demo purposes -->
 {{-- <script src="{{asset('assets/kasir/js/demo.js')}}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-{{-- <script src="{{asset('assets/kasir/js/pages/dashboard3.js')}}"></script> --}}
+<script src="{{asset('assets/kasir/js/pages/dashboard3.js')}}"></script>
+
+{{-- script dattables --}}
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+	{{-- <script>
+		new DataTable('#dataTable');
+	</script> --}}
+  <script>
+    const filter = document.getElementById("filter");
+    const items = document.querySelectorAll("tbody tr");
+    filter.addEventListener("input", (e) => filterData(e.target.value));
+
+    function filterData(search) {
+        items.forEach((item) => {
+            if (item.innerText.toLowerCase().includes(search.toLowerCase())) {
+                item.classList.remove("d-none");
+            } else {
+                item.classList.add("d-none");
+            }
+        });
+    }
+  </script>
 
 @stack('scripts')
 </body>
