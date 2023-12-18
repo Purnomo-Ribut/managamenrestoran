@@ -36,7 +36,7 @@
                 <thead>
                     <tr class="text-center">
                         <th scope="col">No</th>
-                        <th scope="col">Nama Kayawan</th>
+                        <th scope="col">Nama Karyawan</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">Kota</th>
                         <th scope="col">Jenis Kelamin</th>
@@ -133,7 +133,7 @@
                     <select class="custom-select" name="divisi" id="divisi">
                         <option value="manager" {{ $kar->role === 'manager' ? 'selected' : '' }}>Manager</option>
                         <option value="chef" {{ $kar->role === 'chef' ? 'selected' : '' }}>Chef</option>
-                        <option value="kasir" {{ $kar->role === 'kasir' ? 'selected' : '' }}>Kasir</option>                        
+                        <option value="kasir" {{ $kar->role === 'kasir' ? 'selected' : '' }}>Kasir</option>
                     </select>
                 </div>
             </div>
@@ -192,7 +192,7 @@
                     <select class="custom-select" name="divisi" id="divisi">
                         <option value="manager">Manager</option>
                         <option value="chef">Chef</option>
-                        <option value="kasir">Kasir</option>                        
+                        <option value="kasir">Kasir</option>
                       </select>
                 </div>
 
