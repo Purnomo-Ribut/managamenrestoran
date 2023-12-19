@@ -13,15 +13,15 @@
                     @foreach ($categories as $category)
                     @if($category->nama == 'makanan')
                     <button type="button"
-                        class="btn btn-warning mb-2 me-2 justify-content-center d-flex align-items-center"
+                        class="btn btn-kuning mb-2 me-2 justify-content-center d-flex align-items-center"
                         onclick="window.location.href='{{route('makanan.index', $category->id)}}'">
                         <span class="material-symbols-outlined nav-menu">lunch_dining</span> {{$category->nama}}
                     </button>
                     @else
                     <button type="button"
-                        class="btn btn-warning mb-2 me-2 justify-content-center d-flex align-items-center"
+                        class="btn btn-kuning mb-2 me-2 justify-content-center d-flex align-items-center"
                         onclick="window.location.href='{{route('makanan.index', $category->id)}}'">
-                        <span class="material-symbols-outlined">water_medium</span> {{$category->nama}}
+                        <span class="material-symbols-outlined fw-bold">water_medium</span> {{$category->nama}}
                     </button>
                     @endif
                     @endforeach
@@ -32,8 +32,8 @@
                         {{-- @csrf --}}
                         <div class="row">
                             <input type="search" name="search" class="form-control col" placeholder="Cari">
-                            <button type="submit" class="btn btn-primary col-3 ms-1 bg-warning">
-                                <span class="material-symbols-outlined">search</span>
+                            <button type="submit" class="btn col-3 ms-1 search">
+                                <span class="material-symbols-outlined fw-bold">search</span>
                             </button>
                         </div>
                       </form>
@@ -42,20 +42,24 @@
 
                 <div class="row">
                     @foreach ($menu as $item)
-                    <div class="col-6 col-md-3 mb-3">
+                    <div class="col-6 col-md-3 mb-3 tabel">
                         <div class="card border-0 shadow">
-                            <img src="{{asset('storage/assets/manager/gambarMenu/'.$item->image)}}"
-                                class="card-img-top w-100" alt="Pizza Original">
+                            <div class="d-flex justify-content-center">
+                                <img src="{{asset('storage/assets/manager/gambarMenu/'.$item->image)}}"
+                                class="card-img-top foto" alt="Gambar Tidak ada">
+                            </div>
                             <div class="card-body p-1">
-                                <div class="content-makanan">
+                                <div class="content-makanan d-flex justify-content-center">
                                     <h1 class="Judul">{{$item->nama}}</h1>
-                                    <h2 class="makanan">@rupiah($item->harga)</h2>
-                                    <p class="makanan">{{$item->deskripsi}}</p>
                                 </div>
+                                <div class="content-makanan d-flex justify-content-center">
+                                    <h2 class="makanan">@rupiah($item->harga)</h2>
+                                </div>
+                                    {{-- <p class="makanan">{{$item->deskripsi}}</p> --}}
                                 <div>
                                     <button data-target="#addCart" data-toggle="modal" data-product-name="{{$item->nama}}" data-id-menu="{{$item->id}}"
                                         data-price-menu="{{$item->harga}}"
-                                        class="add-button btn btn-warning d-flex justify-content-center align-items-center"
+                                        class="add-button btn btn-kuning d-flex align-items-center container-fluid justify-content-center"
                                         style="font-size: 12px;">ADD <span class="material-symbols-outlined"
                                             style="font-size: 15px; font-weight: bold">add</span>
                                     </button>
@@ -68,7 +72,7 @@
             </div>
             <div class="container-fluid d-flex justify-content-end">
                 <a data-toggle="modal" data-target="#myModal">
-                    <div class="kuning d-flex justify-content-center align-items-center bg-warning mb-2 p-2 shadow">
+                    <div class="cart d-flex justify-content-center align-items-center btn-kuning mb-2 p-2 shadow">
                         <span class="material-symbols-outlined cart">shopping_cart</span>
                     </div>
                 </a>
