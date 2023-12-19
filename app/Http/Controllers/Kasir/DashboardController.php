@@ -31,8 +31,37 @@ class DashboardController extends Controller
             ->select('customer_id')
             ->take(3)
             ->get();
+
+        // =====================================================
+        // Mengambil total pendapatan hari ini
+        $pendapatan = DB::table('tbl_orders')
+        ->whereDate('created_at', now())
+        ->sum('total');
+       
+        $targetPendapatan = 1000000; // 1 juta rupiah
+
+        $persendp = ($pendapatan / $targetPendapatan) * 100;
+        // =====================================================
+
+        // =====================================================
+        // Mengambil jumlah orderan hari ini
+        $orderan = DB::table('tbl_orders')
+        ->whereDate('created_at', now())
+        ->count();
+
+        $persenord = ($orderan / 10) * 100;
+        // =====================================================
+
+        // =====================================================
+        // mengambil data kustomer 
+        $pelanggan = DB::table('tbl_customers')
+        ->whereDate('created_at', now())
+        ->count();
+
+        $persenpl = ($pelanggan / 10 ) * 100;
+        // =====================================================
     
-        return view('kasir.dashboard', compact('chef', 'ordersBelumDibayar', 'ordersSudahDibayar'));
+        return view('kasir.dashboard', compact('chef', 'ordersBelumDibayar', 'ordersSudahDibayar', 'pendapatan', 'orderan', 'persenord', 'persendp', 'pelanggan', 'persenpl'));
         
     }
 

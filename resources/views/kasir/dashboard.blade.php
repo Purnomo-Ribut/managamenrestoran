@@ -20,40 +20,73 @@
         <div class="col-12 col-md-9">
             <div class="row">
                 <div class="col-12 col-md-4">
-                    <div class="card bg-primary position-relative">
-                        <div class="card-body">
-                            <h5 class="card-title">Total pesanan</h5>
-                            <div class="icon">
-                                <i class="fa-regular fa-note-sticky" style="color: #000000;"></i>
+                    <div class="card dk l-bg-cherry">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="fas fa-shopping-cart"></i></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">Orderan Hari Ini</h5>
                             </div>
-                            <div class="card-text">
-                                <h3 class="pt-3">80</h3>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h2 class="d-flex align-items-center mb-0">
+                                        {{ $orderan }}
+                                    </h2>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>{{ $persenord}}% <i class="fa fa-arrow-up"></i></span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="card bg-info position-relative">
-                        <div class="card-body">
-                            <h5 class="card-title">Total pesanan</h5>
-                            <div class="icon">
-                                <i class="fa-regular fa-note-sticky" style="color: #000000;"></i>
-                            </div>
-                            <div class="card-text">
-                                <h3 class="pt-3">80</h3>
+                            <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="{{$persenord}}"
+                                    aria-valuemin="0" aria-valuemax="100" style="width:{{ $persenord}}%;"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
-                    <div class="card bg-secondary position-relative">
-                        <div class="card-body">
-                            <h5 class="card-title">Total pesanan</h5>
-                            <div class="icon">
-                                <i class="fa-regular fa-note-sticky" style="color: #000000;"></i>
+                    <div class="card dk l-bg-blue-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">Pelanggan</h5>
                             </div>
-                            <div class="card-text">
-                                <h3 class="pt-3">80</h3>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h2 class="d-flex align-items-center mb-0">
+                                        {{ $pelanggan }}
+                                    </h2>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>{{ $persenpl }}% <i class="fa fa-arrow-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="{{ $persenpl }}"
+                                    aria-valuemin="0" aria-valuemax="100" style="width: {{ $persenpl }}%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card dk l-bg-orange-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">Pendapatan Sekarang</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h2 class="d-flex align-items-center mb-1" style="font-size: 25px; margin-top:5px;">
+                                        Rp {{ number_format($pendapatan, 0, ',', '.') }}
+                                    </h2>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>{{ $persendp }}% <i class="fa fa-arrow-up"></i></span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="{{ $persendp }}"
+                                    aria-valuemin="0" aria-valuemax="100" style="width: {{ $persendp }}%;"></div>
                             </div>
                         </div>
                     </div>
@@ -141,7 +174,8 @@
                                                     </tr>
                                                 @empty
                                                     <tr>
-                                                        <td colspan="4" class="text-center text-muted">Belum Ada Transaksi.</td>
+                                                        <td colspan="4" class="text-center text-muted">Belum Ada
+                                                            Transaksi.</td>
                                                     </tr>
                                                 @endforelse
                                             </tbody>
@@ -155,6 +189,8 @@
                 </div>
             </div>
         </div>
+
+        {{-- konten daftar Chef --}}
         <div class="col-12 col-md-3">
             <a href="{{ route('reservasi') }}" class="btn btn-warning w-100 mb-3">Buat pesanan</a>
             <div class="card">
@@ -165,13 +201,13 @@
                     </div>
                     <div class="card-text">
                         @if (count($chef) > 0)
-                            <table class="table table-borderless">                                
+                            <table class="table table-borderless">
                                 <tbody>
                                     @foreach ($chef as $item)
                                         <tr>
                                             <td class="w-25 ">
-                                                <img src="{{ asset('assets/kasir/img/user2-160x160.jpg') }}" alt="chef"
-                                                    class="w-100 rounded-circle">
+                                                <img src="{{ asset('assets/kasir/img/user2-160x160.jpg') }}"
+                                                    alt="chef" class="w-100 rounded-circle">
                                             </td>
                                             <td class="">{{ $item->name }}</td>
                                         </tr>

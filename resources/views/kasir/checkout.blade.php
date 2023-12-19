@@ -9,7 +9,7 @@
 @section('content')
     <div class="row">
 
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-7">
 
             <div class="card">
                 <div class="card-body">
@@ -92,17 +92,17 @@
 
 
         {{-- konten list menu  --}}
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-lg-5">
             <div class="card">
                 <div class="card-body">
                     <h4>Ordered Menu</h4>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Menu</th>
+                                <th style="width:20px;">Menu</th>
                                 <th>Deskripsi</th>
                                 <th>Qty</th>
-                                <th>Harga</th>
+                                <th style="width:100px;" class="text-center"">Harga</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -118,7 +118,7 @@
                                         @endif
                                     </td>
                                     <td>{{ $order->qty }}</td>
-                                    <td>Rp {{ number_format($order->harga, 0, ',', '.') }}</td>
+                                    <td class="text-right">Rp {{ number_format($order->harga, 0, ',', '.') }}</td>
 
                                 </tr>
                             @endforeach
@@ -135,7 +135,7 @@
                             <tr>
                                 <td colspan="2"></td>
                                 <td>Total</td>
-                                <td>Rp {{ number_format($totalHarga, 0, ',', '.') }}</td>
+                                <td  class="text-right font-weight-bold text-red" >Rp {{ number_format($totalHarga, 0, ',', '.') }}</td>
                                 {{-- <td>{{ $totalHarga }}</td> --}}
                             </tr>
                         </tfoot>
