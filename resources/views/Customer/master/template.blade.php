@@ -23,6 +23,7 @@
     <title>Document</title>
 </head>
 <body>
+  @include('sweetalert::alert')
     <nav class="navbar navbar-expand navbar-white navbar-light " style="background-color: #f4ce14;">
         <!-- Left navbar links -->
         @include('Customer.master.navbar')

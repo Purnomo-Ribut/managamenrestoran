@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\OrderDetail;
+use Alert;
+use App\Kategori;
 
 class OrderController extends Controller
 {
@@ -24,6 +26,7 @@ class OrderController extends Controller
         $saved = $cart->save();
 
         if($saved){
+            Alert::toast('Berhasil dimasukan ke keranjang', 'success');
             return redirect()->back();
         }
 
@@ -73,10 +76,11 @@ class OrderController extends Controller
     public function ordered()
     {
         $session = session()->get('reserved');
+        $category = Kategori::first();
         $order = Order::where('customer_id', $session['id'])->first();
         $totalPrice = $order->orderDetails->sum('price');
         // dd($totalPrice);
-        return view('Customer.cekout', compact('order', 'totalPrice'));
+        return view('Customer.cekout', compact('order', 'totalPrice', 'category'));
     }
     
 }
