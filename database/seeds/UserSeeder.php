@@ -29,19 +29,19 @@ class UserSeeder extends Seeder
             //     'role' => 'kasir',
             // ],
 
-//             [
-//                 'name' => 'Purnomo',
-//                 'email' => 'kasir@gmail.com',
-//                 'password' => bcrypt('kasir'),
-//                 'role' => 'kasir',
-//             ],
+            // [
+            //     'name' => 'Purnomo',
+            //     'email' => 'kasir@gmail.com',
+            //     'password' => bcrypt('kasir'),
+            //     'role' => 'kasir',
+            // ],
 
             // [
             //     'name' => 'chef',
             //     'email' => 'chef@gmail.com',
             //     'password' => bcrypt('chef'),
             //     'role' => 'chef',
-            // ]
+            // ],
             [
                 'name' => 'Juna',
                 'email' => 'juna@gmail.com',
