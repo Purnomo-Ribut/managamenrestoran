@@ -63,7 +63,7 @@ body {
     cursor: pointer;
 }
 
-.search,.btn-kuning{
+.search,.btn-kuning,.modal-header{
     background-color: #F4CE14 !important;
 }
 
@@ -77,14 +77,15 @@ body {
     object-fit: contain;
 }
 
+.search{
+    flex: 0 0 25%;
+    max-width: 20%;
+}
 
-/* @media (max-width: 768px) {
-    .img-food {
-        width: 180px !important;
-        height: auto !important;
-    }
 
-    .card-body h1{
-        font-size: 18px;
+
+@media (max-width: 768px) {
+    .search{
+        max-width: 25%;
     }
-  } */
+  }
