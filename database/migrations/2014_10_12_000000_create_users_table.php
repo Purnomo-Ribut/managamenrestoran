@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role');
-            // nambah ini 
+            // nambah ini
             $table->string('alamat',255);
             $table->string('kota',255);
             $table->string('gender',255);
