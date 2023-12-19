@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     
+    
     public function index()
     {
 
@@ -16,11 +17,6 @@ class DashboardController extends Controller
         $totalOrder = Order::where('user_id', $profil->id)->count();
         $order = Order::where('user_id', $profil->id)->get();
         return view('chef.dashboard', compact('order','totalOrder','profil',));
-//         $totalOrder= Order::all()->count();
-//         $order = Order::all();
-//         $profil=Auth::user();
-//         //$detailOrder = Order::all();
-//         return view('chef.dashboard', compact('order','totalOrder','profil'));
 
     }
 

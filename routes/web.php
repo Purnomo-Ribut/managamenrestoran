@@ -143,6 +143,5 @@ Route::get('chef/update/', 'Chef\ProfileController@index')->name('Edit.Chef');
 
 Route::get('/search/menu', 'Customer\MenuController@search')->name('Search');
 
-
 // Route::get('chef/update/', 'Chef\ProfileController@index')->name('Edit.Chef');
 
