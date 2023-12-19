@@ -106,11 +106,36 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::post('/profil/user/{id}', 'manager\ProfilController@user')->name('user.update');
     // update password
     Route::post('/profil/password/{id}', 'manager\ProfilController@pass')->name('pass.update');
+
+     // logout
+     Route::get('/logout', 'LoginController@logout')->name('logout2');
 });
 
-Route::get('/reservasi','Customer\ReservationController@index')->name('reservasi');
-Route::post('/reservasi','Customer\ReservationController@store')->name('reservasi.store');
+// CHEF
+Route::prefix('chef')->middleware('auth', 'role:chef')->group(function () {
+    Route::get('/', 'Chef\DashboardController@index')->name('chef.dashboard');
 
+
+    // profil
+    Route::get('/profile', 'Chef\ProfilController@index')->name('profil3');
+    // update data profil dan user
+    Route::post('/profile/profil/{id}', 'Chef\ProfilController@update')->name('profil.update3');
+    Route::post('/profile/user/{id}', 'Chef\ProfilController@user')->name('user.update3');
+    // update password
+    Route::post('/profile/password/{id}', 'Chef\ProfilController@pass')->name('pass.update3');
+
+     // logout
+     Route::get('/logout', 'LoginController@logout')->name('logout3');
+
+    Route::get('chef/test', 'Chef\DashboardController@test')->name('chef.tes');
+
+    Route::post('/chef/{chef}/edit', 'Chef\ProfileController@update')->name('EditProfile');
+
+    Route::get('chef/update/', 'Chef\ProfileController@index')->name('Edit.Chef');
+});
+
+
+// proses pesan 
 Route::middleware('registered')->group(function() {
     Route::get('/menu/{id?}','Customer\MenuController@index')->name('makanan.index');
     Route::get('/cart/remove/{id}','Customer\OrderController@removeCart')->name('remove.cart');
@@ -124,6 +149,11 @@ Route::middleware('registered')->group(function() {
     Route::get('/reservasi/flush','Customer\ReservationController@flush')->name('reservasi.logout');
 });
 
+// reservasi
+Route::get('/reservasi','Customer\ReservationController@index')->name('reservasi');
+Route::post('/reservasi','Customer\ReservationController@store')->name('reservasi.store');
+
+// ordered
 Route::get('/ordered','Customer\OrderController@ordered')->name('ordered');
 
 //Customer
@@ -132,16 +162,13 @@ Route::get('/tes', function () {
     return view('Customer.modal');
 });
 
-// CHEF
-
-Route::get('chef/', 'Chef\DashboardController@index')->name('chef.dashboard');
-Route::get('chef/test', 'Chef\DashboardController@test')->name('chef.tes');
-
-Route::post('/chef/{chef}/edit', 'Chef\ProfileController@update')->name('EditProfile');
-
-Route::get('chef/update/', 'Chef\ProfileController@index')->name('Edit.Chef');
-
+// searching menu
 Route::get('/search/menu', 'Customer\MenuController@search')->name('Search');
+
+
+
+
+
 
 // Route::get('chef/update/', 'Chef\ProfileController@index')->name('Edit.Chef');
 
