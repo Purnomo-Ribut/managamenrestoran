@@ -75,7 +75,6 @@ class MenuController extends Controller
         $menu->id_kategori = $request->input('id_kategori');
         $menu->nama = $request->input('nama');
         $menu->harga = $request->input('harga');
-        $menu->stock = $request->input('stock');
         $menu->image = $imageName;
         $menu->deskripsi = $request->input('deskripsi');
         $menu->save();
