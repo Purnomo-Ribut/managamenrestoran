@@ -51,7 +51,7 @@ class DashboardController extends Controller
 
         $persenord = ($orderan / 50) * 100; 
         // =====================================================
-
+ 
         // =====================================================
         // mengambil data kustomer 
         $pelanggan = DB::table('tbl_customers')
