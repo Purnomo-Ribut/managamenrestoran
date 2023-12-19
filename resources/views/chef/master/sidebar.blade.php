@@ -34,12 +34,14 @@
             </a>
           </li>
 
-          <li class="nav-header">Logout</li>
+          {{-- logout --}}
+          {{-- profil --}}
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
-            <i class="fa-solid fa-right-from-bracket"></i>
-              <p class="ml-2">
-                Logout
+            <a href="{{route('logout1')}}" class="nav-link">
+              {{-- <i class="nav-icon fa-solid fa-user"></i> --}}
+              <i class="nav-icon fa fa-sign-out"></i>
+              <p>
+               Logout
               </p>
             </a>
           </li>

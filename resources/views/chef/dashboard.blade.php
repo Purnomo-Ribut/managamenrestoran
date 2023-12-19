@@ -3,56 +3,7 @@
 @section('title', 'Dashboard Chef')
 
 @section('css')
-    {{-- Add your custom CSS if needed --}}
-    <style>
-        .card {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
 
-        .card-body {
-            padding: 20px;
-        }g
-
-        .btn-create-order {
-            background-color: #ffc107;
-            color: #fff;
-            border: none;
-        }
-
-        .card-icon {
-            font-size: 2rem;
-            margin-right: 10px;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-        }
-
-        .card-value {
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
-
-        .order-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .order-list-item {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-bottom: 8px;
-            padding: 10px;
-        }
-
-        .order-list-item h6 {
-            margin-bottom: 5px;
-        }
-
-    </style>
 @endsection
 
 @section('content')
@@ -68,17 +19,18 @@
         </div>
         <!-- Profile Section End -->
 
-        <div class="col-12 col-md-9">
-            <div class="row">
-                <!-- Completed Orders -->
-                <div class="col-12 col-md-6">
-                    <div class="card text-white bg-success mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <i class="fas fa-check-circle card-icon"></i> Completed Orders
-                            </h5>
-                            <p class="card-text">Review completed orders.</p>
-                            <div class="card-value">{{$totalOrder}}</div>
+        <div class="col-12 col-md-4">
+            <div class="card dk l-bg-cherry card text-white bg-success">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-check-circle card-icon"></i></div>
+                    <div class="mb-5">
+                        <h5 class="card-title mb-0">Completed Orders</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                {{$totalOrder}}
+                            </h2>
                         </div>
                     </div>
                 </div>
@@ -92,46 +44,28 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-text">
-                        <div class="d-flex flex-column w-200 list-order" id="order-list">
-                            <div class="input-box mb-3">
-                                <h5 class="card-title">
-                                    <i class="fas fa-check-circle card-icon"></i> Completed Order
-                                </h5>
-                                <div class="card-body md-4 overflow-auto" style="max-height: 25rem;">
-                                    <ul class="order-list">
+                        <div class="d-flex flex-column list-order" id="order-list">
+                            <div class="card-body md-4 overflow-auto" style="max-height: 50rem;">
+                                <table class="table" id="order-list-table">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Customer Name</th>
+                                            <th>Details</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         @foreach ($order as $item)
-                                            <li class="order-list-item">
-                                                <h6>{{$loop->index + 1}}</h6>
-                                                <p>{{$item->customer->name}}</p>
-                                                <small>Received: 10 minutes ago</small>
-                                                <button class="btn btn-success btn-sm ml-2">Finish Cook</button>
-                                            </li>
+                                            <tr>
+                                                <td>{{$loop->index + 1}}</td>
+                                                <td>{{$item->customer->name}}</td>
+                                                <td>Detail: Menu yang diorder</td>
+                                                <td>Selesai</td>
+                                            </tr>
                                         @endforeach
-                                        <br>
-                                        <li class="order-list-item">
-                                            <h6>Order #125</h6>
-                                            <p>Details: Pizza       (1)
-                                                        Americano   (1)
-                                            </p>
-                                            <small>Received: 10 minutes ago</small>
-                                            <button class="btn btn-success btn-sm ml-2">Finish Cook</button>
-                                        </li>
-                                        <li class="order-list-item">
-                                            <h6>Order #126</h6>
-                                            <p>Details: Pizza Cheese      (2)
-                                                        Cola 1L           (1)</p>
-                                            <small>Received: 10 minutes ago</small>
-                                            <button class="btn btn-success btn-sm ml-2">Finish Cook</button>
-                                        </li>
-                                        <li class="order-list-item">
-                                            <h6>Order #127</h6>
-                                            <p>Details: Pizza Cheese      (5)
-                                                        Americano         (5)</p>
-                                            <small>Received: 10 minutes ago</small>
-                                            <button class="btn btn-success btn-sm ml-2">Finish Cook</button>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -140,9 +74,10 @@
         </div>
     </div>
     <!-- List Order Section End -->
+
 @endsection
 
 {{-- Javascript --}}
 @push('scripts')
-    
+  
 @endpush
