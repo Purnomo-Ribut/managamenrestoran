@@ -98,6 +98,7 @@ Route::middleware('registered')->group(function() {
     Route::get('/reservasi/flush','Customer\ReservationController@flush')->name('reservasi.logout');
 });
 
+Route::get('/ordered','Customer\OrderController@ordered')->name('ordered');
 
 //Customer
 Route::get('/menu/{id}','Customer\MenuController@index')->name('makanan.index');

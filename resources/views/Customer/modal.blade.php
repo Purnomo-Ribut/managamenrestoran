@@ -104,11 +104,11 @@
 
                     <div class="form-group">
                         <label>Catatan</label>
-                        <textarea class="form-control" name="desc" rows="3"></textarea>
+                        <textarea class="form-control" name="desc" rows="3" required placeholder="Masukan Keterangan pedas atau tidak dll."></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary">Save changes</button>
+                    <button class="btn btn-success">Save changes</button>
                 </div>
             </form>
         </div>

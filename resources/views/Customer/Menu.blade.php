@@ -3,6 +3,19 @@
 
 @section('content')
 <section class="pt-5">
+
+    <div class="d-flex justify-content-center">
+        <form action="/search/menu" method="GET">
+            {{-- @csrf --}}
+            <div class="row">
+                <input type="search" name="search" class="form-control col" placeholder="Cari">
+                <button type="submit" class="btn ms-1 search">
+                    <span class="material-symbols-outlined fw-bold">search</span>
+                </button>
+            </div>
+          </form>
+    </div>
+
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
@@ -26,21 +39,9 @@
                     @endif
                     @endforeach
                 </div>
-
-                <div class="d-flex">
-                    <form action="/search/menu" method="GET">
-                        {{-- @csrf --}}
-                        <div class="row">
-                            <input type="search" name="search" class="form-control col" placeholder="Cari">
-                            <button type="submit" class="btn col-3 ms-1 search">
-                                <span class="material-symbols-outlined fw-bold">search</span>
-                            </button>
-                        </div>
-                      </form>
-                </div>
                 </div>
 
-                <div class="row">
+                <div class="row py-3">
                     @foreach ($menu as $item)
                     <div class="col-6 col-md-3 mb-3 tabel">
                         <div class="card border-0 shadow">
@@ -59,7 +60,7 @@
                                 <div>
                                     <button data-target="#addCart" data-toggle="modal" data-product-name="{{$item->nama}}" data-id-menu="{{$item->id}}"
                                         data-price-menu="{{$item->harga}}"
-                                        class="add-button btn btn-kuning d-flex align-items-center container-fluid justify-content-center"
+                                        class="add-button btn btn-kuning d-flex align-items-center container-fluid justify-content-center mt-3"
                                         style="font-size: 12px;">ADD <span class="material-symbols-outlined"
                                             style="font-size: 15px; font-weight: bold">add</span>
                                     </button>
