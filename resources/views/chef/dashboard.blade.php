@@ -70,19 +70,6 @@
 
         <div class="col-12 col-md-9">
             <div class="row">
-                <!-- In Progress Orders -->
-                <div class="col-12 col-md-6">
-                    <div class="card text-white bg-warning mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title text-white">
-                                <i class="fas fa-spinner card-icon"></i> In Progress
-                            </h5>
-                            <p class="card-text text-white">View orders currently in progress.</p>
-                            <div class="card-value text-white">{{$totalOrder}}</div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Completed Orders -->
                 <div class="col-12 col-md-6">
                     <div class="card text-white bg-success mb-3">
@@ -140,13 +127,6 @@
                                             <h6>Order #127</h6>
                                             <p>Details: Pizza Cheese      (5)
                                                         Americano         (5)</p>
-                                            <small>Received: 10 minutes ago</small>
-                                            <button class="btn btn-success btn-sm ml-2">Finish Cook</button>
-                                        </li>
-                                        <li class="order-list-item">
-                                            <h6>Order #128</h6>
-                                            <p>Details: Pizza       (1)
-                                                        Lemon Tea   (1)</p>
                                             <small>Received: 10 minutes ago</small>
                                             <button class="btn btn-success btn-sm ml-2">Finish Cook</button>
                                         </li>
