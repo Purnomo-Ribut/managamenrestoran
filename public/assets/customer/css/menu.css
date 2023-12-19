@@ -58,9 +58,23 @@ body {
     font-weight: bold !important;
 }
 
-.kuning{
+.cart{
     border-radius: 30px;
     cursor: pointer;
+}
+
+.search,.btn-kuning{
+    background-color: #F4CE14 !important;
+}
+
+.tabel{
+    display: grid;
+}
+
+.foto{
+    width: 50%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
 }
 
 

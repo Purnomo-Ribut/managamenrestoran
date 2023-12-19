@@ -29,20 +29,32 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 // and login
 
 
-Route::get('/dashboard', function () {
-    return view('kasir.dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('kasir.dashboard');
+// });
 
 Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     Route::get('/', 'Kasir\DashboardController@index')->name('kasir.dashboard');
     Route::get('test', 'Kasir\DashboardController@test')->name('kasir.tes');
 
+    // checkout + detail
     Route::get('checkout/{idCustomer}', 'Kasir\CheckoutController@index')->name('kasir.checkout');
     Route::get('order', 'Kasir\OrderListController@index')->name('order.list');
     Route::get('order/detail/{idOrder}', 'Kasir\OrderListController@detail')->name('order.detail');
 
+    // profil 
+    Route::get('/profile', 'Kasir\ProfilController@index')->name('profil2');   
+    // update data profil dan user
+    Route::post('/profile/profil/{id}', 'Kasir\ProfilController@update')->name('profil.update2');
+    Route::post('/profile/user/{id}', 'Kasir\ProfilController@user')->name('user.update2');
+    // update password
+    Route::post('/profile/password/{id}', 'Kasir\ProfilController@pass')->name('pass.update2');
+     
     // tambahkan pembayaran kasir
     Route::post('checkout/{idCustomer}', 'Kasir\CheckoutController@store')->name('bayar');
+
+    // logout
+    Route::get('/logout', 'LoginController@logout')->name('logout1');
 
     //
 });
@@ -86,7 +98,15 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::get('/chef/{chef}/delete', 'manager\ChefController@destroy')->name('deleteChef');
 
     //logout
-    Route::post('/logout', 'LoginController@logout')->name('logout');
+    Route::get('/logout', 'LoginController@logout')->name('logout3');
+
+    // profil 
+    Route::get('/profil', 'manager\ProfilController@index')->name('profil');   
+    // update data profil dan user
+    Route::post('/profil/profil/{id}', 'manager\ProfilController@update')->name('profil.update');
+    Route::post('/profil/user/{id}', 'manager\ProfilController@user')->name('user.update');
+    // update password
+    Route::post('/profil/password/{id}', 'manager\ProfilController@pass')->name('pass.update');
 });
 
 Route::get('/reservasi','Customer\ReservationController@index')->name('reservasi');

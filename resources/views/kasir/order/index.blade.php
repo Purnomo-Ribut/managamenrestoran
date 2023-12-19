@@ -14,12 +14,12 @@
         <table class="table table-striped" id="order-table">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">Kode Orderan</th>
-                    <th scope="col">Metode Pembayaran</th>
-                    <th scope="col">Total Pembayaran</th>
-                    <th scope="col">Action</th>
+                    <th scope="col" class="text-center">No</th>
+                    <th scope="col" class="text-center">Customer</th>
+                    <th scope="col" class="text-center">Kode Orderan</th>
+                    <th scope="col" class="text-center">Metode Pembayaran</th>
+                    <th scope="col" class="text-center">Total Pembayaran</th>
+                    <th scope="col" class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,9 +27,10 @@
                 <tr>
                     <th scope="row">{{$loop->index + 1}}</th>
                     <td>{{$order->customer->name}}</td>
-                    <td>{{$order->order_code}}</td>
-                    <td>{{$order->metode_pembayaran}}</td>
-                    <td>{{$order->total}}</td>
+                    <td class="text-center">{{$order->order_code}}</td>
+                    <td class="text-center">{{$order->metode_pembayaran}}</td>
+                    <td>Rp {{ number_format($order->total, 0, ',', '.') }}</td>
+                    {{-- <td>{{$order->total}}</td> --}}
                     <td>
                         <a href="{{route('order.detail', $order->id)}}" class="btn btn-info">Detail</a>
                     </td>

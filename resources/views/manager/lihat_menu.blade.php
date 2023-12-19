@@ -27,17 +27,20 @@
 @section('content')
 <body>
   <hr>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMenu">Tambah Menu</button>
-    <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a>
-    <hr>
-    <table class="table table-bordered table-hover">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMenu">Tambah Menu</button>
+  {{-- <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a> --}}
+  <hr>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="myTable">
         <thead>
           <tr>
             <th scope="col">No</th>
             <th scope="col">Kategroi</th>
             <th scope="col">Nama Menu</th>
             <th scope="col">Harga</th>
-            <th scope="col">Stock</th>
             <th scope="col">Deskripsi</th>
             <th scope="col">Gambar</th>
             <th scope="col">Aksi</th>
@@ -50,7 +53,6 @@
             <td>{{$menu->kategori ? $menu->kategori->nama : '-' }}</td>
             <td>{{$menu->nama}}</td>
             <td>Rp {{ number_format($menu->harga, 0, ',', '.') }}</td>
-            <td>{{$menu->stock}}</td>
             <td>{{$menu->deskripsi}}</td>
             <td>
               @if($menu->image)
@@ -69,6 +71,10 @@
           @endforeach
         </tbody>
       </table>
+    </div>
+  </div>
+  </div>
+</div>
 
       
       @foreach ($menus as $menu)
@@ -99,10 +105,6 @@
                       <option value="{{$kt->id}}" {{ $kt -> id == $menu->id_kategori ? 'selected' : ''}}>{{$kt->nama}}</option>
                       @endforeach
                     </select>
-                </div>
-                <div class="mb-3">
-                    <label for="stock" class="form-label">Stock</label>
-                    <input type="number" class="form-control" id="stock" name="stock" value="{{$menu->stock}}"  placeholder="contoh : 20">
                 </div>
                 <div>
                   <label for="image">Gambar Menu</label>
@@ -180,10 +182,6 @@
                         <option value="{{ $kt->id }}">{{ $kt->nama }}</option>
                         @endforeach
                       </select>
-                </div>
-                <div class="mb-3">
-                    <label for="stock" class="form-label">Stock</label>
-                    <input type="number" class="form-control" id="stock" name="stock" placeholder="contoh : 20">
                 </div>
                 <div>
                   <label for="image">Gambar Menu</label>
@@ -288,5 +286,7 @@
 
 {{-- Javascript --}}
 @push('scripts')
-
+<script>
+  let table = new DataTable('#myTable');
+</script>
 @endpush

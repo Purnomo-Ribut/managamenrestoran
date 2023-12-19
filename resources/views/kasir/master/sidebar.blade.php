@@ -10,11 +10,8 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{asset('assets/kasir/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-        </div>
         <div class="info">
-          <a href="#" class="d-block">{{Auth::user()->name}}</a>
+          <a href="{{route('profil2')}}" class="d-block">{{Auth::user()->name}}</a>
         </div>
       </div>
     @endauth
@@ -24,13 +21,47 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+         
+          {{-- dashbord --}}
+          <li class="nav-item">
+            <a href="{{route('kasir.dashboard')}}" class="nav-link">
+              {{-- <i class="nav-icon fas fa-calendar-alt"></i> --}}
+              <i class="nav-icon  fa-solid fa-gauge"></i>
+              <p>
+               Dashboard
+              </p>
+            </a>
+          </li>
+
+          {{-- transaksi --}}
           <li class="nav-item">
             <a href="{{route('order.list')}}" class="nav-link">
               <i class="nav-icon fas fa-calendar-alt"></i>
               <p>
-                List Order transaksi
+               Transaksi
+              </p>
+            </a>
+          </li>
+
+          {{-- profil --}}
+          <li class="nav-item">
+            <a href="{{route('profil2')}}" class="nav-link">
+              <i class="nav-icon fa-solid fa-user"></i>
+              {{-- <i class="nav-icon fas fa-calendar-alt"></i> --}}
+              <p>
+               Profil
+              </p>
+            </a>
+          </li>
+
+          {{-- logout --}}
+          {{-- profil --}}
+          <li class="nav-item">
+            <a href="{{route('logout1')}}" class="nav-link">
+              {{-- <i class="nav-icon fa-solid fa-user"></i> --}}
+              <i class="nav-icon fa fa-sign-out"></i>
+              <p>
+               Logout
               </p>
             </a>
           </li>

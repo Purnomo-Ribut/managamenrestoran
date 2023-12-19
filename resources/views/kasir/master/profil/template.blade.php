@@ -45,7 +45,7 @@
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control form-control-navbar" id="filter" type="search" placeholder="Search" aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                   <i class="fas fa-search"></i>
@@ -66,7 +66,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('manager.master.sidebar')
+  @include('kasir.master.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -75,13 +75,15 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard data Chef</h1>
+            @auth
+            <h1 class="m-0">Selamat Datang, {{Auth::user()->name}} </h1>
+            @endauth
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('manager_index') }}">Home</a></li>
               <li class="breadcrumb-item active">Dashboard</li>
-              <li class="breadcrumb-item active">Chef</li>
+              <li class="breadcrumb-item active">Profil</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -109,10 +111,10 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2023 <a href="{{ route('manager_index') }}">ResToGo</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
+      <b>Version</b> 1.0.0
     </div>
   </footer>
 </div>
@@ -139,9 +141,24 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
-	<script>
+	{{-- <script>
 		new DataTable('#dataTable');
-	</script>
+	</script> --}}
+  <script>
+    const filter = document.getElementById("filter");
+    const items = document.querySelectorAll("tbody tr");
+    filter.addEventListener("input", (e) => filterData(e.target.value));
+
+    function filterData(search) {
+        items.forEach((item) => {
+            if (item.innerText.toLowerCase().includes(search.toLowerCase())) {
+                item.classList.remove("d-none");
+            } else {
+                item.classList.add("d-none");
+            }
+        });
+    }
+  </script>
 
 @stack('scripts')
 </body>
