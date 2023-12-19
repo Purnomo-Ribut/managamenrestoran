@@ -59,11 +59,13 @@ class CheckoutController extends Controller
             $order->metode_pembayaran = $request->metode;
             $order->save();
 
-            return redirect()->route('kasir.dashboard');
+            // return redirect()->route('kasir.dashboard');
+            // gas ke halaman struk 
+            return redirect()->route('struk', ['idCustomer' => $idCustomer]);
         } else {            
             return redirect()->route('kasir.dashboard')->with('error', 'Pesanan Tidak Ada');
         }
-    }
+    } 
 
     /**
      * Display the specified resource.

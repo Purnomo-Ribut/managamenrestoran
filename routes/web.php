@@ -27,8 +27,8 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 // and login
 
 
-// Route::get('/dashboard', function () {
-//     return view('kasir.dashboard');
+// Route::get('/struk', function () {
+//     return view('kasir/struk.index');
 // });
 
 Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
@@ -50,6 +50,10 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
 
     // tambahkan pembayaran kasir
     Route::post('checkout/{idCustomer}', 'Kasir\CheckoutController@store')->name('bayar');
+
+    // struk
+    Route::get('struk/{idCustomer}', 'Kasir\StrukController@index')->name('struk');
+    
 
     // logout
     Route::get('/logout', 'LoginController@logout')->name('logout1');

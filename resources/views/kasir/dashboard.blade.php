@@ -92,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row"> 
                 <div class="col-12 col-lg-6">
                     <div class="card">
                         <div class="card-body">
@@ -168,7 +168,7 @@
                                                         <td class="text-center"><b>{{ $loop->iteration }}</b></td>
                                                         <td class="transaction-name">{{ $sudah->customer->name }}</td>
                                                         <td class="text-center">
-                                                            <a href="#"
+                                                            <a href="{{ route('order.detail', ['id' => $sudah->id]) }}"
                                                                 class="btn btn-info font-weight-bold">Detail</a>
                                                         </td>
                                                     </tr>
@@ -192,7 +192,10 @@
 
         {{-- konten daftar Chef --}}
         <div class="col-12 col-md-3">
-            <a href="{{ route('reservasi') }}" class="btn btn-warning w-100 mb-3">Buat pesanan</a>
+            <a href="{{ route('reservasi') }}" class="btn btn-warning w-100 mb-3" style="font-size: 20px; padding: 15px; border-radius: 10px; text-align: center; color: #fff; text-decoration: none; ">
+                Pesan Sekarang
+            </a>
+            
             <div class="card">
                 <div class="card-body">
                     <div class="card-title w-100 ">
@@ -201,16 +204,22 @@
                     </div>
                     <div class="card-text">
                         @if (count($chef) > 0)
-                            <table class="table table-borderless">
+                            <table class="table table-borderless" style="margin-left: 12px;">
                                 <tbody>
                                     @foreach ($chef as $item)
-                                        <tr>
-                                            <td class="w-25 ">
-                                                <img src="{{ asset('assets/kasir/img/user2-160x160.jpg') }}"
-                                                    alt="chef" class="w-100 rounded-circle">
-                                            </td>
-                                            <td class="">{{ $item->name }}</td>
-                                        </tr>
+                                    <tr>
+                                        <td>
+                                            <b>{{ $loop->iteration }}</b>
+                                        </td>                                        
+                                        <td>
+                                            {{ ucwords($item->name) }}                                                                                                                                        
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-success">Hadir</span>
+                                        </td>
+                                    </tr>
+                                    
+                                    
                                     @endforeach
                                 </tbody>
                             </table>
