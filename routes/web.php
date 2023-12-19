@@ -13,9 +13,7 @@
 use App\Http\Controllers\manager\KaryawanController;
 use App\Http\Controllers\manager\KategoriController;
 use App\Http\Controllers\manager\MenuController;
-use App\Http\Controllers\manager\DashboardManController;
 use App\Http\Controllers\manager\PelangganController;
-use App\Http\Controllers\manager\ChefController;
 
 // rute awal
 // Route::get('/', function () {
@@ -42,14 +40,14 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     Route::get('order', 'Kasir\OrderListController@index')->name('order.list');
     Route::get('order/detail/{idOrder}', 'Kasir\OrderListController@detail')->name('order.detail');
 
-    // profil 
-    Route::get('/profile', 'Kasir\ProfilController@index')->name('profil2');   
+    // profil
+    Route::get('/profile', 'Kasir\ProfilController@index')->name('profil2');
     // update data profil dan user
     Route::post('/profile/profil/{id}', 'Kasir\ProfilController@update')->name('profil.update2');
     Route::post('/profile/user/{id}', 'Kasir\ProfilController@user')->name('user.update2');
     // update password
     Route::post('/profile/password/{id}', 'Kasir\ProfilController@pass')->name('pass.update2');
-     
+
     // tambahkan pembayaran kasir
     Route::post('checkout/{idCustomer}', 'Kasir\CheckoutController@store')->name('bayar');
 
@@ -73,14 +71,12 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     //data karyawan
     Route::get('/karyawan', [KaryawanController::class, 'index'])->name('karyawan');
     // data chef
-    Route::get('/chefDash', [ChefController::class, 'index'])->name('chef');
-
+    
 
     // input data
     Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
     Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
     Route::post('/karyawan', [KaryawanController::class, 'store'])->name('karyawan.store');
-    Route::post('/chefDash', [ChefController::class, 'store'])->name('chef.store');
 
     //edit data menu
     Route::post('/manager/{menu}/edit', 'manager\MenuController@update')->name('updateMenu');
@@ -89,7 +85,6 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     // edit kar
     Route::post('/karyawan/{karyawans}/edit', 'manager\KaryawanController@update')->name('updateKaryawan');
     // edit chef
-    Route::post('/chef/{chef}/edit', 'manager\ChefController@update')->name('updateChef');
 
 
     Route::get('/kategori/{kategori}/delete', 'manager\KategoriController@destroy')->name('deleteKategori');
@@ -100,8 +95,8 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     //logout
     Route::get('/logout', 'LoginController@logout')->name('logout3');
 
-    // profil 
-    Route::get('/profil', 'manager\ProfilController@index')->name('profil');   
+    // profil
+    Route::get('/profil', 'manager\ProfilController@index')->name('profil');
     // update data profil dan user
     Route::post('/profil/profil/{id}', 'manager\ProfilController@update')->name('profil.update');
     Route::post('/profil/user/{id}', 'manager\ProfilController@user')->name('user.update');

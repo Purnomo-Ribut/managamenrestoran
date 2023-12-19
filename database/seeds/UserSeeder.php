@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
     {
         DB::table('tbl_users')->insert([
             [
-                'name' => 'Aexander Martin',
+                'name' => 'Alexander Martin',
                 'email' => 'manager@gmail.com',
                 'password' => bcrypt('manager'),
                 'role' => 'manager',
@@ -41,26 +41,26 @@ class UserSeeder extends Seeder
                 'gender' => 'Laki - Laki',
             ],
 
-            [
-                'name' => 'kasir',
-                'email' => 'kasir@gmail.com',
-                'password' => bcrypt('kasir'),
-                'role' => 'kasir',
-            ],
+            // [
+            //     'name' => 'kasir',
+            //     'email' => 'kasir@gmail.com',
+            //     'password' => bcrypt('kasir'),
+            //     'role' => 'kasir',
+            // ],
 
-            [
-                'name' => 'Purnomo',
-                'email' => 'kasir@gmail.com',
-                'password' => bcrypt('kasir'),
-                'role' => 'kasir',
-            ],
+            // [
+            //     'name' => 'Purnomo',
+            //     'email' => 'kasir@gmail.com',
+            //     'password' => bcrypt('kasir'),
+            //     'role' => 'kasir',
+            // ],
 
-            [
-                'name' => 'chef',
-                'email' => 'chef@gmail.com',
-                'password' => bcrypt('chef'),
-                'role' => 'chef',
-            ],
+            // [
+            //     'name' => 'chef',
+            //     'email' => 'chef@gmail.com',
+            //     'password' => bcrypt('chef'),
+            //     'role' => 'chef',
+            // ],
             [
                 'name' => 'Juna',
                 'email' => 'juna@gmail.com',
