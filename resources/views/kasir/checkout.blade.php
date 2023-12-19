@@ -102,7 +102,7 @@
                                 <th style="width:20px;">Menu</th>
                                 <th>Deskripsi</th>
                                 <th>Qty</th>
-                                <th style="width:100px;" class="text-center"">Harga</th>
+                                <th style="width:120px;" class="text-center">Harga</th>
                             </tr>
                         </thead>
                         <tbody>

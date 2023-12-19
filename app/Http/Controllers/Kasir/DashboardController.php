@@ -27,9 +27,9 @@ class DashboardController extends Controller
         // Mengambil data order yang status pembayarannya sudah dibayar
         $ordersSudahDibayar = Order::where('status_pembayaran', 'Sudah Dibayar')
             ->orderBy('created_at', 'desc')
-            ->groupBy('customer_id')
-            ->select('customer_id')
-            ->take(3)
+            ->groupBy('customer_id', 'id')
+            ->select('customer_id', 'id')
+            ->take(2)
             ->get();
 
         // =====================================================
@@ -49,7 +49,7 @@ class DashboardController extends Controller
         ->whereDate('created_at', now())
         ->count();
 
-        $persenord = ($orderan / 10) * 100;
+        $persenord = ($orderan / 50) * 100; 
         // =====================================================
 
         // =====================================================
@@ -58,7 +58,7 @@ class DashboardController extends Controller
         ->whereDate('created_at', now())
         ->count();
 
-        $persenpl = ($pelanggan / 10 ) * 100;
+        $persenpl = ($pelanggan / 100 ) * 100;
         // =====================================================
     
         return view('kasir.dashboard', compact('chef', 'ordersBelumDibayar', 'ordersSudahDibayar', 'pendapatan', 'orderan', 'persenord', 'persendp', 'pelanggan', 'persenpl'));
