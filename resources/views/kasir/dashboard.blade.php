@@ -104,7 +104,7 @@
                                     <div class="input-box mb-3">
                                         <input type="search" class="form-control fuzzy-search" placeholder="Search...">
                                     </div>
-                                    <div class="list">
+                                    <div>
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr class="text-center">
@@ -114,13 +114,13 @@
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="order-list" class="list">
                                                 @forelse ($ordersBelumDibayar as $belum)
                                                     <tr>
                                                         <td class="text-center">
                                                             <b>{{ $belum->customer->no_table }}</b>
                                                         </td>
-                                                        <td class="order-name">{{ $belum->order_code }}</td>
+                                                        <td class="order-code">{{ $belum->order_code }}</td>
                                                         <td class="order-name">{{ $belum->customer->name }}</td>
                                                         <td class="text-center">
                                                             <a href="{{ route('kasir.checkout', ['id' => $belum->customer->id]) }}"
@@ -153,7 +153,7 @@
                                     <div class="input-box mb-3">
                                         <input type="search" class="form-control fuzzy-search" placeholder="Search...">
                                     </div>
-                                    <div class="list">
+                                    <div>
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr class="text-center">
@@ -162,7 +162,7 @@
                                                     <th scope="col">Actions</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="transaction-list" class="list">
                                                 @forelse ($ordersSudahDibayar as $sudah)
                                                     <tr>
                                                         <td class="text-center"><b>{{ $loop->iteration }}</b></td>
@@ -231,7 +231,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     <script>
         var orderlist = new List('order-list', {
-            valueNames: ['order-name']
+            valueNames: ['order-code', 'order-name']
         });
         var transactionList = new List('transaction-list', {
             valueNames: ['transaction-name']
