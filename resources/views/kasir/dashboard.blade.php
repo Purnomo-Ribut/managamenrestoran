@@ -115,7 +115,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="order-list" class="list">
-                                                @forelse ($ordersBelumDibayar as $belum)
+                                                @forelse ($ordersBelumDibayar as $belum) 
                                                     <tr>
                                                         <td class="text-center">
                                                             <b>{{ $belum->customer->no_table }}</b>
