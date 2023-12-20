@@ -10,7 +10,7 @@
 @section('content')
 
 <body>
-    <div class="container">
+    <div class="container"> 
         <div class="row">
             <div class="col-12 col-md-4">
                 <div class="card dk2 l-bg-orange-dark">
@@ -45,6 +45,9 @@
         <div class="card">
             <div class="card-body">
             <div class="table-responsive">
+                <h4 class="text-center">Data Pemasukan</h4> 
+                
+
                 <table class="table table-striped" id="myTable">
                     <thead>
                         <tr>

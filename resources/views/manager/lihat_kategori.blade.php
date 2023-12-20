@@ -1,4 +1,4 @@
-@extends('manager.master.kategori.template')
+@extends('manager.master.template')
 
 @section('title', 'Data Kategori | ResToGo')
 
@@ -24,35 +24,41 @@
 @section('content')
 
 <body>
-  <hr>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">Tambah Kategori</button>
-  {{-- <a href="{{ route('manager_index') }}" class="btn btn-danger">Home</a> --}}
-  <hr>
   <div class="container">
     <div class="card">
       <div class="card-body">
         <div class="table-responsive">
+          <h3 class="text-center font-weight-500">Daftar Kategori</h3>
+                        <div class="col mb-3 text-right">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">Tambah Kategori</button>
+                        </div>
         <table class="table table-bordered table-hover" id="myTable">
           <thead>
-              <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Nama Kategori</th>
-                  <th scope="col">Deskripsi</th>
-                  <th scope="col">Aksi</th>
+              <tr class="bg-dark">
+                  <th scope="col" class="text-center">No</th>
+                  <th scope="col" class="text-center">Kategori</th>
+                  <th scope="col" class="text-center w-75">Deskripsi</th>
+                  <th scope="col" class="text-center w-25">Aksi</th>
               </tr>
           </thead>
           <tbody>
               @foreach ($kategoris as $kt)
               <tr>
-                  <th scope="row">{{$loop->index + 1}}</th>
+                  <th scope="row" class="text-center">{{$loop->index + 1}}</th>
                   <td>{{$kt->nama}}</td>
                   <td>{{$kt->deskripsi}}</td>
-                  <td>
+                  <td class="text-center">
+                    {{-- hapus --}}
+                    <a onclick="confirmDelete(this)" data-url="{{ route('deleteKategori', ['id' => $kt->id]) }}" class="btn btn-danger" role="button">
+                      <i class="fa-solid fa-trash"></i>
+                    </a>
+                    
+                    {{-- edit --}}
                       <button type="button" class="btn btn-primary" data-toggle="modal"
                           data-target="#editkategori{{$kt->id}}">
-                          Edit
+                          <i class="fas fa-pencil-alt"></i>
                       </button>
-                      <a onclick="confirmDelete(this)" data-url="{{ route('deleteKategori', ['id' => $kt->id]) }}" class="btn btn-danger" role="button">Hapus</a>
+                      
                   </td>
               </tr>
               @endforeach
