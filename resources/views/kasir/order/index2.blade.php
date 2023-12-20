@@ -3,6 +3,22 @@
 @section('title', 'List Orderan')
 
 @section('css')
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+<script>
+	confirmDelete = function(button) {
+		var url = $(button).data('url');
+		swal({
+			'title': 'Konfirmasi Hapus',
+			'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
+			'dangermode': true,
+			'buttons': true
+		}).then(function(value) {
+			if (value) {
+				window.location = url;
+			}
+		})
+	}
+</script>
 {{-- <link rel="stylesheet" href=""> --}}
 @endsection
 
@@ -16,7 +32,7 @@
                 <tr class="bg-dark">
                     <th scope="col" class="text-center">No</th>
                     <th scope="col" class="text-center">Customer</th>
-                    <th scope="col" class="text-center">Kode Orderan</th>                    
+                    <th scope="col" class="text-center">Kode Orderan</th>
                     <th scope="col" class="text-center">Action</th>
                 </tr>
             </thead>
@@ -25,10 +41,10 @@
                 <tr>
                     <th scope="row" class="text-center">{{$loop->index + 1}}</th>
                     <td>{{$order->customer->name}}</td>
-                    <td class="text-center">{{$order->order_code}}</td>                    
+                    <td class="text-center">{{$order->order_code}}</td>
                     <td class="text-center">
                         {{-- hapus orderan --}}
-                        <a href="{{route('order.hapus', ['id' => $order->id ])}}" class="btn btn-danger text-light font-weight-bold">Hapus</a>
+                        <a onclick="confirmDelete(this)" data-url="{{ route('order.hapus', ['id' => $order->id]) }}" class="btn btn-danger" role="button">Hapus</a>
 
                         {{-- bayar orderan --}}
                         <a href="{{ route('kasir.checkout', ['id' => $order->customer->id]) }}"
@@ -40,6 +56,7 @@
         </table>
     </div>
 </div>
+@include('sweetalert::alert')
 @endsection
 
 {{-- Javascript --}}

@@ -56,14 +56,18 @@
                     </thead>
                     <tbody>
                         @foreach ($orders as $order)
+                        @if ($order->status_pembayaran === 'Sudah Dibayar')
                         <tr>
                             <th scope="row" class="text-center">{{$loop->index + 1}}</th>
                             <td>{{$order->customer_id ? $order->customer->name : '-'}}</td>
                             <td class="text-center">Rp {{ number_format($order->total, 0, ',', '.') }}</td>
                             <td class="text-center">
-                                <a href="#" class="btn btn-info">Detail</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDetail{{$order->id}}">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            </button>
                             </td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>
@@ -71,6 +75,39 @@
         </div>
         </div>
     </div>
+
+    @foreach ($orders as $order)
+    <div class="modal fade" id="modalDetail{{$order->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Detail Orderan</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <h2>Detail Orderan</h2>
+                <ul>
+                    <li><strong>Nama Customer: </strong>{{$order->customer_id ? $order->customer->name : '-'}}</li>
+                    {{-- <li><strong>Kasir:</strong> Sarah Smith</li> --}}
+                    <li><strong>Chef: </strong>{{$order->user_id ? $order->user->name : '-'}}</li>
+                    <li><strong>Metode Pembayaran: </strong>{{$order->metode_pembayaran}}</li>
+                    <li><strong>Total yang Dibeli: </strong>Rp {{ number_format($order->total, 0, ',', '.') }}</li>
+                    <li><strong>Kode Pesanan: </strong>{{$order->order_code}}</li>
+                    <li><strong>Waktu Beli: </strong>{{ \Carbon\Carbon::parse($order->created_at)->translatedFormat('l, j F Y, H:i') }}</li>
+
+                </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              {{-- <button type="button" class="btn btn-primary">Understood</button> --}}
+            </div>
+          </div>
+        </div>
+      </div>
+    @endforeach
+
     @include('sweetalert::alert')
 </body>
 @endsection
