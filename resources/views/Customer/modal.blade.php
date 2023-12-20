@@ -104,7 +104,7 @@
 
                     <div class="form-group">
                         <label>Catatan</label>
-                        <textarea class="form-control" name="desc" rows="3" required placeholder="Masukan Keterangan pedas atau tidak dll."></textarea>
+                        <textarea class="form-control" name="desc" rows="3" placeholder="Masukan Keterangan pedas atau tidak dll."></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

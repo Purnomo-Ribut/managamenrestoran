@@ -46,16 +46,30 @@
                         </div>
                         <div class="content d-flex justify-content-center text-center flex-column">
                             <p class="m-1 fs-4">Silahkan tunjukan ID pelanggan ke kasir!</p>
-                            <a href="{{route('reservasi.logout')}}" class="btn btn-info m-auto" style="width: fit-content">Menu Utama</a>
+                            <div class="d-flex justify-content-center gap-3">
+                                <a href="{{route('reservasi.logout')}}" class="btn btn-info"
+                                    style="width: fit-content">Menu Utama</a>
+                                <a href="{{route('cancel.order', $order->customer_id)}}" class="btn btn-danger">Batalkan
+                                    Pesanan</a>
+                            </div>
                         </div>
                     </div>
                     <div class="container-fluid d-flex justify-content-center">
-                        <a href="#" class="d-flex">Batalkan Pesanan</a>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="mt-3">
-                <img src="{{asset('assets/customer/img/restogo.png')}}" alt="No Picture Added" class="rounded-circle logo-co">
+                <img src="{{asset('assets/customer/img/restogo.png')}}" alt="No Picture Added"
+                    class="rounded-circle logo-co">
             </div>
 
         </div>

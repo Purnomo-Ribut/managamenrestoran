@@ -13,32 +13,40 @@
                     <span class="material-symbols-outlined fw-bold">search</span>
                 </button>
             </div>
-          </form>
+        </form>
     </div>
 
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
 
                 <div class="d-flex justify-content-between">
                     <div class="d-flex">
-                    @foreach ($categories as $category)
-                    @if($category->nama == 'makanan')
-                    <button type="button"
-                        class="btn btn-kuning mb-2 me-2 justify-content-center d-flex align-items-center"
-                        onclick="window.location.href='{{route('makanan.index', $category->id)}}'">
-                        <span class="material-symbols-outlined nav-menu">lunch_dining</span> {{$category->nama}}
-                    </button>
-                    @else
-                    <button type="button"
-                        class="btn btn-kuning mb-2 me-2 justify-content-center d-flex align-items-center"
-                        onclick="window.location.href='{{route('makanan.index', $category->id)}}'">
-                        <span class="material-symbols-outlined fw-bold">water_medium</span> {{$category->nama}}
-                    </button>
-                    @endif
-                    @endforeach
-                </div>
+                        @foreach ($categories as $category)
+                        @if($category->nama == 'makanan')
+                        <button type="button"
+                            class="btn btn-kuning mb-2 me-2 justify-content-center d-flex align-items-center"
+                            onclick="window.location.href='{{route('makanan.index', $category->id)}}'">
+                            <span class="material-symbols-outlined nav-menu">lunch_dining</span> {{$category->nama}}
+                        </button>
+                        @else
+                        <button type="button"
+                            class="btn btn-kuning mb-2 me-2 justify-content-center d-flex align-items-center"
+                            onclick="window.location.href='{{route('makanan.index', $category->id)}}'">
+                            <span class="material-symbols-outlined fw-bold">water_medium</span> {{$category->nama}}
+                        </button>
+                        @endif
+                        @endforeach
+                    </div>
                 </div>
 
                 <div class="row py-3">
@@ -47,7 +55,7 @@
                         <div class="card border-0 shadow">
                             <div class="d-flex justify-content-center">
                                 <img src="{{asset('storage/assets/manager/gambarMenu/'.$item->image)}}"
-                                class="card-img-top foto" alt="Gambar Tidak ada">
+                                    class="card-img-top foto" alt="Gambar Tidak ada">
                             </div>
                             <div class="card-body p-1">
                                 <div class="content-makanan d-flex justify-content-center">
@@ -56,9 +64,10 @@
                                 <div class="content-makanan d-flex justify-content-center">
                                     <h2 class="makanan">@rupiah($item->harga)</h2>
                                 </div>
-                                    {{-- <p class="makanan">{{$item->deskripsi}}</p> --}}
+                                {{-- <p class="makanan">{{$item->deskripsi}}</p> --}}
                                 <div>
-                                    <button data-target="#addCart" data-toggle="modal" data-product-name="{{$item->nama}}" data-id-menu="{{$item->id}}"
+                                    <button data-target="#addCart" data-toggle="modal"
+                                        data-product-name="{{$item->nama}}" data-id-menu="{{$item->id}}"
                                         data-price-menu="{{$item->harga}}"
                                         class="add-button btn btn-kuning d-flex align-items-center container-fluid justify-content-center mt-3"
                                         style="font-size: 12px;">ADD <span class="material-symbols-outlined"
@@ -97,6 +106,7 @@
             document.querySelector('#productName').textContent = productName
         })
     });
+
 </script>
 
 <script>
@@ -124,6 +134,7 @@
     const total = price.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
     console.log(total)
     totalPrice.textContent = formatRupiah(total);
+
 </script>
 
 @endsection
