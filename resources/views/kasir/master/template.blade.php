@@ -56,7 +56,7 @@
                     } elseif ($currentTime >= 21 && $currentTime <= 23) {
                         echo 'Selamat Malam, ' . Auth()->user()->name . ' Pesanan makanan dan minuman siap diterima. Mari nikmati hidangan istimewa malam ini dan rileks sejenak setelah aktivitas sehari penuh.';
                     } else {
-                        echo 'Selamat Malam, ' . Auth()->user()->name . '. Waktunya untuk istirahat. Sampai jumpa Jam 09.00 yaa !';
+                        echo ' ' . Auth()->user()->name . ', Waktunya untuk istirahat. Sampai jumpa Jam 09.00 yaa !';
                     }
                 @endphp
             </marquee>
