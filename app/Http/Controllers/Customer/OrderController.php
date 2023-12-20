@@ -96,7 +96,7 @@ class OrderController extends Controller
             return redirect()->back()->withErrors(['msg' => "Terjadi kesalahan"]);
         }
         return redirect()->back()->withErrors(['msg' => "Terjadi kesalahan"]);
-        
+
     }
-    
+
 }

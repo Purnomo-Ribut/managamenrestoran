@@ -18,6 +18,12 @@
   <link rel="icon" type="image/x-icon" href="{{ asset('assets/manager/img/restogo.png') }}">
 
   <link rel="stylesheet" href="{{asset('assets/kasir/css/adminlte.min.css')}}">
+
+  {{-- jquery --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  {{-- link datatable --}}
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
   
   @yield('css')
 </head>
@@ -47,7 +53,7 @@
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control form-control-navbar" id="filter" type="search" placeholder="Search" aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                   <i class="fas fa-search"></i>
@@ -134,6 +140,27 @@
 {{-- <script src="{{asset('assets/kasir/js/demo.js')}}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{-- <script src="{{asset('assets/kasir/js/pages/dashboard3.js')}}"></script> --}}
+
+{{-- script dattables --}}
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+  const filter = document.getElementById("filter");
+  const items = document.querySelectorAll("tbody tr");
+  filter.addEventListener("input", (e) => filterData(e.target.value));
+
+  function filterData(search) {
+      items.forEach((item) => {
+          if (item.innerText.toLowerCase().includes(search.toLowerCase())) {
+              item.classList.remove("d-none");
+          } else {
+              item.classList.add("d-none");
+          }
+      });
+  }
+</script>
 
 @stack('scripts')
 </body>

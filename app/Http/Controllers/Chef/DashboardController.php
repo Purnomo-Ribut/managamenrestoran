@@ -13,6 +13,7 @@ class DashboardController extends Controller
     
     public function index()
     {
+        $orders = \App\Order::all();
 
         $userID = auth()->user()->id;
 
@@ -25,7 +26,10 @@ class DashboardController extends Controller
         $profil = Auth::user();
         $totalOrder = Order::where('user_id', $profil->id)->count();
         $order = Order::where('user_id', $profil->id)->get();
-        return view('chef.dashboard', compact('order','totalOrder','profil', 'orderan','persenord'));
+        // dd($order[0]->orderDetails[0]->menu);
+        // $details = OrderDetail::where('order_id', $order);
+        // dd($profil->order);
+        return view('chef.dashboard', compact('order','totalOrder','profil', 'orderan','persenord', 'orders'));
 
     }
 

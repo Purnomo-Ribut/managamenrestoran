@@ -53,10 +53,10 @@
         <div class="col-12 col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-striped" id="order-list-table">
+                    <table class="table table-bordered table-hover" id="myTable">
                         <thead>
                             <tr class="bg-info text-white">
-                                <th class="text-center">#</th>
+                                <th class="text-center">No</th>
                                 <th class="text-center">Customer Name</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Details</th>
@@ -64,6 +64,8 @@
                         </thead>
                         <tbody>
                             @foreach ($order as $item)
+                            
+                            
                                 <tr>
                                     <td class="text-center">{{ $loop->index + 1 }}</td>
                                     <td>{{ $item->customer->name }}</td>
@@ -71,22 +73,55 @@
                                         <span class="badge badge-success">Selesai</span>
                                     </td>
                                     <td class="text-center">
-                                        <a href="" class="btn btn-info btn-sm">Details</a>
+                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail{{$item->id}}" data-order-id="{{ $item->id }}">
+                                            Details
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    
                 </div>
             </div>
         </div>
     </div>
     <!-- List Order Section End -->
 
+    <!-- Modal -->
+    @foreach($order as $item)
+    @foreach($item->orderDetails as $data)
+
+    <div class="modal fade" id="detail{{$data->order_id}}" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Order Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+             <div class="d-flex gap-4">
+                <p class="mr-2">{{$data->menu->nama}}</p>
+                <p>({{$data->qty}})</p>
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    @endforeach
+    @endforeach
+
+    @include('sweetalert::alert')
 @endsection
 
 {{-- Javascript --}}
 @push('scripts')
-  
+<script>
+  let table = new DataTable('#myTable');
+</script>
 @endpush

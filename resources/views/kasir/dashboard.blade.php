@@ -214,9 +214,9 @@
                                     <tr>
                                         <td>
                                             <b>{{ $loop->iteration }}</b>
-                                        </td>                                        
+                                        </td>
                                         <td>
-                                            {{ ucwords($item->name) }}                                                                                                                                        
+                                            {{ ucwords($item->name) }}
                                         </td>
                                         <td>
                                             <span class="badge badge-success">Hadir</span>
@@ -231,12 +231,11 @@
                             <p class="text-muted text-center">Tidak ada data chef.</p>
                         @endif
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
+    @include('sweetalert::alert')
 @endsection
 
 {{-- Javascript --}}

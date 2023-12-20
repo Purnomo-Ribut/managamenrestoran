@@ -113,6 +113,7 @@
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
+
             </div>
             <!-- /.content-header -->
 
@@ -164,7 +165,28 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     {{-- <script src="{{asset('assets/kasir/js/pages/dashboard3.js')}}"></script> --}}
 
-    
+
+<!-- OPTIONAL SCRIPTS -->
+{{-- <script src="plugins/chart.js/Chart.min.js"></script> --}}
+<!-- AdminLTE for demo purposes -->
+{{-- <script src="{{asset('assets/kasir/js/demo.js')}}"></script> --}}
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+{{-- <script src="{{asset('assets/kasir/js/pages/dashboard3.js')}}"></script> --}}
+<script>
+  const filter = document.getElementById("filter");
+  const items = document.querySelectorAll("tbody tr");
+  filter.addEventListener("input", (e) => filterData(e.target.value));
+
+  function filterData(search) {
+      items.forEach((item) => {
+          if (item.innerText.toLowerCase().includes(search.toLowerCase())) {
+              item.classList.remove("d-none");
+          } else {
+              item.classList.add("d-none");
+          }
+      });
+  }
+</script>
 
     @stack('scripts')
 </body>
