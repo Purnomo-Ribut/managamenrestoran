@@ -12,11 +12,11 @@ use App\Kategori;
 
 class OrderController extends Controller
 {
-    
+
     public function addCart(Request $request)
     {
         $session = $request->session()->get('reserved');
-        
+
         $cart = new Cart;
         $cart->customer_id = $session['id'];
         $cart->menu_id = $request->menu_id;
@@ -43,7 +43,7 @@ class OrderController extends Controller
     public function checkout(Request $request)
     {
         $code = "PSN-".rand(100000,999999);
-        
+
         $data = $request->except(['_token']);
         $session = $request->session()->get('reserved');
         $dataLength = count($data['menu_id']);
@@ -70,7 +70,7 @@ class OrderController extends Controller
             return redirect()->route('ordered');
         }
 
-        return redirect()->back()->withErrors(['msg' => "Terjadi kesalahan"]); 
+        return redirect()->back()->withErrors(['msg' => "Terjadi kesalahan"]);
     }
 
     public function ordered()
