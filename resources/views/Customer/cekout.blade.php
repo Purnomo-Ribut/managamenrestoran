@@ -45,12 +45,14 @@
                             </div>
                         </div>
                         <div class="content d-flex justify-content-center text-center flex-column">
-                            <p class="m-0 p-2 fs-5">ID Pelanggan = <span class="fw-bold"> {{$order->order_code}}</span></p>
-                            <a href="{{route('reservasi.logout', $category->id)}}" class="btn btn-info mt-3">Kembali Ke menu</a>
+                            <p class="m-1 fs-4">Silahkan tunjukan ID pelanggan ke kasir!</p>
+                            <div class="d-flex justify-content-center gap-3">
+                                <a href="{{route('reservasi.logout')}}" class="btn btn-info"
+                                    style="width: fit-content">Menu Utama</a>
+                                <a href="{{route('cancel.order', $order->customer_id)}}" class="btn btn-danger">Batalkan
+                                    Pesanan</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="container-fluid d-flex justify-content-center">
-                        <a href="#" class="d-flex">Batalkan Pesanan</a>
                     </div>
                 </div>
             </div>
