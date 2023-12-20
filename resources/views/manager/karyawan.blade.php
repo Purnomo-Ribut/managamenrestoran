@@ -1,6 +1,6 @@
 @extends('manager.master.karyawan.template')
 
-@section('title', 'Manager | Data Karyawan')
+@section('title', 'Data Karyawan | ResToGo')
 
 @section('css')
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>

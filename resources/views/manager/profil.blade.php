@@ -1,6 +1,6 @@
 @extends('manager.master.profil.template')
 
-@section('title', 'Halaman Profil')
+@section('title', 'Halaman Profil | ResToGo')
 @section('css')
     <link rel="stylesheet" href="{{ asset('kasir/css/profil.css') }}">
 @endsection

@@ -1,6 +1,6 @@
 @extends('manager.master.menu.template')
 
-@section('title', 'Manager | Data Menu')
+@section('title', 'Data Menu | ResToGo')
 
 @section('addJavascript')
 @section('css')

@@ -1,6 +1,6 @@
 @extends('manager.master.kategori.template')
 
-@section('title', 'Manager | Data Kategori')
+@section('title', 'Data Kategori | ResToGo')
 
 @section('css')
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>

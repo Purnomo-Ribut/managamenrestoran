@@ -1,6 +1,6 @@
 @extends('manager.master.template')
 
-@section('title', 'Dashboard Manager')
+@section('title', 'Dashboard Manager | ResToGo')
 
 @section('css')
 <link rel="stylesheet" href="{{asset('assets/manager/css/style.css')}}">

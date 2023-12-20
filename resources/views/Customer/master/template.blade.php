@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="{{asset('assets/customer/css/menu.css')}}">
   <!-- icon-google -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,100,0,0" />
-    <title>Document</title>
+    {{-- icon title --}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/manager/img/restogo.png') }}">
+  <title>Document</title>
 </head>
 <body>
   @include('sweetalert::alert')
