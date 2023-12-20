@@ -32,7 +32,7 @@ class LoginController extends Controller
                 return redirect()->intended('/kasir')->with('success', 'Anda Berhasil Login');
             } elseif ($user->role == 'chef') {
                 // Redirect ke halaman chef
-                return redirect()->intended('/chef');
+                return redirect()->intended('/chef')->with('success', 'Anda Berhasil Login');
             }
         }
 
