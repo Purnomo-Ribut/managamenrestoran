@@ -53,7 +53,7 @@
         <div class="col-12 col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-striped" id="order-list-table">
+                    <table class="table table-striped" id="myTable">
                         <thead>
                             <tr class="bg-info text-white">
                                 <th class="text-center">#</th>
@@ -77,16 +77,17 @@
                             @endforeach
                         </tbody>
                     </table>
-                    
                 </div>
             </div>
         </div>
     </div>
     <!-- List Order Section End -->
-
+    @include('sweetalert::alert')
 @endsection
 
 {{-- Javascript --}}
 @push('scripts')
-  
+<script>
+    let table = new DataTable('#myTable');
+</script>
 @endpush
