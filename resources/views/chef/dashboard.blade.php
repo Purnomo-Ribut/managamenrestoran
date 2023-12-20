@@ -1,9 +1,9 @@
 @extends('chef.master.template')
 
-@section('title', 'Dashboard Chef')
+@section('title', 'Dashboard Chef | ResToGo')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('assets/kasir/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/kasir/css/style.css') }}">
 @endsection
 
 @section('content')
@@ -13,13 +13,13 @@
             <a href="{{ route('profil3') }}" style="text-decoration: none; color: #000000; font-weight: bold;">
                 <div class="card dk">
                     <div class="card-body text-center">
-                        <img class="card-img-top rounded-circle w-25" src="https://cdn-icons-png.flaticon.com/512/3461/3461980.png">
-                        <h3>{{$profil->name}}</h3>
+                        <img class="card-img-top rounded-circle img-fluid mx-auto d-block w-25" src="https://cdn-icons-png.flaticon.com/512/3461/3461980.png">
+                        <h3>{{ $profil->name }}</h3>
                     </div>
                 </div>
             </a>
-            
         </div>
+        
         <!-- Profile Section End -->
 
         <div class="col-12 col-md-4">
@@ -36,12 +36,13 @@
                             </h2>
                         </div>
                         <div class="col-4 text-right">
-                            <span>{{ $persenord}}% <i class="fa fa-arrow-up"></i></span>
+                            <span>{{ $persenord }}% <i class="fa fa-arrow-up"></i></span>
                         </div>
                     </div>
                     <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="{{$persenord}}"
-                            aria-valuemin="0" aria-valuemax="100" style="width:{{$persenord}}%;"></div>
+                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%"
+                            aria-valuenow="{{ $persenord }}" aria-valuemin="0" aria-valuemax="100"
+                            style="width:{{ $persenord }}%;"></div>
                     </div>
                 </div>
             </div>
@@ -52,10 +53,11 @@
     <div class="row">
         <div class="col-12 col-md-12">
             <div class="card">
-                <div class="card-body">
-                    <table class="table table-bordered table-hover" id="myTable">
+                <div class="card-body table-responsive">
+                    <h4 class="text-center">Data Orderan</h4>
+                    <table class="table table-striped" id="myTable">
                         <thead>
-                            <tr class="bg-info text-white">
+                            <tr class="bg-dark">
                                 <th class="text-center">No</th>
                                 <th class="text-center">Customer Name</th>
                                 <th class="text-center">Status</th>
@@ -64,17 +66,16 @@
                         </thead>
                         <tbody>
                             @foreach ($order as $item)
-                            
-                            
                                 <tr>
-                                    <td class="text-center">{{ $loop->index + 1 }}</td>
+                                    <th scope="row" class="text-center">{{ $loop->index + 1 }}</th>
                                     <td>{{ $item->customer->name }}</td>
                                     <td class="text-center">
                                         <span class="badge badge-success">Selesai</span>
                                     </td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail{{$item->id}}" data-order-id="{{ $item->id }}">
-                                            Details
+                                        <button type="button" class="btn btn-info " data-toggle="modal"
+                                            data-target="#detail{{ $item->id }}" data-order-id="{{ $item->id }}">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -88,32 +89,31 @@
     <!-- List Order Section End -->
 
     <!-- Modal -->
-    @foreach($order as $item)
-    @foreach($item->orderDetails as $data)
-
-    <div class="modal fade" id="detail{{$data->order_id}}" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="detailsModalLabel">Order Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+    @foreach ($order as $item)
+        @foreach ($item->orderDetails as $data)
+            <div class="modal fade" id="detail{{ $data->order_id }}" tabindex="-1" role="dialog"
+                aria-labelledby="detailsModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info">
+                            <h5 class="modal-title" id="detailsModalLabel">Order Details</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="d-flex gap-4">                                
+                                <p class="mr-2">{{ $data->menu->nama }}</p>
+                                <p>({{ $data->qty }})</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-             <div class="d-flex gap-4">
-                <p class="mr-2">{{$data->menu->nama}}</p>
-                <p>({{$data->qty}})</p>
-            </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-    @endforeach
+        @endforeach
     @endforeach
 
     @include('sweetalert::alert')
@@ -121,7 +121,7 @@
 
 {{-- Javascript --}}
 @push('scripts')
-<script>
-  let table = new DataTable('#myTable');
-</script>
+    <script>
+        let table = new DataTable('#myTable');
+    </script>
 @endpush

@@ -1,6 +1,6 @@
 @extends('chef.master.template')
 
-@section('title', 'Halaman Chef')
+@section('title', 'Edit Profil | ResToGo')
 @section('css')
     <link rel="stylesheet" href="{{ asset('kasir/css/profil.css') }}">
 @endsection
