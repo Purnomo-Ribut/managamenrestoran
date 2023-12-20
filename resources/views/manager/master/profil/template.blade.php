@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/kasir/css/adminlte.min.css')}}">
+    
+  {{-- icon title --}}
+  <link rel="icon" type="image/x-icon" href="{{ asset('assets/manager/img/restogo.png') }}">
 
   {{-- link datatable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">

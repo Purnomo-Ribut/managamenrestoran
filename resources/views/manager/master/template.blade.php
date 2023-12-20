@@ -14,6 +14,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/kasir/css/adminlte.min.css')}}">
 
+  {{-- icon title --}}
+  <link rel="icon" type="image/x-icon" href="{{ asset('assets/manager/img/restogo.png') }}">
+
   {{-- jquery --}}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 

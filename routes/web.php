@@ -13,7 +13,6 @@
 use App\Http\Controllers\manager\KaryawanController;
 use App\Http\Controllers\manager\KategoriController;
 use App\Http\Controllers\manager\MenuController;
-use App\Http\Controllers\manager\PelangganController;
 
 // rute awal
 // Route::get('/', function () {
@@ -129,7 +128,7 @@ Route::prefix('chef')->middleware('auth', 'role:chef')->group(function () {
     Route::post('/profile/password/{id}', 'Chef\ProfilController@pass')->name('pass.update3');
 
      // logout
-     Route::get('/logout', 'LoginController@logout')->name('logout3');
+    Route::get('/logout', 'LoginController@logout')->name('logout3');
 
     Route::get('chef/test', 'Chef\DashboardController@test')->name('chef.tes');
 

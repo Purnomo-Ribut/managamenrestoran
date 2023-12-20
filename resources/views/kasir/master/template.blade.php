@@ -14,6 +14,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/kasir/css/adminlte.min.css')}}">
 
+   {{-- icon title --}}
+   <link rel="icon" type="image/x-icon" href="{{ asset('assets/manager/img/restogo.png') }}">
+
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
   
   @yield('css')
