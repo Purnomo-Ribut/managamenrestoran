@@ -46,7 +46,7 @@ class LoginController extends Controller
     }
 }
 
-// metode pak sandika 
+// metode pak sandika
 //     $credentials = $request->validate([
 //         "email" => 'required|email:dns',
 //         "password" => 'required'

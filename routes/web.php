@@ -81,7 +81,7 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     //data karyawan
     Route::get('/karyawan', [KaryawanController::class, 'index'])->name('karyawan');
     // data chef
-  
+
     // input data
     Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
     Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
