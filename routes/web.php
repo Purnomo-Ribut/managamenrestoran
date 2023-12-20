@@ -144,6 +144,7 @@ Route::middleware('registered')->group(function() {
     Route::get('/menu/{id?}','Customer\MenuController@index')->name('makanan.index');
     Route::get('/cart/remove/{id}','Customer\OrderController@removeCart')->name('remove.cart');
     Route::post('/cart/checkout','Customer\OrderController@checkout')->name('checkout.cart');
+    Route::get('/order/cancel/{idOrder}','Customer\OrderController@cancelOrder')->name('cancel.order');
     // Route::get('/menu/minuman','Customer\MenuController@minuman')->name('minuman.index');
 
 

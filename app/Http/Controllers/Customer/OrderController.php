@@ -82,5 +82,21 @@ class OrderController extends Controller
         // dd($totalPrice);
         return view('Customer.cekout', compact('order', 'totalPrice', 'category'));
     }
+
+    public function cancelOrder($id)
+    {
+        $delete = Order::where('customer_id', $id)->first();
+        if($delete){
+            $cek = $delete->delete();
+            if($cek){
+                $delete->customer->delete();
+                Alert::info('Cancel Order', 'Order berhasil dibatalkan');
+                return redirect()->route('reservasi');
+            }
+            return redirect()->back()->withErrors(['msg' => "Terjadi kesalahan"]);
+        }
+        return redirect()->back()->withErrors(['msg' => "Terjadi kesalahan"]);
+        
+    }
     
 }
