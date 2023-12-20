@@ -45,8 +45,8 @@
                             </div>
                         </div>
                         <div class="content d-flex justify-content-center text-center flex-column">
-                            <p class="m-0 p-2 fs-5">ID Pelanggan = <span class="fw-bold"> {{$order->order_code}}</span></p>
-                            <a href="{{route('reservasi.logout', $category->id)}}" class="btn btn-info mt-3">Kembali Ke menu</a>
+                            <p class="m-1 fs-4">Silahkan tunjukan ID pelanggan ke kasir!</p>
+                            <a href="{{route('reservasi.logout')}}" class="btn btn-info m-auto" style="width: fit-content">Menu Utama</a>
                         </div>
                     </div>
                     <div class="container-fluid d-flex justify-content-center">

@@ -76,7 +76,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard Manager</h1>
+            <h1 class="m-0">Dashboard Manager</h1> <br>
+            @auth
+            <h4>Selamat Datang, {{Auth::user()->name}} </h4>
+            @endauth
+            
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

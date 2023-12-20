@@ -38,7 +38,7 @@
         <thead>
           <tr>
             <th scope="col">No</th>
-            <th scope="col">Kategroi</th>
+            <th scope="col">Kategori</th>
             <th scope="col">Nama Menu</th>
             <th scope="col">Harga</th>
             <th scope="col">Deskripsi</th>
