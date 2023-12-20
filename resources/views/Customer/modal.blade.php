@@ -20,6 +20,7 @@
                                 <div class="d-flex flex-column">
                                     <label for="quantity" class="mr-2">{{$cart->menu->nama}}</label>
                                     <p class="mr-2">@rupiah($cart->menu->harga * $cart->qty)</p>
+                                    <label for="quantity" class="mr-2">{{$cart->description}}</label>
                                     <a href="{{route('remove.cart', $cart->id)}}">Hapus Item</a>
                                 </div>
                             </div>
