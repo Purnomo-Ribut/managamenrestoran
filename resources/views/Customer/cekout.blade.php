@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="container-fluid d-flex justify-content-center">
-                        <a href="{{route('batal.pesanan')}}" class="d-flex">Batalkan Pesanan</a>
+                        <a href="#" class="d-flex">Batalkan Pesanan</a>
                     </div>
                 </div>
             </div>
