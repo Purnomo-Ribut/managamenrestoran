@@ -29,7 +29,7 @@
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        {{ $orderan }}
+                                        {{ $orderan }} 
                                     </h2>
                                 </div>
                                 <div class="col-4 text-right">
@@ -168,7 +168,7 @@
                                                         <td class="text-center"><b>{{ $loop->iteration }}</b></td>
                                                         <td class="transaction-name">{{ $sudah->customer->name }}</td>
                                                         <td class="text-center">
-                                                            <a href="{{ route('order.detail', ['id' => $sudah->id]) }}"
+                                                            <a href="{{ route('transaksi.detail', ['id' => $sudah->id]) }}"
                                                                 class="btn btn-info font-weight-bold">Detail</a>
                                                         </td>
                                                     </tr>
