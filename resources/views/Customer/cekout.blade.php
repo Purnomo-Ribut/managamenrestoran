@@ -49,11 +49,15 @@
                             <a href="{{route('reservasi.logout', $category->id)}}" class="btn btn-info mt-3">Kembali Ke menu</a>
                         </div>
                     </div>
+                    <div class="container-fluid d-flex justify-content-center">
+                        <a href="{{route('batal.pesanan')}}" class="d-flex">Batalkan Pesanan</a>
+                    </div>
                 </div>
             </div>
             <div class="mt-3">
                 <img src="{{asset('assets/customer/img/restogo.png')}}" alt="No Picture Added" class="rounded-circle logo-co">
             </div>
+
         </div>
     </div>
 

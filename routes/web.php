@@ -53,7 +53,7 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
 
     // struk
     Route::get('struk/{idCustomer}', 'Kasir\StrukController@index')->name('struk');
-    
+
 
     // logout
     Route::get('/logout', 'LoginController@logout')->name('logout1');
@@ -75,7 +75,7 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     //data karyawan
     Route::get('/karyawan', [KaryawanController::class, 'index'])->name('karyawan');
     // data chef
-    
+
 
     // input data
     Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
@@ -135,7 +135,7 @@ Route::prefix('chef')->middleware('auth', 'role:chef')->group(function () {
 });
 
 
-// proses pesan 
+// proses pesan
 Route::middleware('registered')->group(function() {
     Route::get('/menu/{id?}','Customer\MenuController@index')->name('makanan.index');
     Route::get('/cart/remove/{id}','Customer\OrderController@removeCart')->name('remove.cart');
