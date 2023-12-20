@@ -37,8 +37,16 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
 
     // checkout + detail
     Route::get('checkout/{idCustomer}', 'Kasir\CheckoutController@index')->name('kasir.checkout');
-    Route::get('order', 'Kasir\OrderListController@index')->name('order.list');
-    Route::get('order/detail/{idOrder}', 'Kasir\OrderListController@detail')->name('order.detail');
+
+    // list transaksi
+    Route::get('transaksi', 'Kasir\OrderListController@index')->name('transaksi.list');
+    Route::get('transaksi/detail/{idOrder}', 'Kasir\OrderListController@detail')->name('transaksi.detail');
+
+    // list orderan
+    Route::get('order', 'Kasir\OrderListController@order')->name('order.list');
+
+    // hapus order
+    Route::get('/hapus/{id}', 'Kasir\OrderListController@hapus')->name('order.hapus');
 
     // profil
     Route::get('/profile', 'Kasir\ProfilController@index')->name('profil2');

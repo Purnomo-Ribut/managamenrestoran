@@ -11,7 +11,7 @@
         <!-- Profile Section -->
         <div class="col-12 col-md-3 w-100">
             <a href="{{ route('profil3') }}" style="text-decoration: none; color: #000000; font-weight: bold;">
-                <div class="card">
+                <div class="card dk">
                     <div class="card-body text-center">
                         <img class="card-img-top rounded-circle w-25" src="https://cdn-icons-png.flaticon.com/512/3461/3461980.png">
                         <h3>{{$profil->name}}</h3>

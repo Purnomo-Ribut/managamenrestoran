@@ -32,16 +32,28 @@
               </p>
             </a>
           </li>
-
+          
           {{-- transaksi --}}
           <li class="nav-item">
             <a href="{{route('order.list')}}" class="nav-link">
+              {{-- <i class="nav-icon fas fa-calendar-alt"></i> --}}
+              <i class="nav-icon fa-solid fa-money-check"></i>
+              <p>
+               Orderan
+              </p>
+            </a>
+          </li>
+
+          {{-- transaksi --}}
+          <li class="nav-item">
+            <a href="{{route('transaksi.list')}}" class="nav-link">
               <i class="nav-icon fas fa-calendar-alt"></i>
               <p>
                Transaksi
               </p>
             </a>
           </li>
+
 
           {{-- profil --}}
           <li class="nav-item">
