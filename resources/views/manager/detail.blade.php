@@ -1,4 +1,4 @@
-@extends('kasir.master.template')
+@extends('manager.master.template')
 
 @section('title', 'List Order')
 

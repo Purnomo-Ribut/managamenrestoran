@@ -70,11 +70,10 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::get('/daftar-menu', [MenuController::class, 'index'])->name('lihat_menu');
     //daftar kategori
     Route::get('/daftar-kategori', [KategoriController::class, 'index'])->name('lihat_kategori');
-    // data pelanggan
-    Route::get('/pelanggan', [PelangganController::class, 'index'])->name('data_pelanggan');
     //data karyawan
     Route::get('/karyawan', [KaryawanController::class, 'index'])->name('karyawan');
     // data chef
+    // Route::get('/{idOrder}', 'manager\DashboardManController@detail')->name('manager.detail');
     
 
     // input data
@@ -98,7 +97,6 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
 
     //logout
     Route::get('/logout', 'LoginController@logout')->name('logout3');
-
     // profil
     Route::get('/profil', 'manager\ProfilController@index')->name('profil');
     // update data profil dan user
@@ -108,7 +106,7 @@ Route::prefix('manager')->middleware('auth', 'role:manager')->group(function () 
     Route::post('/profil/password/{id}', 'manager\ProfilController@pass')->name('pass.update');
 
      // logout
-     Route::get('/logout', 'LoginController@logout')->name('logout2');
+    Route::get('/logout', 'LoginController@logout')->name('logout2');
 });
 
 // CHEF

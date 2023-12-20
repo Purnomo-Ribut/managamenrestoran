@@ -4,7 +4,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{asset('assets/manager/css/style.css')}}">
-<link rel="stylesheet" href="{{ asset('assets/kasir/css/style.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('assets/kasir/css/style.css') }}"> --}}
 @endsection
 
 @section('content')
@@ -44,7 +44,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-              <div class="table-responsive">
+            <div class="table-responsive">
                 <table class="table table-striped" id="myTable">
                     <thead>
                         <tr>
@@ -61,14 +61,14 @@
                             <td>{{$order->customer_id ? $order->customer->name : '-'}}</td>
                             <td class="text-center">Rp {{ number_format($order->total, 0, ',', '.') }}</td>
                             <td class="text-center">
-                                <a href="{{route('order.detail', $order->id)}}" class="btn btn-info">Detail</a>
+                                <a href="#" class="btn btn-info">Detail</a>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-          </div>
+        </div>
         </div>
     </div>
     @include('sweetalert::alert')
