@@ -46,14 +46,14 @@
             </li>
             
            <li class="nav-item">
-                <a href="{{ route('profil') }}" class="nav-link">
+                <a href="{{route('profil')}}" class="nav-link">
                     <i class="nav-icon fa-solid fa-user"></i>
                     <p>Profil</p>
                 </a>
             </li>
             
             <li class="nav-item">
-                <a href="{{route('logout2')}}" class="nav-link">                    
+                <a href="{{route('logout2')}}" class="nav-link">
                     <i class="nav-icon fa fa-sign-out"></i>
                     <p>
                      Logout

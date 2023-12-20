@@ -46,7 +46,7 @@
                         </div>
                         <div class="content d-flex justify-content-center text-center flex-column">
                             <p class="m-1 fs-4">Silahkan tunjukan ID pelanggan ke kasir!</p>
-                            <a href="{{route('makanan.index', $category->id)}}" class="btn btn-info m-auto" style="width: fit-content">Selesai Pesanan</a>
+                            <a href="{{route('reservasi')}}" class="btn btn-info m-auto" style="width: fit-content">Menu Utama</a>
                         </div>
                     </div>
                 </div>
