@@ -40,21 +40,19 @@
                         </div>
                         <div class="content d-flex justify-content-center text-center flex-column">
                             <p class="m-0 fs-3">Total pembayaran anda sebesar: </p>
-                            <div class="fs-3 fw-bold text-success">
+                            <div class="fs-3 fw-bold text-success mt-2">
                                 @rupiah($totalPrice)
                             </div>
                         </div>
                         <div class="content d-flex justify-content-center text-center flex-column">
-                            <p class="m-1 fs-4">Silahkan tunjukan ID pelanggan ke kasir!</p>
-                            <a href="{{route('makanan.index', $category->id)}}" class="btn btn-info m-auto" style="width: fit-content">Selesai Pesanan</a>
+                            <p class="m-0 p-2 fs-5">ID Pelanggan = <span class="fw-bold"> {{$order->order_code}}</span></p>
+                            <a href="{{route('reservasi.logout', $category->id)}}" class="btn btn-info mt-3">Kembali Ke menu</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card d-flex align-items-center rounded-2">
-                <div class="card-body">
-                    <p class="m-0 p-1 fs-5">ID Pelanggan = <span class="fw-bold"> {{$order->order_code}}</span></p>
-                </div>
+            <div class="mt-3">
+                <img src="{{asset('assets/customer/img/restogo.png')}}" alt="No Picture Added" class="rounded-circle logo-co">
             </div>
         </div>
     </div>
