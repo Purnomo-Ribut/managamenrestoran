@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 class DashboardController extends Controller
 {
     
@@ -16,9 +18,11 @@ class DashboardController extends Controller
         $orders = \App\Order::all();
 
         $userID = auth()->user()->id;
-
-        $orderan = DB::table('tbl_orders')            
+        
+        $now = Carbon::now();
+        $orderan = DB::table('tbl_orders')
             ->where('user_id', $userID)
+            ->whereMonth('created_at', $now->month)
             ->count();
 
         $persenord = ($orderan / 50) * 100;
