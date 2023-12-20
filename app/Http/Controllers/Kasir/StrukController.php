@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class StrukController extends Controller
 {
@@ -22,5 +23,17 @@ class StrukController extends Controller
             ->get();
 
         return view('kasir\struk.index', ['data' => $data,'orders' => $orders ]);
+    }
+
+    // tidak kepake
+    public function cetak()
+    {
+        // $pdf = PDF::loadview('kasir.struk.index')->setPaper('a4', 'portrait');     
+
+        $pdf = PDF::loadView('kasir.struk.index')->setPaper('a4', 'portrait');
+
+        return $pdf->download('struk.pdf');
+        
+        
     }
 }

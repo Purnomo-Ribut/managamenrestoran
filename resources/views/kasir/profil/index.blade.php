@@ -1,10 +1,10 @@
-@extends('kasir.master.profil.template')
+@extends('kasir.master.template')
 
-@section('title', 'Halaman Profil')
+@section('title', 'Halaman Profil | ResToGo')
 @section('css')
     <link rel="stylesheet" href="{{ asset('kasir/css/profil.css') }}">
 @endsection
-@section('header', 'Profile')
+{{-- @section('header', 'Profile') --}}
 @section('content')
     <div class="container">
         <div class="row gutters-sm">

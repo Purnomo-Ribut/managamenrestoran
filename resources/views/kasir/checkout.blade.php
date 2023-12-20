@@ -4,6 +4,22 @@
 
 @section('css')
     {{-- <link rel="stylesheet" href=""> --}}
+    <style>
+        select.form-control {
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        /* Style for the focused state of the select element */
+        select.form-control:focus {
+            border-color: #66afe9;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -135,7 +151,8 @@
                             <tr>
                                 <td colspan="2"></td>
                                 <td>Total</td>
-                                <td  class="text-right font-weight-bold text-red" >Rp {{ number_format($totalHarga, 0, ',', '.') }}</td>
+                                <td class="text-right font-weight-bold text-red">Rp
+                                    {{ number_format($totalHarga, 0, ',', '.') }}</td>
                                 {{-- <td>{{ $totalHarga }}</td> --}}
                             </tr>
                         </tfoot>

@@ -4,259 +4,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Struk Pembelian</title>
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
+    <title>Struk Pembelian | ResToGo</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/manager/img/restogo.png') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- IonIcons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/kasir/css/adminlte.min.css') }}">
-
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
 
     <style>
         body {
             margin-top: 20px;
             color: #484b51;
+            font-family: 'Source Sans Pro', sans-serif;
         }
 
-        .text-secondary-d1 {
-            color: #728299 !important;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .page-header {
-            margin: 0 0 1rem;
-            padding-bottom: 1rem;
-            padding-top: .5rem;
-            border-bottom: 1px dotted #e2e2e2;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-pack: justify;
-            justify-content: space-between;
-            -ms-flex-align: center;
-            align-items: center;
+        .page-content {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;
         }
 
         .page-title {
-            padding: 0;
-            margin: 0;
-            font-size: 1.75rem;
-            font-weight: 300;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
-        .brc-default-l1 {
-            border-color: #dce9f0 !important;
+        .page-title a {
+            color: black;
         }
 
-        .ml-n1,
-        .mx-n1 {
-            margin-left: -.25rem !important;
+        .order-info span {
+            display: block;
+            margin-bottom: 8px;
         }
 
-        .mr-n1,
-        .mx-n1 {
-            margin-right: -.25rem !important;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
 
-        .mb-4,
-        .my-4 {
-            margin-bottom: 1.5rem !important;
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
         }
 
-        hr {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            border: 0;
-            border-top: 1px solid rgba(0, 0, 0, .1);
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
         }
 
-        .text-grey-m2 {
-            color: #888a8d !important;
+        th {
+            background-color: #f2f2f2;
         }
 
-        .text-success-m2 {
-            color: #86bd68 !important;
+        .total-row {
+            background-color: #333;
+            color: #fff;
         }
 
-        .font-bolder,
-        .text-600 {
-            font-weight: 600 !important;
+        .text-right {
+            text-align: right;
         }
 
-        .text-110 {
-            font-size: 110% !important;
+        .thank-you {
+            font-size: 1rem;
+            margin-top: 20px;
+            text-align: center;
         }
 
-        .text-blue {
-            color: #478fcc !important;
+        /* .back-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            text-align: center;
+            background-color: #478fcc;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+        } */
+        @media print {
+            @page {
+                size: 25cm 20cm;                
+            }
         }
-
-        .pb-25,
-        .py-25 {
-            padding-bottom: .75rem !important;
-        }
-
-        .pt-25,
-        .py-25 {
-            padding-top: .75rem !important;
-        }
-
-
-
-        
-
     </style>
 </head>
 
 <body>
-    <br><br>
     @foreach ($orders as $order)
-    <div class="page-content container">
-        <h2 class="text-center"><b>ResToGo</b></h2>
-        <div class="page-header text-blue-d2">
-            <h1 class="page-title text-secondary-d1">
-                ID Pesanan
-                <small class="page-info">
-                    <i class="fa fa-angle-double-right text-80"></i>
-                    <b>{{ $order->order_code }}</b>
-                </small>
-            </h1>
-        </div>
+        <div class="container">
+            <div class="page-content">
+                <a href="{{ route('kasir.dashboard') }}">
+                    <h2>ResToGo</h2>
+                </a>
+                <div class="page-title">
+                    {{ $order->order_code }}
+                </div>
 
-        <div class="container px-0">
-            <div class="row mt-4">
-                <div class="col-12 col-lg-12">
+                {{-- kebutuhan waktu --}}
+                @php
+                    $waktu = $order->created_at;
+                @endphp
+
+                <div class="order-info">
+
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div>
-                                <span class="text-sm text-grey-m2 align-middle">Untuk :</span>
-                                <span class="text-600 text-110 text-blue align-middle">{{ $order->customer->name }}</span>
-                            </div>
-                            <div class="text-grey-m2">
-                                <div class="my-1">
-                                    No Meja : <b>{{ $order->customer->no_table }}</b>
-                                </div>
-                                <div class="my-1">
-
-                                </div>
-                                <div class="my-1"> <b class="text-600"></b></div>
-                            </div>
+                        <div class="col-lg-6">
+                            <span>To {{ $order->customer->name }}</span>
+                            <span>Meja {{ $order->customer->no_table }}</span>
                         </div>
-                        <!-- /.col -->
-
-                        <div class="text-95 col-sm-6 align-self-start d-sm-flex justify-content-end">
-                            <hr class="d-sm-none" />
-                            <div class="text-grey-m2">
-                                <div class="mt-1 mb-2 text-secondary-m1 text-600 text-125">
-
-                                </div>
-
-                                <div class="my-2"> 
-                                    {{-- <i class="fa fa-circle text-blue-m2 text-xs mr-1"></i>  --}}
-                                    <span
-                                        class="text-600 text-90">Kasir : </span> <span
-                                        class="badge badge-warning badge-pill px-25">{{ auth()->user()->name }}</span>
-                                </div>
-
-                                @php
-                                    $waktu    = $order->created_at;
-
-                                @endphp
-                                <div class="my-2">
-                                    {{-- <i class="fa fa-circle text-blue-m2 text-xs mr-1"></i>  --}}
-                                    <span
-                                        class="text-600 text-90">Jam : </span> 
-                                        {{ $waktu->format('H:i')}}
-                                    </div>
-
-                                <div class="my-2">
-                                    {{-- <i class="fa fa-circle text-blue-m2 text-xs mr-1"></i>  --}}
-                                    <span
-                                        class="text-600 text-90">Tanggal : </span> 
-                                        {{ $waktu->format('Y-m-d') }}
-                                    </div>
-
-
-                            </div>
+                        <div class="col-lg-6 text-right">
+                            <span>Kasir {{ auth()->user()->name }}</span>
+                            <span>{{ $waktu->format('Y-m-d H:i:s') }}</span>
                         </div>
-                        <!-- /.col -->
-                    </div>
-                    @endforeach
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered border-0 border-b-2 brc-default-l1">
-                                <thead class="bg-none bgc-default-tp1">
-                                    <tr class="text-white text-center" style=" background-color: rgba(121, 169, 197, .92) !important;">
-                                        <th class="w-25">Menu</th>
-                                        <th>Deskipsi</th>
-                                        <th>Qty</th>
-                                        <th>Harga</th>
-                                        <th width="140">Jumlah</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody class="text-95 text-secondary-d3">
-                                    <tr></tr>
-                                    @foreach ($data as $order)
-                                    <tr>
-                                        <td>{{ $order->nama }}</td>
-                                        <td>
-                                            @if ($order->description)
-                                                {{ $order->description }}
-                                            @else
-                                                <span class="text-muted"> - </span>
-                                            @endif
-                                        </td>
-                                        <td class="text-center">{{ $order->qty }}</td>
-                                        <td class="text-95 text-center">Rp {{ number_format($order->harga, 0, ',', '.') }}</td>
-                                        @php
-                                            $jumlah = $order->qty  * $order->harga;
-                                        @endphp
-                                        <td class="text-secondary-d2 text-right">Rp {{ number_format($jumlah, 0, ',', '.') }}</td>
-                                    </tr>
-                                    @endforeach
-                                    <tr class="font-weight-bold text-white" style=" background-color: rgba(36, 53, 61, 0.92) !important;">
-                                        <td colspan="3"></td>
-                                        <td class="text-right">Total</td>
-                                        @php
-                                            $totalHarga = 0;
-                                        @endphp
-
-                                        @foreach ($data as $harga)
-                                            @php
-                                                $totalHarga += $harga->price;
-                                            @endphp
-                                        @endforeach
-                                        <td class="text-right">Rp {{ number_format($totalHarga , 0, ',', '.') }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                                                              
-
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <span class="text-secondary-d1 text-105">Terima Kasih Telah Membeli Makanan dan Minuman Kami </span>                            
-                            </div>
-                            
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-12 d-flex justify-content-end">
-                                <a href="{{ route('kasir.dashboard') }}" id="hai" class="btn btn-info w-25" style="display: none">Kembali</a>
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Menu</th>
+                            <th>Deskripsi</th>
+                            <th>Qty</th>
+                            <th>Harga</th>
+                            <th>Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data as $order)
+                            <tr>
+                                <td>{{ $order->nama }}</td>
+                                <td>{{ $order->description ? $order->description : '-' }}</td>
+                                <td>{{ $order->qty }}</td>
+                                <td class="text-right">Rp {{ number_format($order->harga, 0, ',', '.') }}</td>
+                                @php
+                                    $jumlah = $order->qty * $order->harga;
+                                @endphp
+                                <td class="text-right">Rp {{ number_format($jumlah, 0, ',', '.') }}</td>
+                            </tr>
+                        @endforeach
+                        {{-- total harga --}}
+                        @php
+                            $totalHarga = 0;
+                        @endphp
+
+                        @foreach ($data as $harga)
+                            @php
+                                $totalHarga += $harga->price;
+                            @endphp
+                        @endforeach
+                        <tr class="total-row">
+                            <td colspan="4" class="text-right">Total</td>
+                            <td class="text-right">Rp {{ number_format($totalHarga, 0, ',', '.') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="thank-you">
+                    <p>Terima Kasih Telah Membeli Makanan dan Minuman Kami</p>
+                </div>
+
+                {{-- <a href="{{ route('kasir.dashboard') }}" class="back-btn" id="hai"
+                    style="display: none">Kembali</a> --}}
             </div>
         </div>
-    </div>
+    @endforeach
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -267,26 +201,14 @@
     <script src="{{ asset('assets/kasir/js/adminlte.js') }}"></script>
 
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+
     <script>
-        window.onload = function() {  
-            // otomatis print
+        $(document).ready(function() {
             window.print();
-
-             // Cek status cetak setiap 500 milidetik
-             var checkPrintStatus = setInterval(function() {
-                if (window.matchMedia('print').matches) {
-                    // Proses pencetakan sedang berlangsung
-                } else {
-                    // Proses pencetakan telah selesai
-                    clearInterval(checkPrintStatus);
-
-                    // Tampilkan tombol kembali
-                    document.getElementById('hai').style.display = 'block';
-                }
-            }, 500);
-            
-        };
+        });
     </script>
 </body>
+
 
 </html>

@@ -1,6 +1,6 @@
 @extends('kasir.master.template')
 
-@section('title', 'Dashboard kasir')
+@section('title', 'Dashboard kasir | ResToGo')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/kasir/css/style.css') }}">
@@ -124,7 +124,9 @@
                                                         <td class="order-name">{{ $belum->customer->name }}</td>
                                                         <td class="text-center">
                                                             <a href="{{ route('kasir.checkout', ['id' => $belum->customer->id]) }}"
-                                                                class="btn btn-info text-light font-weight-bold">Bayar</a>
+                                                                class="btn btn-info text-light font-weight-bold">
+                                                                <i class="fa-solid fa-cash-register"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 @empty
@@ -169,7 +171,9 @@
                                                         <td class="transaction-name">{{ $sudah->customer->name }}</td>
                                                         <td class="text-center">
                                                             <a href="{{ route('transaksi.detail', ['id' => $sudah->id]) }}"
-                                                                class="btn btn-info font-weight-bold">Detail</a>
+                                                                class="btn btn-info font-weight-bold">
+                                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 @empty

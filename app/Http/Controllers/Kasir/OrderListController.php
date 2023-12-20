@@ -18,9 +18,15 @@ class OrderListController extends Controller
     }
 
     public function detail($id)
-    {
-        $orderDetails = OrderDetail::where('order_id', $id)->with('menu')->get();
-        return view('kasir.order.detail', compact('orderDetails'));
+    {   
+        $orderDetails = OrderDetail::where('order_id', $id)
+        ->with('order') 
+        ->with('menu')  
+        ->get();
+
+        $order = $orderDetails->first()->order; 
+
+        return view('kasir.order.detail', compact('orderDetails', 'order'));
     }
 
     public function order()
@@ -45,5 +51,6 @@ class OrderListController extends Controller
             return redirect()->route('order.list')->with('error', 'Pesanan tidak ditemukan');
         }
     }
+   
 
 }

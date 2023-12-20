@@ -61,6 +61,9 @@ Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     // struk
     Route::get('struk/{idCustomer}', 'Kasir\StrukController@index')->name('struk');
 
+    // cetak
+    Route::get('struk/cetak', 'Kasir\StrukController@cetak')->name('cetak');
+
 
     // logout
     Route::get('/logout', 'LoginController@logout')->name('logout1');
