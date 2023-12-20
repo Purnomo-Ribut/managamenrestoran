@@ -26,8 +26,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        {{-- icon title --}}
-  <link rel="icon" type="image/x-icon" href="{{ asset('assets/manager/img/restogo.png') }}">
     <title>Document</title>
 </head>
 
@@ -47,38 +45,15 @@
                             </div>
                         </div>
                         <div class="content d-flex justify-content-center text-center flex-column">
-                            <p class="m-1 fs-4">Silahkan tunjukan ID pelanggan ke kasir!</p>
-                            <div class="d-flex justify-content-center gap-3">
-                                <a href="{{route('reservasi.logout')}}" class="btn btn-info"
-                                    style="width: fit-content">Menu Utama</a>
-                                <a href="{{route('cancel.order', $order->customer_id)}}" class="btn btn-danger">Batalkan
-                                    Pesanan</a>
-                            </div>
+                            <p class="m-0 p-2 fs-5">ID Pelanggan = <span class="fw-bold"> {{$order->order_code}}</span></p>
+                            <a href="{{route('reservasi.logout', $category->id)}}" class="btn btn-info mt-3">Kembali Ke menu</a>
                         </div>
                     </div>
                     <div class="container-fluid d-flex justify-content-center">
-                        @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
+                        <a href="#" class="d-flex">Batalkan Pesanan</a>
                     </div>
                 </div>
             </div>
             <div class="mt-3">
-                <img src="{{asset('assets/customer/img/restogo.png')}}" alt="No Picture Added"
-                    class="rounded-circle logo-co">
-            </div>
-
-        </div>
-    </div>
-
-
-
-</body>
-
-</html>
+                <img src="{{asset('assets/customer/img/restogo.png')}}" alt="No Picture Added" class="rounded-circle logo-co">
+              class="rounded-circle logo-co">
