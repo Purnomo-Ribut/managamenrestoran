@@ -1,4 +1,4 @@
-@extends('manager.master.profil.template')
+@extends('manager.master.template')
 
 @section('title', 'Halaman Profil | ResToGo')
 @section('css')

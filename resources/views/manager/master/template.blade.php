@@ -39,7 +39,7 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    @include('manager.master.navbar')
+    @include('manager.master.navbar') 
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -79,16 +79,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard Manager</h1> <br>
+            {{-- <h1 class="m-0">Dashboard Manager</h1> <br> --}}
             @auth
-            <h4>Selamat Datang, {{Auth::user()->name}} </h4>
+            {{-- <h4>Selamat Datang, {{Auth::user()->name}} </h4> --}}
             @endauth
             
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
+              {{-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li> --}}
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
