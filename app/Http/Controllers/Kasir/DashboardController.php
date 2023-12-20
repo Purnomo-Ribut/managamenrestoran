@@ -35,7 +35,7 @@ class DashboardController extends Controller
         // =====================================================
         // Mengambil total pendapatan hari ini
         $pendapatan = DB::table('tbl_orders')
-        ->whereDate('created_at', now())
+        ->whereDate('created_at', now()) 
         ->sum('total');
        
         $targetPendapatan = 1000000; // 1 juta rupiah
@@ -47,6 +47,7 @@ class DashboardController extends Controller
         // Mengambil jumlah orderan hari ini
         $orderan = DB::table('tbl_orders')
         ->whereDate('created_at', now())
+        ->where('status_pembayaran', 'Sudah Dibayar')
         ->count();
 
         $persenord = ($orderan / 50) * 100; 
