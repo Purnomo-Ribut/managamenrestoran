@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,100,0,0" />
     {{-- icon title --}}
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/manager/img/restogo.png') }}">
-  <title>Document</title>
+  <title>Menu | ResToGo</title>
 </head>
 <body>
   @include('sweetalert::alert')
