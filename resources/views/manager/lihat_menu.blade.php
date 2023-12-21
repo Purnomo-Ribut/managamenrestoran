@@ -67,7 +67,7 @@
                                             @endif
                                         </td>
                                         <td class="text-center">
-                                           {{-- button hapus --}}
+                                        {{-- button hapus --}}
                                             <a onclick="confirmDelete(this)"
                                                 data-url="{{ route('deleteMenu', ['id' => $menu->id]) }}"
                                                 class="btn btn-danger" role="button">
@@ -89,7 +89,7 @@
             </div>
         </div>
 
-
+        {{-- Edit menu --}}
         @foreach ($menus as $menu)
             <div class="modal fade" id="editMenu{{ $menu->id }}" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -129,13 +129,10 @@
                                     <label for="image">Gambar Menu</label>
                                 </div>
                                 <div class="mb-3">
-                                    {{-- <div class="input-group-prepend">
-                    <span class="input-group-text" id="image">Upload</span>
-                  </div> --}}
                                     <div>
                                         <input type="file" id="image" name="image" value="{{ $menu->image }}"
                                             class="form-control" accept="image/*" onchange="validateFile(this)">
-                                        {{-- <label class="custom-file-label" for="image">Choose file</label> --}}
+                                            <p>*Ukuran gambar max 1MB dan format JPEG,JPG,PNG</p>
                                     </div>
                                 </div>
                                 {{-- @if ($errors->any())
@@ -215,6 +212,7 @@
                                 <div>
                                     <input type="file" id="image" name="image" class="form-control"
                                         accept="image/*" onchange="validateFile(this)">
+                                        <p>*Ukuran gambar max 1MB dan format JPEG,JPG,PNG</p>
                                 </div>
                             </div>
                             {{-- @if ($errors->any())
