@@ -15,19 +15,42 @@ class OrderController extends Controller
 
     public function addCart(Request $request)
     {
+        // $session = $request->session()->get('reserved');
+
+        // $cart = new Cart;
+        // $cart->customer_id = $session['id'];
+        // $cart->menu_id = $request->menu_id;
+        // $cart->qty = $request->quantity;
+        // $cart->price = (int)$request->price * (int)$request->quantity;
+        // $cart->description = $request->desc;
+        // $saved = $cart->save();
+
+        // if($saved){
+        //     Alert::toast('Berhasil dimasukan ke keranjang', 'success');
+        //     return redirect()->back();
+        // }
+
+        // return redirect()->back()->withErrors(['msg' => "Terjadi kesalahan"]);
+
         $session = $request->session()->get('reserved');
-
-        $cart = new Cart;
-        $cart->customer_id = $session['id'];
-        $cart->menu_id = $request->menu_id;
-        $cart->qty = $request->quantity;
-        $cart->price = (int)$request->price * (int)$request->quantity;
-        $cart->description = $request->desc;
-        $saved = $cart->save();
-
-        if($saved){
-            Alert::toast('Berhasil dimasukan ke keranjang', 'success');
+        $recentCart = Cart::where('customer_id', $session['id'])->where('menu_id', $request->menu_id)->first();
+        if($recentCart !== null){
+            $recentCart->update(['qty' => $recentCart->qty + $request->quantity]);
+            Alert::toast('Keranjang berhasil di Update', 'success');
             return redirect()->back();
+        }else{
+            $cart = new Cart;
+            $cart->customer_id = $session['id'];
+            $cart->menu_id = $request->menu_id;
+            $cart->qty = $request->quantity;
+            $cart->price = (int)$request->price * (int)$request->quantity;
+            $cart->description = $request->desc;
+            $saved = $cart->save();
+
+            if($saved){
+                Alert::toast('Berhasil dimasukan ke keranjang', 'success');
+                return redirect()->back();
+            }
         }
 
         return redirect()->back()->withErrors(['msg' => "Terjadi kesalahan"]);

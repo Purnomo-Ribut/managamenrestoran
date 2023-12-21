@@ -8,6 +8,10 @@ class Cart extends Model
 {
     protected $table = 'tbl_carts';
 
+    protected $fillable = [
+        'customer_id', 'menu_id', 'qty', 'price',
+    ];
+
     public function menu()
     {
         return $this->belongsTo('App\Menu');
