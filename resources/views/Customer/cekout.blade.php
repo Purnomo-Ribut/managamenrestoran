@@ -31,7 +31,10 @@
 
 <body>
     <div class="container">
-        <div class="d-flex justify-content-center align-items-center h-100 flex-column">
+        <div class="d-flex justify-content-center mt-3">
+            <img src="{{asset('assets/customer/img/restogo.png')}}" alt="No Picture Added" class="rounded-circle logo-co">
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-2 container-fluid">
             <div class="card w-100">
                 <div class="card-body">
                     <div class="container rounded-1 mb-3">
@@ -39,13 +42,13 @@
                             <i class="fa-solid fa-circle-check check" style="color: #37fe34;"></i>
                         </div>
                         <div class="content d-flex justify-content-center text-center flex-column">
-                            <p class="m-0 fs-3">Total pembayaran anda sebesar: </p>
+                            <p class="m-0 fs-3">Total pembayaran anda sebesar </p>
                             <div class="fs-3 fw-bold text-success mt-2">
                                 @rupiah($totalPrice)
                             </div>
                         </div>
                         <div class="content d-flex justify-content-center text-center flex-column">
-                            <p class="m-1 fs-4">Silahkan tunjukan ID pelanggan ke kasir!</p>
+                            <p class="m-0 p-2 fs-5">ID Pelanggan = <span class="fw-bold"> {{$order->order_code}}</span></p>
                             <div class="d-flex justify-content-center gap-3">
                                 <a href="{{route('reservasi.logout')}}" class="btn btn-info"
                                     style="width: fit-content">Menu Utama</a>
@@ -55,7 +58,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="d-flex justify-content-center align-items-end">
+                    <p>Terima Kasih!</p>
+                </div>
             </div>
-            <div class="mt-3">
-                <img src="{{asset('assets/customer/img/restogo.png')}}" alt="No Picture Added" class="rounded-circle logo-co">
-              class="rounded-circle logo-co">
+        </div>
+    </div>
