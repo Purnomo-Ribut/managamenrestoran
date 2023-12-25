@@ -58,4 +58,3 @@
             </div>
             <div class="mt-3">
                 <img src="{{asset('assets/customer/img/restogo.png')}}" alt="No Picture Added" class="rounded-circle logo-co">
-              class="rounded-circle logo-co">
