@@ -1,4 +1,4 @@
-@extends('manager.master.profil.template')
+@extends('manager.master.template')
 
 @section('title', 'Halaman Profil | ResToGo')
 @section('css')
@@ -220,22 +220,41 @@
                                 @endif
 
                                 <div class="form-group">
-                                    <label for="passlama">Password lama</label>
-                                    <input type="text" class="form-control" id="passlama" name="passlama" required
-                                        autocomplete="off">
+                                    <label for="passlama">Password Lama</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="passlama" name="passlama"
+                                            required autocomplete="off">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text toggle-password bg-blue" id="togglePasslama"><i
+                                                    class="fas fa-eye"></i></span>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="passbaru">Password Baru</label>
-                                    <input type="text" class="form-control" id="passbaru" name="passbaru" required
-                                        autocomplete="off">
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="passbaru" name="passbaru"
+                                            required autocomplete="off">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text toggle-password bg-blue" id="togglePassbaru"><i
+                                                    class="fas fa-eye"></i></span>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="passbaru2">Konfirmasi Password Baru</label>
-                                    <input type="text" class="form-control" id="passbaru2"
-                                        name="passbaru_confirmation" required autocomplete="off">
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="passbaru2"
+                                            name="passbaru_confirmation" required autocomplete="off">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text toggle-password bg-blue" id="togglePassbaru2"><i
+                                                    class="fas fa-eye"></i></span>
+                                        </div>
+                                    </div>
                                 </div>
+
 
                                 <div class="d-flex justify-content-end">
                                     <input class="btn btn-info w-25" type="submit" value="Ubah Password">
@@ -248,4 +267,20 @@
             </div>
         </div>
     </div>
+
+    <!-- Tambahkan script Bootstrap JS dan Popper.js CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Tambahkan script JavaScript lainnya -->
+    <script>
+        $(document).ready(function() {
+            $('.toggle-password').click(function() {
+                const inputField = $(this).closest('.input-group').find('input');
+                const type = inputField.attr('type') === 'password' ? 'text' : 'password';
+                inputField.attr('type', type);
+                $(this).find('i').toggleClass('fa-eye fa-eye-slash');
+            });
+        });
+    </script>
 @endsection

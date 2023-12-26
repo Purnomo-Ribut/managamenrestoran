@@ -67,7 +67,7 @@
                                     <h2 class="makanan">@rupiah($item->harga)</h2>
                                 </div>
                                 {{-- <p class="makanan">{{$item->deskripsi}}</p> --}}
-                                <div>
+                                <div class="d-flex align-items-end">
                                     <button data-target="#addCart" data-toggle="modal"
                                         data-product-name="{{$item->nama}}" data-id-menu="{{$item->id}}"
                                         data-price-menu="{{$item->harga}}"
