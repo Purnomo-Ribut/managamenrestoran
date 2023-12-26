@@ -32,7 +32,7 @@
                         <div class="col mb-3 text-right">
                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">Tambah Kategori</button>
                         </div>
-        <table class="table table-bordered table-hover" id="myTable">
+        <table class="table table-striped" id="myTable">
           <thead>
               <tr class="bg-dark">
                   <th scope="col" class="text-center">No</th>

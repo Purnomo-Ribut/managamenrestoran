@@ -88,33 +88,32 @@
     </div>
     <!-- List Order Section End -->
 
-    <!-- Modal -->
-    @foreach ($order as $item)
-        @foreach ($item->orderDetails as $data)
-            <div class="modal fade" id="detail{{ $data->order_id }}" tabindex="-1" role="dialog"
-                aria-labelledby="detailsModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header bg-info">
-                            <h5 class="modal-title" id="detailsModalLabel">Order Details</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="d-flex gap-4">                                
-                                <p class="mr-2">{{ $data->menu->nama }}</p>
-                                <p>({{ $data->qty }})</p>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
+   <!-- Modal -->
+@foreach($order as $item)
+<div class="modal fade" id="detail{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title" id="detailsModalLabel">Order Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-        @endforeach
-    @endforeach
+            <div class="modal-body">
+                @foreach($item->orderDetails as $data)
+                    <div class="d-flex justify-content-between">
+                        <p>{{$data->menu->nama}}</p>
+                        <p class="font-weight-bold">({{$data->qty}})</p>
+                    </div>
+                @endforeach
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 
     @include('sweetalert::alert')
 @endsection

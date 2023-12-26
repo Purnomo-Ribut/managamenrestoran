@@ -48,7 +48,7 @@
                 <h4 class="text-center">Data Pemasukan</h4>                 
                 <table class="table table-striped" id="myTable">
                     <thead>
-                        <tr>
+                        <tr class="bg-dark">
                             <th scope="col" class="text-center">No</th>
                             <th scope="col" class="text-center">Customer</th>
                             <th scope="col" class="text-center">Total harga</th>

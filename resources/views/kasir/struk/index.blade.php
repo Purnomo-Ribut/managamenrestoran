@@ -67,8 +67,7 @@
         td {
             border: 1px solid #ddd;
         }
-
-        th,
+        
         td {
             padding: 12px;
             text-align: left;
@@ -144,9 +143,8 @@
 
                 <table>
                     <thead>
-                        <tr>
-                            <th>Menu</th>
-                            <th>Deskripsi</th>
+                        <tr class="text-center">
+                            <th>Menu</th>                            
                             <th>Qty</th>
                             <th>Harga</th>
                             <th>Jumlah</th>
@@ -155,9 +153,8 @@
                     <tbody>
                         @foreach ($data as $order)
                             <tr>
-                                <td>{{ $order->nama }}</td>
-                                <td>{{ $order->description ? $order->description : '-' }}</td>
-                                <td>{{ $order->qty }}</td>
+                                <td>{{ $order->nama }}</td>                            
+                                <td class="text-center">{{ $order->qty }}</td>
                                 <td class="text-right">Rp {{ number_format($order->harga, 0, ',', '.') }}</td>
                                 @php
                                     $jumlah = $order->qty * $order->harga;
@@ -176,7 +173,7 @@
                             @endphp
                         @endforeach
                         <tr class="total-row">
-                            <td colspan="4" class="text-right">Total</td>
+                            <td colspan="3" class="text-right">Total</td>
                             <td class="text-right">Rp {{ number_format($totalHarga, 0, ',', '.') }}</td>
                         </tr>
                     </tbody>

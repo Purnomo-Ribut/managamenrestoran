@@ -196,7 +196,7 @@
 
         {{-- konten daftar Chef --}}
         <div class="col-12 col-md-3">
-            <a href="{{ route('reservasi') }}" class="btn btn-warning w-100 mb-3" style="font-size: 20px; padding: 15px; border-radius: 10px; text-align: center; color: #fff; text-decoration: none; ">
+            <a href="{{ route('reservasi') }}" class="btn btn-warning w-100 mb-3 font-weight-bold" style="font-size: 20px; padding: 15px; border-radius: 10px; text-align: center; color: #000000; text-decoration: none; ">
                 Pesan Sekarang
             </a>
             
