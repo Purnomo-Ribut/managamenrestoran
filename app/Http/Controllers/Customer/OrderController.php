@@ -9,6 +9,7 @@ use App\Order;
 use App\OrderDetail;
 use Alert;
 use App\Kategori;
+use App\Menu;
 
 class OrderController extends Controller
 {

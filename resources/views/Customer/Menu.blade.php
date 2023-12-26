@@ -31,21 +31,23 @@
 
                 <div class="d-flex justify-content-between">
                     <div class="d-flex">
-                        @foreach ($categories as $category)
-                        @if($category->nama == 'makanan')
-                        <button type="button"
-                            class="btn btn-kuning mb-2 me-2 justify-content-center d-flex align-items-center"
-                            onclick="window.location.href='{{route('makanan.index', $category->id)}}'">
-                            <span class="material-symbols-outlined nav-menu">lunch_dining</span> {{$category->nama}}
-                        </button>
-                        @else
-                        <button type="button"
-                            class="btn btn-kuning mb-2 me-2 justify-content-center d-flex align-items-center"
-                            onclick="window.location.href='{{route('makanan.index', $category->id)}}'">
-                            <span class="material-symbols-outlined fw-bold">water_medium</span> {{$category->nama}}
-                        </button>
-                        @endif
-                        @endforeach
+                        <div class="btn-group dropend">
+                            <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                              Kategori
+                            </button>
+                            <ul class="dropdown-menu">
+                                @foreach ($categories as $category)
+                                <li><a class="btn justify-content-center d-flex align-items-center" onclick="window.location.href='{{route('makanan.index', $category->id)}}'">{{$category->nama}}</a></li>
+                                @endforeach
+                            </ul>
+                          </div>
+                        {{-- @foreach ($categories as $category)
+                    <button type="button"
+                        class="btn btn-warning mb-2 me-2 justify-content-center d-flex align-items-center"
+                        onclick="window.location.href='{{route('makanan.index', $category->id)}}'">
+                        {{$category->nama}}
+                    </button>
+                    @endforeach --}}
                     </div>
                 </div>
 
