@@ -47,7 +47,8 @@
 
                                     @foreach ($data as $harga)
                                         @php
-                                            $totalHarga += $harga->price;
+                                            $total = $harga->price * $harga->qty;
+                                            $totalHarga += $total;
                                         @endphp
                                     @endforeach
                                     <input type="text" class="form-control" name="total" value="{{ $totalHarga }}"
@@ -145,7 +146,8 @@
 
                             @foreach ($data as $harga)
                                 @php
-                                    $totalHarga += $harga->price;
+                                    $total = $harga->price * $harga->qty;
+                                    $totalHarga += $total;
                                 @endphp
                             @endforeach
                             <tr>
@@ -171,8 +173,8 @@
 @push('scripts')
 @endpush
 
-{{-- 
-catatan 
+{{--
+catatan
  <h4>Ordered Menu</h4>
     <div class="d-flex flex-column">
         @foreach ($data as $menu)

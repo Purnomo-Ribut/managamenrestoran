@@ -35,7 +35,7 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addKar">Tambah
                                 Karyawan</button>
                         </div>
-                        <table class="table table-striped" id="myTable">
+                        <table class="table table-bordered table-hover" id="myTable">
                             <thead>
                                 <tr class="bg-dark">
                                     <th scope="col" class="text-center">No</th>
@@ -50,12 +50,12 @@
                             <tbody>
                                 @foreach ($karyawans as $kar)
                                     <tr>
-                                        <th scope="row" class="text-center">{{ $loop->index + 1 }}</th>
-                                        <td>{{ $kar->name }}</td>
-                                        <td>{{ $kar->alamat }}</td>
-                                        <td class="text-center">{{ $kar->kota }}</td>
-                                        <td class="text-center">{{ $kar->gender }}</td>
-                                        <td class="text-center">
+                                        <td scope="row" class="text-center" data-label="No.">{{ $loop->index + 1 }}</td>
+                                        <td data-label="Nama">{{ $kar->name }}</td>
+                                        <td data-label="Alamat">{{ $kar->alamat }}</td>
+                                        <td class="text-center" data-label="Kota">{{ $kar->kota }}</td>
+                                        <td class="text-center" data-label="Jenis Kelamin">{{ $kar->gender }}</td>
+                                        <td class="text-center" data-label="Divisi">
                                             @switch($kar->role)
                                                 @case('manager')
                                                     Manager
@@ -73,7 +73,7 @@
                                                     Belum Ada
                                             @endswitch
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-center" data-label="Aksi">
                                             {{-- button hapus --}}
                                             <a onclick="confirmDelete(this)"
                                                 data-url="{{ route('deleteKaryawan', ['id' => $kar->id]) }}"
@@ -237,7 +237,7 @@
                   <label for="image">Profil</label>
                 </div> --}}
                             {{-- <div class="mb-3">
-              
+
                   <div>
                     <input type="file"  id="image" name="image" class="form-control" onchange="validateFile(this)">
                   </div>

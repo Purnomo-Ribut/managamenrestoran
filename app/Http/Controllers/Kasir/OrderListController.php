@@ -11,46 +11,51 @@ use App\Customer;
 class OrderListController extends Controller
 {
 
-    public function index() 
+    public function index()
     {
-        $orders = Order::where('status_pembayaran', 'Sudah Dibayar')->get();
+        $orders = Order::where('status_pembayaran', 'Sudah Dibayar')
+        ->orderBy('created_at', 'desc')
+        ->get();
         return view('kasir.order.index', compact('orders'));
+
     }
 
     public function detail($id)
-    {   
+    {
         $orderDetails = OrderDetail::where('order_id', $id)
-        ->with('order') 
-        ->with('menu')  
+        ->with('order')
+        ->with('menu')
         ->get();
 
-        $order = $orderDetails->first()->order; 
+        $order = $orderDetails->first()->order;
 
         return view('kasir.order.detail', compact('orderDetails', 'order'));
     }
 
     public function order()
     {
-        $orders = Order::where('status_pembayaran', 'Belum - Dibayar')->get();
+        $orders = Order::where('status_pembayaran', 'Belum - Dibayar')
+        ->orderBy('created_at', 'desc')
+        ->get();
         return view('kasir.order.index2', compact('orders'));
     }
 
     public function hapus($id)
-    {        
+    {
         $order = Order::find($id);
-        
-        
+
+
         if ($order) {
-            // hapus data customer berdasarkan relasi order dengan customer 
+            // hapus data customer berdasarkan relasi order dengan customer
             $order->customer()->delete();
 
-            // Hapus orderan di tabel order 
-            $order->delete();            
+            // Hapus orderan di tabel order
+            $order->delete();
             return redirect()->route('order.list')->with('success', 'Pesanan berhasil dihapus');
-        } else {            
+        } else {
             return redirect()->route('order.list')->with('error', 'Pesanan tidak ditemukan');
         }
     }
-   
+
 
 }

@@ -51,7 +51,7 @@
                 padding-left: 15px;
                 font-size: 15px;
                 font-weight: bold;
-                text-align: left;                
+                text-align: left;
             }
         }
     </style>
@@ -63,7 +63,7 @@
     <div class="card">
         <div class="card-body table-responsive ">
             <h3 class="text-center">Transaksi</h3>
-            <table class="table table-striped" id="order-table">
+            <table class="table table-bordered table-hover" id="order-table">
                 <thead>
                     <tr class="bg-dark">
                         <th scope="col" class="text-center">No</th>
@@ -104,7 +104,7 @@
     <script>
         let table = new DataTable('#order-table');
 
-        // responsive table 
+        // responsive table
         // Mendapatkan elemen <table>
         const tableElement = document.querySelector('.table');
         const textCenterTdElements = document.querySelectorAll('.table td.text-center');

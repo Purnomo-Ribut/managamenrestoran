@@ -67,7 +67,7 @@
         td {
             border: 1px solid #ddd;
         }
-        
+
         td {
             padding: 12px;
             text-align: left;
@@ -105,7 +105,7 @@
         } */
         @media print {
             @page {
-                size: 25cm 20cm;                
+                size: 25cm 20cm;
             }
         }
     </style>
@@ -144,7 +144,7 @@
                 <table>
                     <thead>
                         <tr class="text-center">
-                            <th>Menu</th>                            
+                            <th>Menu</th>
                             <th>Qty</th>
                             <th>Harga</th>
                             <th>Jumlah</th>
@@ -153,7 +153,7 @@
                     <tbody>
                         @foreach ($data as $order)
                             <tr>
-                                <td>{{ $order->nama }}</td>                            
+                                <td>{{ $order->nama }}</td>
                                 <td class="text-center">{{ $order->qty }}</td>
                                 <td class="text-right">Rp {{ number_format($order->harga, 0, ',', '.') }}</td>
                                 @php
@@ -169,7 +169,8 @@
 
                         @foreach ($data as $harga)
                             @php
-                                $totalHarga += $harga->price;
+                                $total = $harga->price * $harga->qty;
+                                $totalHarga += $total;
                             @endphp
                         @endforeach
                         <tr class="total-row">

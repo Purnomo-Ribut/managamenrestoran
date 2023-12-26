@@ -75,11 +75,12 @@
                 alt="Gambar Makanan">
         </div>
     </div>
+    @include('sweetalert::alert')
 </body>
 
 </html>
 
-{{-- list user 
+{{-- list user
 <h1>List of Users</h1>
 
 <ul>
