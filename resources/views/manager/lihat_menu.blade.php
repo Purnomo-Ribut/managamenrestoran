@@ -44,8 +44,8 @@
                                     <th scope="col" class="text-center">No</th>
                                     <th scope="col" class="text-center">Kategori</th>
                                     <th scope="col" class="text-center">Nama Menu</th>
-                                    <th scope="col" class="text-center">Harga</th>
-                                    <th scope="col" class="text-center">Deskripsi</th>
+                                    <th scope="col" class="text-center w-25">Harga</th>
+                                    <th scope="col" class="text-center w-50">Deskripsi</th>
                                     <th scope="col" class="text-center">Gambar</th>
                                     <th scope="col" class="text-center">Aksi</th>
                                 </tr>
@@ -53,15 +53,15 @@
                             <tbody>
                                 @foreach ($menus as $menu)
                                     <tr>
-                                        <td class="text-center w-25" data-label="No.">{{ $loop->index + 1 }}.</td>
-                                        <td data-label="Nama Kategori">{{ $menu->kategori ? $menu->kategori->nama : '-' }}</td>
+                                        <td class="text-center font-weight-bold" data-label="No.">{{ $loop->index + 1 }}.</td>
+                                        <td data-label="Nama Kategori">{{ $menu->kategori ? ucwords($menu->kategori->nama) : '-' }}</td>
                                         <td class="w-25 text-center" data-label="Nama Menu">{{ $menu->nama }}</td>
-                                        <td class="text-right" style="width: 100px;" data-label="Harga">Rp {{ number_format($menu->harga, 0, ',', '.') }}</td>
+                                        <td class="text-right"  data-label="Harga">Rp {{ number_format($menu->harga, 0, ',', '.') }}</td>
                                         <td data-label="Deskripsi">{{ $menu->deskripsi }}</td>
                                         <td class="text-center" data-label="Gambar">
                                             @if ($menu->image)
                                                 <img src="{{ asset('storage/assets/manager/gambarMenu/' . $menu->image) }}"
-                                                    alt="gambarmenu" style="max-width: 200px; max-height: 200px;" class="w-50">
+                                                    alt="gambarmenu" style="max-width: 200px; max-height: 200px;" class="w-100">
                                             @else
                                                 <p>Tidak ada gambar</p>
                                             @endif

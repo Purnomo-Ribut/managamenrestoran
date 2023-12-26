@@ -39,8 +39,8 @@
                             <thead>
                                 <tr class="bg-dark">
                                     <th scope="col" class="text-center">No</th>
-                                    <th scope="col" class="text-center">Nama Karyawan</th>
-                                    <th scope="col" class="text-center">Alamat</th>
+                                    <th scope="col" class="text-center w-50">Nama</th>
+                                    <th scope="col" class="text-center w-25">Alamat</th>
                                     <th scope="col" class="text-center">Kota</th>
                                     <th scope="col" class="text-center">Jenis Kelamin</th>
                                     <th scope="col" class="text-center">Divisi</th>
@@ -50,7 +50,7 @@
                             <tbody>
                                 @foreach ($karyawans as $kar)
                                     <tr>
-                                        <td scope="row" class="text-center" data-label="No.">{{ $loop->index + 1 }}</td>
+                                        <td scope="row" class="text-center font-weight-bold" data-label="No.">{{ $loop->index + 1 }}</td>
                                         <td data-label="Nama">{{ $kar->name }}</td>
                                         <td data-label="Alamat">{{ $kar->alamat }}</td>
                                         <td class="text-center" data-label="Kota">{{ $kar->kota }}</td>

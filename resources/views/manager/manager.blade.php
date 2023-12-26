@@ -59,7 +59,7 @@
                         @foreach ($orders as $order)
                         @if ($order->status_pembayaran === 'Sudah Dibayar')
                         <tr>
-                            <td scope="row" class="text-center" data-label="No.">{{$loop->index + 1}}</td>
+                            <td class="text-center font-weight-bold" data-label="No.">{{$loop->index + 1}}</td>
                             <td data-label="Customer">{{$order->customer_id ? $order->customer->name : '-'}}</td>
                             <td class="text-right" data-label="Total Harga">Rp {{ number_format($order->total, 0, ',', '.') }}</td>
                             <td class="text-center" data-label="Aksi">
