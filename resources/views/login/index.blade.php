@@ -32,7 +32,6 @@
                 @csrf
                 <h1>Login</h1>
                 <hr>
-                <p>Restoran Jaya </p>
                 {{-- input email --}}
                 <div>
                     <label for="email">Email</label>
@@ -52,13 +51,13 @@
                     {{ session('error') }}
                 </div>
                 @endif --}}
-                @if ($errors->any())
+                {{-- @if ($errors->any())
                 <div class="alert alert-danger my-1">
                     @foreach ($errors->all() as $error)
                     {{ $error }}
                     @endforeach
                 </div>
-                @endif
+                @endif --}}
                 <button type="submit">Login</button>
                 {{-- <p>
                     <a href="{{ route('kasir.dashboard') }}">Sementara Pake Ini Dulu Yaa</a>

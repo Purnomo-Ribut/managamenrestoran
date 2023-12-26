@@ -22,7 +22,7 @@
                 <form action="{{route('reservasi.store')}}" method="POST">
                     @csrf
                     <div class="card-body">
-                        <div class="card-title text-center font-weight-semibold">Reservasi Sekarang</div>
+                        <div class="card-title text-center font-weight-semibold">Pesan Sekarang</div>
 
                         <div class="card-text">
 

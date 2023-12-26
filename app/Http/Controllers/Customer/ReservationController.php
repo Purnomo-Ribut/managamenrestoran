@@ -10,7 +10,7 @@ use App\Menu;
 
 class ReservationController extends Controller
 {
-    
+
     public function index()
     {
         return view('customer.reservation');
@@ -19,7 +19,7 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
         $customer = new Customer;
-        $menu = Menu::first();
+        $menu = Kategori::where('nama', 'Makanan')->first();
         $categories = Kategori::all();
 
         $validation = $request->validate([
