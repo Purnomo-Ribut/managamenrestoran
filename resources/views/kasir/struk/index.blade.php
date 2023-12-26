@@ -130,11 +130,11 @@
                 <div class="order-info">
 
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-6">
                             <span>To {{ $order->customer->name }}</span>
                             <span>Meja {{ $order->customer->no_table }}</span>
                         </div>
-                        <div class="col-lg-6 text-right">
+                        <div class="col-6 text-right">
                             <span>Kasir {{ auth()->user()->name }}</span>
                             <span>{{ $waktu->format('Y-m-d H:i:s') }}</span>
                         </div>
