@@ -45,7 +45,7 @@
               @foreach ($kategoris as $kt)
               <tr>
                   <td scope="row" class="text-center" data-label="No.">{{$loop->index + 1}}</td>
-                  <td data-label="Nama">{{$kt->nama}}</td>
+                  <td data-label="Nama">{{ucwords($kt->nama)}}</td>
                   <td data-label="Deskripsi">{{$kt->deskripsi}}</td>
                   <td class="text-center" data-label="Aksi">
                     {{-- hapus --}}
