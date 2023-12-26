@@ -21,6 +21,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('css/login/login.css') }}">
+    {{-- icon title --}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/manager/img/restogo.png') }}">
 </head>
 
 <body>
