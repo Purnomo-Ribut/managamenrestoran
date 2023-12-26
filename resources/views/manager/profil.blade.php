@@ -1,4 +1,4 @@
-@extends('manager.master.template')
+@extends('manager.master.profil.template')
 
 @section('title', 'Halaman Profil | ResToGo')
 @section('css')
@@ -257,7 +257,7 @@
 
 
                                 <div class="d-flex justify-content-end">
-                                    <input class="btn btn-info w-25" type="submit" value="Ubah Password">
+                                    <input class="btn btn-info w-25" type="submit" value="Ubah">
                                 </div>
                             </form>
                         </div>

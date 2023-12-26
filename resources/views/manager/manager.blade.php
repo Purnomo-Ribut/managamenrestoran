@@ -10,7 +10,7 @@
 @section('content')
 
 <body>
-    <div class="container"> 
+    <div class="container">
         <div class="row">
             <div class="col-12 col-md-4">
                 <div class="card dk2 l-bg-orange-dark">
@@ -28,7 +28,7 @@
                                         <span style="font-size: 16px;">Rp {{ number_format($pendapatan, 0, ',', '.') }}</span>
                                     @endif
                                 </h2>
-                                
+
                             </div>
                             <div class="col-5 text-right ">
                                 <span style="font-size: 14px">{{ $persendp }}% <i class="fa fa-arrow-up"></i></span>
@@ -45,24 +45,24 @@
         <div class="card">
             <div class="card-body">
             <div class="table-responsive">
-                <h4 class="text-center">Data Pemasukan</h4>                 
-                <table class="table table-striped" id="myTable">
+                <h4 class="text-center">Data Pemasukan</h4>
+                <table class="table table-bordered table-hover" id="myTable">
                     <thead>
                         <tr class="bg-dark">
                             <th scope="col" class="text-center">No</th>
                             <th scope="col" class="text-center">Customer</th>
-                            <th scope="col" class="text-center">Total harga</th>
-                            <th scope="col" class="text-center">Action</th>
+                            <th scope="col" class="text-center">Total Harga</th>
+                            <th scope="col" class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($orders as $order)
                         @if ($order->status_pembayaran === 'Sudah Dibayar')
                         <tr>
-                            <th scope="row" class="text-center">{{$loop->index + 1}}</th>
-                            <td>{{$order->customer_id ? $order->customer->name : '-'}}</td>
-                            <td class="text-center">Rp {{ number_format($order->total, 0, ',', '.') }}</td>
-                            <td class="text-center">
+                            <td scope="row" class="text-center" data-label="No.">{{$loop->index + 1}}</td>
+                            <td data-label="Customer">{{$order->customer_id ? $order->customer->name : '-'}}</td>
+                            <td class="text-right" data-label="Total Harga">Rp {{ number_format($order->total, 0, ',', '.') }}</td>
+                            <td class="text-center" data-label="Aksi">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDetail{{$order->id}}">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                             </button>

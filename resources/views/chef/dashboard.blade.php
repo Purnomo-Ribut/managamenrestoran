@@ -19,7 +19,7 @@
                 </div>
             </a>
         </div>
-        
+
         <!-- Profile Section End -->
 
         <div class="col-12 col-md-4">
@@ -55,7 +55,7 @@
             <div class="card">
                 <div class="card-body table-responsive">
                     <h4 class="text-center">Data Orderan</h4>
-                    <table class="table table-striped" id="myTable">
+                    <table class="table table-bordered table-hover" id="myTable">
                         <thead>
                             <tr class="bg-dark">
                                 <th class="text-center">No</th>

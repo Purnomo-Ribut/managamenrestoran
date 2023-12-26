@@ -32,7 +32,6 @@ class OrderController extends Controller
         // }
 
         // return redirect()->back()->withErrors(['msg' => "Terjadi kesalahan"]);
-
         $session = $request->session()->get('reserved');
         $recentCart = Cart::where('customer_id', $session['id'])->where('menu_id', $request->menu_id)->first();
         if($recentCart !== null){
@@ -66,6 +65,10 @@ class OrderController extends Controller
 
     public function checkout(Request $request)
     {
+        if(!isset ($request->menu_id) && $request->menu_id == null) {
+            Alert::toast('Anda belum memesan', 'error');
+            return redirect()->back();
+        }
         $code = "PSN-".rand(100000,999999);
 
         $data = $request->except(['_token']);

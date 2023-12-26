@@ -19,7 +19,9 @@
 
   {{-- link datatable --}}
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-  
+
+  <link rel="stylesheet" href="{{ asset('assets/manager/css/responsive.css')}}">
+
   @yield('css')
 </head>
 <!--
@@ -161,6 +163,8 @@
         });
     }
   </script>
+
+<script src="{{asset('assets/manager/js/responsive.js')}}"></script>
 
 @stack('scripts')
 </body>

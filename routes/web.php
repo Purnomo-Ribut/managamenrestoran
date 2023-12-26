@@ -32,7 +32,7 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 
 Route::prefix('kasir')->middleware('auth', 'role:kasir')->group(function() {
     Route::get('/', 'Kasir\DashboardController@index')->name('kasir.dashboard');
-    Route::get('test', 'Kasir\DashboardController@test')->name('kasir.tes');
+    // Route::get('test', 'Kasir\DashboardController@test')->name('kasir.tes');
 
     // checkout + detail
     Route::get('checkout/{idCustomer}', 'Kasir\CheckoutController@index')->name('kasir.checkout');

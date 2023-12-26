@@ -27,7 +27,7 @@ class ProfilController extends Controller
 
         $user = User::findOrFail($id);
 
-        
+
         $user->name = $request->input('nama');
         $user->alamat = $request->input('alamat');
         $user->kota = $request->input('kota');
@@ -50,7 +50,7 @@ class ProfilController extends Controller
 
         $user = User::findOrFail($id);
 
-        
+
         $user->email = $request->input('user');
 
         $simpan = $user->save();
@@ -70,7 +70,7 @@ class ProfilController extends Controller
         ], [
             'passbaru.confirmed' => 'Password Baru Tidak Sama',
         ]);
-    
+
 
         $user = User::findOrFail($id);
 
@@ -80,6 +80,6 @@ class ProfilController extends Controller
 
         $user->update(['password' => bcrypt($request->passbaru)]);
 
-        return redirect()->route('profil')->with('benar', 'Password Berhasil Dirubah.');
+        return redirect()->route('logout2')->with('success', 'Password Berhasil Dirubah.');
     }
 }

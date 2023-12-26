@@ -43,10 +43,9 @@
                             <div class="form-group">
                                 <label for="no_meja">Pilih meja</label>
                                 <select name="no_meja" class="form-control" id="no_meja">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    @for($var=1;$var<15;$var++)
+                                    <option value="{{$var}}">{{$var}}</option>
+                                    @endfor
                                 </select>
                             </div>
                             <button class="btn btn-warning w-100 text-light">Simpan</button>

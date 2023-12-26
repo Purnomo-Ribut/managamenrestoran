@@ -80,7 +80,7 @@
     <div class="card">
         <div class="card-body table-responsive">
             <h3 class="text-center">Orderan</h3>
-            <table class="table table-striped" id="order-table">
+            <table class="table table-bordered table-hover" id="order-table">
                 <thead>
                     <tr class="bg-dark">
                         <th scope="col" class="text-center">No</th>

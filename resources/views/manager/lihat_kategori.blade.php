@@ -32,7 +32,7 @@
                         <div class="col mb-3 text-right">
                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalKategori">Tambah Kategori</button>
                         </div>
-        <table class="table table-striped" id="myTable">
+        <table class="table table-bordered table-hover" id="myTable">
           <thead>
               <tr class="bg-dark">
                   <th scope="col" class="text-center">No</th>
@@ -44,21 +44,21 @@
           <tbody>
               @foreach ($kategoris as $kt)
               <tr>
-                  <th scope="row" class="text-center">{{$loop->index + 1}}</th>
-                  <td>{{$kt->nama}}</td>
-                  <td>{{$kt->deskripsi}}</td>
-                  <td class="text-center">
+                  <td scope="row" class="text-center" data-label="No.">{{$loop->index + 1}}</td>
+                  <td data-label="Nama">{{$kt->nama}}</td>
+                  <td data-label="Deskripsi">{{$kt->deskripsi}}</td>
+                  <td class="text-center" data-label="Aksi">
                     {{-- hapus --}}
                     <a onclick="confirmDelete(this)" data-url="{{ route('deleteKategori', ['id' => $kt->id]) }}" class="btn btn-danger" role="button">
                       <i class="fa-solid fa-trash"></i>
                     </a>
-                    
+
                     {{-- edit --}}
                       <button type="button" class="btn btn-primary" data-toggle="modal"
                           data-target="#editkategori{{$kt->id}}">
                           <i class="fas fa-pencil-alt"></i>
                       </button>
-                      
+
                   </td>
               </tr>
               @endforeach

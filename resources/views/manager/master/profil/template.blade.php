@@ -13,13 +13,15 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/kasir/css/adminlte.min.css')}}">
-    
+
   {{-- icon title --}}
   <link rel="icon" type="image/x-icon" href="{{ asset('assets/manager/img/restogo.png') }}">
 
   {{-- link datatable --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-  
+
+    <link rel="stylesheet" href="{{ asset('assets/manager/css/responsive.css')}}">
+
   @yield('css')
 </head>
 <!--
@@ -79,14 +81,14 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             @auth
-            <h1 class="m-0">Selamat Datang, {{Auth::user()->name}} </h1>
+            {{-- <h1 class="m-0">Selamat Datang, {{Auth::user()->name}} </h1> --}}
             @endauth
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('manager_index') }}">Home</a></li>
+              {{-- <li class="breadcrumb-item"><a href="{{ route('manager_index') }}">Home</a></li>
               <li class="breadcrumb-item active">Dashboard</li>
-              <li class="breadcrumb-item active">Profil</li>
+              <li class="breadcrumb-item active">Profil</li> --}}
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -162,6 +164,8 @@
         });
     }
   </script>
+
+<script src="{{asset('assets/manager/js/responsive.js')}}"></script>
 
 @stack('scripts')
 </body>

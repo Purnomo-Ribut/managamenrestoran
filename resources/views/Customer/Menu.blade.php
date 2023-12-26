@@ -56,8 +56,10 @@
                     <div class="col-6 col-md-3 mb-3 tabel">
                         <div class="card border-0 shadow">
                             <div class="d-flex justify-content-center">
-                                <img src="{{asset('storage/assets/manager/gambarMenu/'.$item->image)}}"
-                                    class="card-img-top foto" alt="Gambar Tidak ada">
+                                {{-- <img src="{{asset('storage/assets/manager/gambarMenu/'.$item->image)}}"
+                                    class="card-img-top foto" alt="Gambar Tidak ada"> --}}
+                                <img src="{{ $item->image ? asset('storage/assets/manager/gambarMenu/' . $item->image) : asset('assets/img/no-image.png') }}"
+                                    alt="gambarmenu" class="card-img-top foto">
                             </div>
                             <div class="card-body p-1">
                                 <div class="content-makanan d-flex justify-content-center">

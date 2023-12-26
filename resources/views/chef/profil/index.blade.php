@@ -255,9 +255,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="d-flex justify-content-end">
-                                    <input class="btn btn-info w-25" type="submit" value="Ubah Password">
+                                    <input class="btn btn-info w-25" type="submit" value="Ubah">
                                 </div>
                             </form>
                         </div>
@@ -267,12 +267,12 @@
         </div>
     </div>
 
-    
+
      <!-- Tambahkan script Bootstrap JS dan Popper.js CDN -->
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-     <!-- Tambahkan script JavaScript lainnya -->    
+     <!-- Tambahkan script JavaScript lainnya -->
     <script>
          $(document).ready(function() {
         $('.toggle-password').click(function() {

@@ -22,7 +22,11 @@
 
   {{-- link datatable --}}
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-  
+
+{{-- link responsive --}}
+  <link rel="stylesheet" href="{{ asset('assets/manager/css/responsive.css')}}">
+
+
   @yield('css')
 </head>
 <!--
@@ -39,7 +43,7 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    @include('manager.master.navbar') 
+    @include('manager.master.navbar')
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -83,7 +87,7 @@
             @auth
             {{-- <h4>Selamat Datang, {{Auth::user()->name}} </h4> --}}
             @endauth
-            
+
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -165,6 +169,8 @@
         });
     }
   </script>
+
+<script src="{{asset('assets/manager/js/responsive.js')}}"></script>
 
 @stack('scripts')
 </body>

@@ -63,9 +63,9 @@
                     <p>Terima Kasih!</p>
                 </div>
             </div>
-            <div class="mt-3">
+            {{-- <div class="mt-3">
                 <img src="{{asset('assets/customer/img/restogo.png')}}" alt="No Picture Added" class="rounded-circle logo-co">
-             </div>
+             </div> --}}
         </div>
     </div>
 
