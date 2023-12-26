@@ -3,22 +3,6 @@
 @section('title', 'List Orderan | ResToGo')
 
 @section('css')
-    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
-    <script>
-        confirmDelete = function(button) {
-            var url = $(button).data('url');
-            swal({
-                'title': 'Konfirmasi Hapus',
-                'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
-                'dangermode': true,
-                'buttons': true
-            }).then(function(value) {
-                if (value) {
-                    window.location = url;
-                }
-            })
-        }
-    </script>
     {{-- <link rel="stylesheet" href=""> --}}
     <style>
         @media (max-width: 500px) {
@@ -156,4 +140,22 @@
         // Tambahkan event listener untuk menanggapi perubahan ukuran layar
         window.addEventListener('resize', adjustLayout);
     </script>
+
+    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+    <script>
+        confirmDelete = function(button) {
+            var url = $(button).data('url');
+            swal({
+                'title': 'Konfirmasi Hapus',
+                'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
+                'dangermode': true,
+                'buttons': true
+            }).then(function(value) {
+                if (value) {
+                    window.location = url;
+                }
+            })
+        }
+    </script>
+    
 @endpush

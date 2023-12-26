@@ -3,22 +3,6 @@
 @section('title', 'Data Karyawan | ResToGo')
 
 @section('css')
-    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
-    <script>
-        confirmDelete = function(button) {
-            var url = $(button).data('url');
-            swal({
-                'title': 'Konfirmasi Hapus',
-                'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
-                'dangermode': true,
-                'buttons': true
-            }).then(function(value) {
-                if (value) {
-                    window.location = url;
-                }
-            })
-        }
-    </script>
 @endsection
 
 @section('content')
@@ -237,7 +221,7 @@
                   <label for="image">Profil</label>
                 </div> --}}
                             {{-- <div class="mb-3">
-              
+
                   <div>
                     <input type="file"  id="image" name="image" class="form-control" onchange="validateFile(this)">
                   </div>
@@ -274,5 +258,21 @@
 @push('scripts')
     <script>
         let table = new DataTable('#myTable');
+    </script>
+    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+    <script>
+        confirmDelete = function(button) {
+            var url = $(button).data('url');
+            swal({
+                'title': 'Konfirmasi Hapus',
+                'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
+                'dangermode': true,
+                'buttons': true
+            }).then(function(value) {
+                if (value) {
+                    window.location = url;
+                }
+            })
+        }
     </script>
 @endpush

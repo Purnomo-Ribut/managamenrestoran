@@ -3,22 +3,6 @@
 @section('title', 'Data Kategori | ResToGo')
 
 @section('css')
-<script src="{{ asset('js/sweetalert.min.js') }}"></script>
-<script>
-	confirmDelete = function(button) {
-		var url = $(button).data('url');
-		swal({
-			'title': 'Konfirmasi Hapus',
-			'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
-			'dangermode': true,
-			'buttons': true
-		}).then(function(value) {
-			if (value) {
-				window.location = url;
-			}
-		})
-	}
-</script>
 @endsection
 
 @section('content')
@@ -52,13 +36,13 @@
                     <a onclick="confirmDelete(this)" data-url="{{ route('deleteKategori', ['id' => $kt->id]) }}" class="btn btn-danger" role="button">
                       <i class="fa-solid fa-trash"></i>
                     </a>
-                    
+
                     {{-- edit --}}
                       <button type="button" class="btn btn-primary" data-toggle="modal"
                           data-target="#editkategori{{$kt->id}}">
                           <i class="fas fa-pencil-alt"></i>
                       </button>
-                      
+
                   </td>
               </tr>
               @endforeach
@@ -146,4 +130,22 @@
 <script>
   let table = new DataTable('#myTable');
 </script>
+
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+<script>
+	confirmDelete = function(button) {
+		var url = $(button).data('url');
+		swal({
+			'title': 'Konfirmasi Hapus',
+			'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
+			'dangermode': true,
+			'buttons': true
+		}).then(function(value) {
+			if (value) {
+				window.location = url;
+			}
+		})
+	}
+</script>
+
 @endpush

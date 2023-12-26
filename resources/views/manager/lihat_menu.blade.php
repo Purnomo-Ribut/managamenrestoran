@@ -4,22 +4,7 @@
 
 @section('addJavascript')
 @section('css')
-    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
-    <script>
-        confirmDelete = function(button) {
-            var url = $(button).data('url');
-            swal({
-                'title': 'Konfirmasi Hapus',
-                'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
-                'dangermode': true,
-                'buttons': true
-            }).then(function(value) {
-                if (value) {
-                    window.location = url;
-                }
-            })
-        }
-    </script>
+
     {{-- <link rel="stylesheet" href=""> --}}
 
 @endsection
@@ -306,6 +291,8 @@
 
         @include('sweetalert::alert')
 
+
+
     </body>
 @endsection
 
@@ -313,5 +300,22 @@
 @push('scripts')
     <script>
         let table = new DataTable('#myTable');
+    </script>
+
+    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+    <script>
+        confirmDelete = function(button) {
+            var url = $(button).data('url');
+            swal({
+                'title': 'Konfirmasi Hapus',
+                'text': 'Apakah Kamu Yakin Ingin Menghapus Data Ini?',
+                'dangermode': true,
+                'buttons': true
+            }).then(function(value) {
+                if (value) {
+                    window.location = url;
+                }
+            })
+        }
     </script>
 @endpush
