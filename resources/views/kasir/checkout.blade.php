@@ -47,8 +47,9 @@
 
                                     @foreach ($data as $harga)
                                         @php
-                                            $total = $harga->price * $harga->qty;
-                                            $totalHarga += $total;
+                                            // $total = $harga->price * $harga->qty;
+                                            // ($harga->price);
+                                            $totalHarga += $harga->price;
                                         @endphp
                                     @endforeach
                                     <input type="text" class="form-control" name="total" value="{{ $totalHarga }}"
@@ -146,8 +147,8 @@
 
                             @foreach ($data as $harga)
                                 @php
-                                    $total = $harga->price * $harga->qty;
-                                    $totalHarga += $total;
+                                    // $total = $harga->price * $harga->qty;
+                                    $totalHarga += $harga->price;
                                 @endphp
                             @endforeach
                             <tr>
@@ -165,7 +166,6 @@
             </div>
 
         </div>
-    </div>
     </div>
 @endsection
 

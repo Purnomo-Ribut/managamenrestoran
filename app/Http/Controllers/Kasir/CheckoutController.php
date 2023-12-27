@@ -22,10 +22,11 @@ class CheckoutController extends Controller
         // gabungan 3 tabel
         $data = DB::table('tbl_carts')
             ->join('tbl_menuses', 'tbl_carts.menu_id', '=', 'tbl_menuses.id')
-            ->join('tbl_customers', 'tbl_carts.customer_id', '=', 'tbl_customers.id')            
+            ->join('tbl_customers', 'tbl_carts.customer_id', '=', 'tbl_customers.id')
             ->select('tbl_carts.*', 'tbl_menuses.*', 'tbl_customers.*')
             ->where('tbl_carts.customer_id', '=', $idcustomer)
             ->get();
+            
 
         return view('kasir.checkout', ['orders' => $orders, 'data' => $data, 'chef' => $chef]);
     }
@@ -60,12 +61,12 @@ class CheckoutController extends Controller
             $order->save();
 
             // return redirect()->route('kasir.dashboard');
-            // gas ke halaman struk 
+            // gas ke halaman struk
             return redirect()->route('struk', ['idCustomer' => $idCustomer]);
-        } else {            
+        } else {
             return redirect()->route('kasir.dashboard')->with('error', 'Pesanan Tidak Ada');
         }
-    } 
+    }
 
     /**
      * Display the specified resource.
