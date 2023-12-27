@@ -169,8 +169,8 @@
 
                         @foreach ($data as $harga)
                             @php
-                                $total = $harga->price * $harga->qty;
-                                $totalHarga += $total;
+                                // $total = $harga->price * $harga->qty;
+                                $totalHarga += $harga->price;
                             @endphp
                         @endforeach
                         <tr class="total-row">

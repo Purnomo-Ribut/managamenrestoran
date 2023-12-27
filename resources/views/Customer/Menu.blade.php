@@ -84,7 +84,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="container-fluid d-flex justify-content-end">
+            <div class="container-fluid d-flex justify-content-end fixed-bottom mb-3 mr-3">
                 <a data-toggle="modal" data-target="#myModal">
                     <div class="cart d-flex justify-content-center align-items-center btn-kuning mb-2 p-2 shadow">
                         <span class="material-symbols-outlined cart">shopping_cart</span>

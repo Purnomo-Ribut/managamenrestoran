@@ -105,15 +105,20 @@ class OrderController extends Controller
         $session = session()->get('reserved');
         $category = Kategori::first();
         $order = Order::where('customer_id', $session['id'])->first();
-        $totalPrice = $order->orderDetails->sum('price');
+        // dd($order->orderDetails);
+        if(isset($order->orderDetails)){
+            $totalPrice = $order->orderDetails->sum('price');
+            return view('Customer.cekout', compact('order', 'totalPrice', 'category'));
+        }
+        return redirect()->route('reservasi.logout');
         // dd($totalPrice);
-        return view('Customer.cekout', compact('order', 'totalPrice', 'category'));
     }
 
     public function cancelOrder($id)
     {
         $delete = Order::where('customer_id', $id)->first();
-        if($delete){
+
+        if($delete != null){
             $cek = $delete->delete();
             if($cek){
                 $delete->customer->delete();
